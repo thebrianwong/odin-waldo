@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import GameVersionCard from "../components/GameVersionCard";
+
 const Homepage = () => {
   return (
     <>
@@ -11,6 +14,24 @@ const Homepage = () => {
           // Bottom has credits
         }
       </p>
+      <Link to="/leaderboard">
+        <button>Leaderboard</button>
+      </Link>
+      <div>
+        <p>Pokemon</p>
+        <p>Gotta find 'em all!</p>
+      </div>
+      <div>
+        <Link to="/game">
+          <GameVersionCard gameVersion={"version1"} />
+        </Link>
+        <Link to="/game">
+          <GameVersionCard gameVersion={"version2"} />
+        </Link>
+        <Link to="/game">
+          <GameVersionCard gameVersion={"version3"} />
+        </Link>
+      </div>
     </>
   );
 };
