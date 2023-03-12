@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import GameVersionCard from "../components/GameVersionCard";
 
-const Homepage = () => {
+const Homepage = ({ chooseGameVersion }) => {
   return (
     <>
       <p>
@@ -23,13 +23,22 @@ const Homepage = () => {
       </div>
       <div>
         <Link to="/game">
-          <GameVersionCard gameVersion={"version1"} />
+          <GameVersionCard
+            gameVersion={"version1"}
+            chooseGameVersion={chooseGameVersion}
+          />
         </Link>
         <Link to="/game">
-          <GameVersionCard gameVersion={"version2"} />
+          <GameVersionCard
+            gameVersion={"version2"}
+            chooseGameVersion={chooseGameVersion}
+          />
         </Link>
         <Link to="/game">
-          <GameVersionCard gameVersion={"version3"} />
+          <GameVersionCard
+            gameVersion={"version3"}
+            chooseGameVersion={chooseGameVersion}
+          />
         </Link>
       </div>
     </>

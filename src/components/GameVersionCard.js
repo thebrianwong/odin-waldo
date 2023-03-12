@@ -1,9 +1,9 @@
 import { gameData } from "../gameData";
 
-const GameVersionCard = ({ gameVersion }) => {
+const GameVersionCard = ({ gameVersion, chooseGameVersion }) => {
   const versionData = gameData[gameVersion];
   return (
-    <button>
+    <button onClick={() => chooseGameVersion(gameVersion)}>
       <img />
       <ul>
         {versionData.map((data) => {
