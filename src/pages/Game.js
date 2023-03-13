@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DropdownMenu from "../components/DropdownMenu";
 import NavBar from "../components/NavBar";
+import TargetArea from "../components/TargetArea";
 
 const Game = ({ gameData, gameVersion }) => {
   const [displayingMenu, setDisplayingMenu] = useState(false);
@@ -42,12 +43,15 @@ const Game = ({ gameData, gameVersion }) => {
         />
       </div>
       {displayingMenu ? (
-        <DropdownMenu
-          position={clickCoordinates}
-          gameData={gameData}
-          gameVersion={gameVersion}
-          handlePickedOption={handlePickedOption}
-        />
+        <>
+          <TargetArea position={clickCoordinates} />
+          <DropdownMenu
+            position={clickCoordinates}
+            gameData={gameData}
+            gameVersion={gameVersion}
+            handlePickedOption={handlePickedOption}
+          />
+        </>
       ) : null}
     </div>
   );
