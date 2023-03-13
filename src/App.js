@@ -3,18 +3,33 @@ import { useState } from "react";
 import Homepage from "./pages/Homepage";
 import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
+import { gameData as data } from "./gameData";
 
 function App() {
   const [gameVersion, setGameVersion] = useState("version1");
+  const gameData = data;
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route
             path="/"
-            element={<Homepage chooseGameVersion={setGameVersion} />}
+            element={
+              <Homepage
+                gameData={gameData}
+                chooseGameVersion={setGameVersion}
+              />
+            }
           />
-          <Route path="/game" element={<Game gameVersion={gameVersion} />} />
+          <Route
+            path="/game"
+            element={
+              <Game
+                gameData={gameData[gameVersion]}
+                gameVersion={gameVersion}
+              />
+            }
+          />
           <Route path="leaderboard" element={<Leaderboard />} />
         </Routes>
       </BrowserRouter>
