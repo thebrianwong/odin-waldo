@@ -1,20 +1,10 @@
-import { gameData } from "../gameData";
+import PokemonNameList from "./PokemonNameList";
 
-const GameVersionCard = ({ gameVersion, chooseGameVersion }) => {
-  const versionData = gameData[gameVersion];
+const GameVersionCard = ({ gameData, gameVersion, chooseGameVersion }) => {
   return (
     <button onClick={() => chooseGameVersion(gameVersion)}>
       <img />
-      <ul>
-        {versionData.map((data) => {
-          return (
-            <li key={`${gameVersion} ${data}`}>
-              <img />
-              <p>{data}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <PokemonNameList gameData={gameData} gameVersion={gameVersion} />
     </button>
   );
 };
