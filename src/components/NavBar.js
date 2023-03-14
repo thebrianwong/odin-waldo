@@ -15,7 +15,7 @@ const NavBar = ({ elapsedTime }) => {
         <img />
       </div>
       <div>
-        <p>{`Time: ${elapsedTime} seconds`}</p>
+        <p>{`Time: ${elapsedTime}`}</p>
       </div>
       <Link to="/leaderboard">
         <button>Leaderboard</button>

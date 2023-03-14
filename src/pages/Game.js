@@ -21,12 +21,35 @@ const Game = ({ gameData, gameVersion }) => {
     setCurrentTime(Date.now());
     const intervalId = setInterval(() => {
       setCurrentTime(Date.now());
-    }, 75);
+    }, 1000);
     intervalRef.current = intervalId;
     return () => {
       clearInterval(intervalId);
     };
   }, []);
+  const formatElapsedTime = () => {
+    const elapsedTime = Math.round((currentTime - startTime) / 1000);
+    if (elapsedTime < 60) {
+      if (elapsedTime < 10) {
+        return `00:0${elapsedTime}`;
+      }
+      return `00:${elapsedTime}`;
+    } else {
+      const timeMinutes = Math.floor(elapsedTime / 60);
+      const timeSeconds = elapsedTime - timeMinutes * 60;
+      if (timeMinutes < 10) {
+        if (timeSeconds < 10) {
+          return `0${timeMinutes}:0${timeSeconds}`;
+        }
+        return `0${timeMinutes}:${timeSeconds}`;
+      } else {
+        if (timeSeconds < 10) {
+          return `${timeMinutes}:0${timeSeconds}`;
+        }
+        return `${timeMinutes}:${timeSeconds}`;
+      }
+    }
+  };
   const handleImageClick = (e) => {
     setDisplayingMenu(!displayingMenu);
     if (displayingMenu) {
@@ -48,7 +71,7 @@ const Game = ({ gameData, gameVersion }) => {
   };
   return (
     <div>
-      <NavBar elapsedTime={(currentTime - startTime) / 1000} />
+      <NavBar elapsedTime={formatElapsedTime()} />
       <div>
         <img
           onClick={(e) => handleImageClick(e)}
