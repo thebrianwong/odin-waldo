@@ -16,6 +16,10 @@ const Game = ({ gameData, gameVersion }) => {
     x: null,
     y: null,
   });
+  const [clientCoordinates, setClientCoordinates] = useState({
+    x: null,
+    y: null,
+  });
   useEffect(() => {
     setStartTime(Date.now());
     setCurrentTime(Date.now());
@@ -61,10 +65,13 @@ const Game = ({ gameData, gameVersion }) => {
     const imageYCoordinate = e.pageY - e.target.offsetTop;
     const clickXCoordinate = e.pageX;
     const clickYCoordinate = e.pageY;
+    const clientXCoordinate = e.clientX;
+    const clientYCoordinate = e.clientY;
     console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop);
     console.log(e);
     setImageCoordinates({ x: imageXCoordinate, y: imageYCoordinate });
     setClickCoordinates({ x: clickXCoordinate, y: clickYCoordinate });
+    setClientCoordinates({ x: clientXCoordinate, y: clientYCoordinate });
   };
   const handlePickedOption = (option) => {
     // based on chosen option, look at key of game data, compare with imageCoordinates, if within range mark checked, if not no checked
@@ -83,7 +90,8 @@ const Game = ({ gameData, gameVersion }) => {
         <>
           <TargetArea position={clickCoordinates} />
           <DropdownMenu
-            position={clickCoordinates}
+            clickPosition={clickCoordinates}
+            clientPosition={clientCoordinates}
             gameData={gameData}
             gameVersion={gameVersion}
             handlePickedOption={handlePickedOption}
