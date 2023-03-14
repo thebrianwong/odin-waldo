@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DropdownMenu from "../components/DropdownMenu";
 import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
 
 const Game = ({ gameData, gameVersion }) => {
+  const [startTime, setStartTime] = useState(null);
+  const [currentTime, setCurrentTime] = useState(null);
+  const intervalRef = useRef(null);
   const [displayingMenu, setDisplayingMenu] = useState(false);
   const [imageCoordinates, setImageCoordinates] = useState({
     x: null,
@@ -13,6 +16,17 @@ const Game = ({ gameData, gameVersion }) => {
     x: null,
     y: null,
   });
+  useEffect(() => {
+    setStartTime(Date.now());
+    setCurrentTime(Date.now());
+    const intervalId = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 75);
+    intervalRef.current = intervalId;
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
   const handleImageClick = (e) => {
     setDisplayingMenu(!displayingMenu);
     if (displayingMenu) {
@@ -34,7 +48,7 @@ const Game = ({ gameData, gameVersion }) => {
   };
   return (
     <div>
-      <NavBar />
+      <NavBar elapsedTime={(currentTime - startTime) / 1000} />
       <div>
         <img
           onClick={(e) => handleImageClick(e)}

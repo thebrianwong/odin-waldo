@@ -1,22 +1,6 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
-  const intervalRef = useRef(null);
-  useEffect(() => {
-    setStartTime(Date.now());
-    setEndTime(Date.now());
-    const intervalId = setInterval(() => {
-      setEndTime(Date.now());
-    }, 75);
-    intervalRef.current = intervalId;
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-  const elapsedTime = (endTime - startTime) / 1000;
+const NavBar = ({ elapsedTime }) => {
   return (
     <div>
       {
