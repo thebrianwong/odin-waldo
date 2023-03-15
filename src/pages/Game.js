@@ -91,7 +91,10 @@ const Game = ({ gameData, gameVersion }) => {
       </div>
       {displayingMenu ? (
         <>
-          <TargetArea position={clickCoordinates} />
+          <TargetArea
+            clickPosition={clickCoordinates}
+            clientPosition={clientCoordinates}
+          />
           <DropdownMenu
             clickPosition={clickCoordinates}
             clientPosition={clientCoordinates}
