@@ -19,7 +19,11 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
               flex: "1",
               alignItems: "center",
             }}
-            onClick={() => handlePickedOption(data)}
+            onClick={() => {
+              if (handlePickedOption) {
+                handlePickedOption(data);
+              }
+            }}
             key={`${gameVersion} ${data}`}
           >
             <img src={require("../assets/images/pikachu.png")} />
