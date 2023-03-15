@@ -30,7 +30,7 @@ const DropdownMenu = ({
         position: "absolute",
         top: normalizeYCoordinate(),
         left: normalizeXCoordinate(),
-        backgroundColor: "lightgray",
+        backgroundColor: "rgba(211,211,211, 0.78)",
       }}
     >
       <PokemonNameList
