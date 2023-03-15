@@ -8,14 +8,17 @@ const Game = ({ gameData, gameVersion }) => {
   const [currentTime, setCurrentTime] = useState(null);
   const intervalRef = useRef(null);
   const [displayingMenu, setDisplayingMenu] = useState(false);
+  // coordinates of the click relative to image, starts at top left corner of image
   const [imageCoordinates, setImageCoordinates] = useState({
     x: null,
     y: null,
   });
+  // coordinates of the click relative to the entire page, starts at the top left corner of the page
   const [clickCoordinates, setClickCoordinates] = useState({
     x: null,
     y: null,
   });
+  // coordinates of the click relative to the viewport, starts at the top left corner of what is being displayed
   const [clientCoordinates, setClientCoordinates] = useState({
     x: null,
     y: null,
