@@ -7,23 +7,29 @@ const DropdownMenu = ({
   gameVersion,
   handlePickedOption,
 }) => {
-  const VIEWPORT_HEIGHT = document.body.clientHeight;
-  const VIEWPORT_WIDTH = document.body.clientWidth;
+  const VIEWPORT_HEIGHT = window.visualViewport.height;
+  const VIEWPORT_WIDTH = window.visualViewport.width;
   const MENU_HEIGHT = 150;
   const MENU_WIDTH = 175;
-  const LEEWAY_MARGIN = 15;
+  const LEEWAY_MARGIN = 5;
   const normalizeYCoordinate = () => {
     if (clientPosition.y + MENU_HEIGHT > VIEWPORT_HEIGHT - LEEWAY_MARGIN) {
-      return clientPosition.y - VIEWPORT_HEIGHT;
+      return clickPosition.y - MENU_HEIGHT;
     }
-    return clientPosition.y;
+    return clickPosition.y;
+  };
+  const normalizeXCoordinate = () => {
+    if (clientPosition.x + MENU_WIDTH > VIEWPORT_WIDTH - LEEWAY_MARGIN) {
+      return clickPosition.x - MENU_WIDTH;
+    }
+    return clickPosition.x;
   };
   return (
     <div
       style={{
         position: "absolute",
         top: normalizeYCoordinate(),
-        left: clickPosition.x,
+        left: normalizeXCoordinate(),
         backgroundColor: "lightgray",
       }}
     >
