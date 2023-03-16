@@ -10,21 +10,33 @@ const TargetArea = ({
   const AREA_HALF_BORDER = 1;
   const LEEWAY_MARGIN = 5;
   const normalizeYCoordinate = () => {
-    if (imagePosition.y + AREA_RADIUS > imageDimensions.height) {
+    if (
+      imagePosition.y + AREA_RADIUS + AREA_HALF_BORDER >
+      imageDimensions.height - LEEWAY_MARGIN
+    ) {
       return (
         imageBorder.bottom - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
       );
-    } else if (imagePosition.y - AREA_RADIUS < 0) {
+    } else if (
+      imagePosition.y - AREA_RADIUS - AREA_HALF_BORDER <
+      0 + LEEWAY_MARGIN
+    ) {
       return imageBorder.top + AREA_HALF_BORDER + LEEWAY_MARGIN;
     }
     return clickPosition.y - AREA_RADIUS - AREA_HALF_BORDER;
   };
   const normalizeXCoordinate = () => {
-    if (imagePosition.x + AREA_RADIUS > imageDimensions.width) {
+    if (
+      imagePosition.x + AREA_RADIUS + AREA_HALF_BORDER >
+      imageDimensions.width - LEEWAY_MARGIN
+    ) {
       return (
         imageBorder.right - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
       );
-    } else if (imagePosition.x - AREA_RADIUS < 0) {
+    } else if (
+      imagePosition.x - AREA_RADIUS - AREA_HALF_BORDER <
+      0 + LEEWAY_MARGIN
+    ) {
       return imageBorder.left + AREA_HALF_BORDER + LEEWAY_MARGIN;
     }
     return clickPosition.x - AREA_RADIUS - AREA_HALF_BORDER;
