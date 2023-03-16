@@ -4,6 +4,9 @@ import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
 
 const Game = ({ gameData, gameVersion }) => {
+  const imageDimensions = {
+    version1: { width: 2560, height: 1600 },
+  };
   const [startTime, setStartTime] = useState(null);
   const [currentTime, setCurrentTime] = useState(null);
   const intervalRef = useRef(null);
@@ -22,6 +25,13 @@ const Game = ({ gameData, gameVersion }) => {
   const [clientCoordinates, setClientCoordinates] = useState({
     x: null,
     y: null,
+  });
+  // how far down or left from the page is each border of the image
+  const [imageBorders, setImageBorders] = useState({
+    top: null,
+    right: null,
+    bottom: null,
+    left: null,
   });
   useEffect(() => {
     setStartTime(Date.now());
@@ -62,6 +72,16 @@ const Game = ({ gameData, gameVersion }) => {
     if (displayingMenu) {
       setImageCoordinates({ x: null, y: null });
       setClickCoordinates({ x: null, y: null });
+      setClientCoordinates({
+        x: null,
+        y: null,
+      });
+      setImageBorders({
+        top: null,
+        right: null,
+        bottom: null,
+        left: null,
+      });
       return;
     }
     const imageXCoordinate = e.pageX - e.target.offsetLeft;
@@ -70,11 +90,22 @@ const Game = ({ gameData, gameVersion }) => {
     const clickYCoordinate = e.pageY;
     const clientXCoordinate = e.clientX;
     const clientYCoordinate = e.clientY;
-    console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop);
+    const imageBorderTop = e.target.offsetTop;
+    const imageBorderRight = e.target.offsetLeft + e.target.offsetWidth;
+    const imageBorderBottom = e.target.offsetTop + e.target.offsetHeight;
+    const imageBorderLeft = e.target.offsetLeft;
+    // console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop);
     console.log(e);
+    // console.log(imageXCoordinate, imageYCoordinate);
     setImageCoordinates({ x: imageXCoordinate, y: imageYCoordinate });
     setClickCoordinates({ x: clickXCoordinate, y: clickYCoordinate });
     setClientCoordinates({ x: clientXCoordinate, y: clientYCoordinate });
+    setImageBorders({
+      top: imageBorderTop,
+      right: imageBorderRight,
+      bottom: imageBorderBottom,
+      left: imageBorderLeft,
+    });
   };
   const handlePickedOption = (option) => {
     // based on chosen option, look at key of game data, compare with imageCoordinates, if within range mark checked, if not no checked
@@ -92,8 +123,10 @@ const Game = ({ gameData, gameVersion }) => {
       {displayingMenu ? (
         <>
           <TargetArea
+            imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
-            clientPosition={clientCoordinates}
+            imageBorders={imageBorders}
+            imageDimensions={imageDimensions[gameVersion]}
           />
           <DropdownMenu
             clickPosition={clickCoordinates}
