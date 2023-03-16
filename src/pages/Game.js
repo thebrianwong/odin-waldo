@@ -129,8 +129,11 @@ const Game = ({ gameData, gameVersion }) => {
             imageDimensions={imageDimensions[gameVersion]}
           />
           <DropdownMenu
+            imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
             clientPosition={clientCoordinates}
+            imageBorder={imageBorder}
+            imageDimensions={imageDimensions[gameVersion]}
             gameData={gameData}
             gameVersion={gameVersion}
             handlePickedOption={handlePickedOption}
