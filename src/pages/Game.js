@@ -125,7 +125,7 @@ const Game = ({ gameData, gameVersion }) => {
           <TargetArea
             imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
-            imageBorders={imageBorder}
+            imageBorder={imageBorder}
             imageDimensions={imageDimensions[gameVersion]}
           />
           <DropdownMenu

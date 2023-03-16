@@ -1,7 +1,7 @@
 const TargetArea = ({
   imagePosition,
   clickPosition,
-  imageBorders: imageBorder,
+  imageBorder,
   imageDimensions,
 }) => {
   const AREA_HEIGHT = 50;
