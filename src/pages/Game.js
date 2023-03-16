@@ -27,7 +27,7 @@ const Game = ({ gameData, gameVersion }) => {
     y: null,
   });
   // how far down or left from the page is each border of the image
-  const [imageBorders, setImageBorders] = useState({
+  const [imageBorder, setImageBorder] = useState({
     top: null,
     right: null,
     bottom: null,
@@ -76,7 +76,7 @@ const Game = ({ gameData, gameVersion }) => {
         x: null,
         y: null,
       });
-      setImageBorders({
+      setImageBorder({
         top: null,
         right: null,
         bottom: null,
@@ -100,7 +100,7 @@ const Game = ({ gameData, gameVersion }) => {
     setImageCoordinates({ x: imageXCoordinate, y: imageYCoordinate });
     setClickCoordinates({ x: clickXCoordinate, y: clickYCoordinate });
     setClientCoordinates({ x: clientXCoordinate, y: clientYCoordinate });
-    setImageBorders({
+    setImageBorder({
       top: imageBorderTop,
       right: imageBorderRight,
       bottom: imageBorderBottom,
@@ -125,7 +125,7 @@ const Game = ({ gameData, gameVersion }) => {
           <TargetArea
             imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
-            imageBorders={imageBorders}
+            imageBorders={imageBorder}
             imageDimensions={imageDimensions[gameVersion]}
           />
           <DropdownMenu

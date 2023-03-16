@@ -1,7 +1,7 @@
 const TargetArea = ({
   imagePosition,
   clickPosition,
-  imageBorders,
+  imageBorders: imageBorder,
   imageDimensions,
 }) => {
   const AREA_HEIGHT = 50;
@@ -12,20 +12,20 @@ const TargetArea = ({
   const normalizeYCoordinate = () => {
     if (imagePosition.y + AREA_RADIUS > imageDimensions.height) {
       return (
-        imageBorders.bottom - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
+        imageBorder.bottom - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
       );
     } else if (imagePosition.y - AREA_RADIUS < 0) {
-      return imageBorders.top + AREA_HALF_BORDER + LEEWAY_MARGIN;
+      return imageBorder.top + AREA_HALF_BORDER + LEEWAY_MARGIN;
     }
     return clickPosition.y - AREA_RADIUS - AREA_HALF_BORDER;
   };
   const normalizeXCoordinate = () => {
     if (imagePosition.x + AREA_RADIUS > imageDimensions.width) {
       return (
-        imageBorders.right - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
+        imageBorder.right - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
       );
     } else if (imagePosition.x - AREA_RADIUS < 0) {
-      return imageBorders.left + AREA_HALF_BORDER + LEEWAY_MARGIN;
+      return imageBorder.left + AREA_HALF_BORDER + LEEWAY_MARGIN;
     }
     return clickPosition.x - AREA_RADIUS - AREA_HALF_BORDER;
   };
