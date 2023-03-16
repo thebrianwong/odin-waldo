@@ -17,7 +17,7 @@ const TargetArea = ({
     } else if (imagePosition.y - AREA_RADIUS < 0) {
       return imageBorders.top + AREA_HALF_BORDER + LEEWAY_MARGIN;
     }
-    return clickPosition.y - AREA_RADIUS;
+    return clickPosition.y - AREA_RADIUS - AREA_HALF_BORDER;
   };
   const normalizeXCoordinate = () => {
     if (imagePosition.x + AREA_RADIUS > imageDimensions.width) {
