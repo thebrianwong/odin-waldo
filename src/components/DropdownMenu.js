@@ -19,50 +19,60 @@ const DropdownMenu = ({
   const TARGET_AREA_HALF_BORDER = 1;
   const normalizeYCoordinate = () => {
     if (
-      /* (clientPosition.y + MENU_HEIGHT > VIEWPORT_HEIGHT - LEEWAY_MARGIN) */ imagePosition.y +
-        TARGET_AREA_RADIUS +
-        TARGET_AREA_HALF_BORDER >
+      imagePosition.y + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
       imageDimensions.height - LEEWAY_MARGIN
     ) {
-      // return clickPosition.y - MENU_HEIGHT;
-      // return (
-      //   clickPosition.y -
-      //   MENU_HEIGHT -
-      //   TARGET_AREA_RADIUS -
-      //   TARGET_AREA_HALF_BORDER
-      // );
       return (
         imageBorder.bottom -
         MENU_HEIGHT -
         TARGET_AREA_RADIUS -
-        TARGET_AREA_HALF_BORDER
+        TARGET_AREA_HALF_BORDER -
+        LEEWAY_MARGIN
       );
     } else if (
-      /* (
-      imagePosition.y + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
-      imageDimensions.height - LEEWAY_MARGIN
-    ) */ clientPosition.y + MENU_HEIGHT >
-      VIEWPORT_HEIGHT - LEEWAY_MARGIN
+      imagePosition.y - TARGET_AREA_RADIUS - TARGET_AREA_HALF_BORDER <
+      0 + LEEWAY_MARGIN
     ) {
-      // return (
-      //   imageBorder.bottom -
-      //   2 * TARGET_AREA_RADIUS -
-      //   TARGET_AREA_HALF_BORDER -
-      //   LEEWAY_MARGIN
-      // );
-      console.log("cross");
+      return (
+        imageBorder.top +
+        TARGET_AREA_RADIUS +
+        TARGET_AREA_HALF_BORDER +
+        LEEWAY_MARGIN
+      );
+    } else if (
+      clientPosition.y + MENU_HEIGHT >
+      VIEWPORT_HEIGHT - 3 * LEEWAY_MARGIN
+    ) {
       return clickPosition.y - MENU_HEIGHT;
-      // return (
-      //   clickPosition.y -
-      //   MENU_HEIGHT -
-      //   TARGET_AREA_RADIUS -
-      //   TARGET_AREA_HALF_BORDER
-      // );
     }
     return clickPosition.y;
   };
   const normalizeXCoordinate = () => {
-    if (clientPosition.x + MENU_WIDTH > VIEWPORT_WIDTH - LEEWAY_MARGIN) {
+    if (
+      imagePosition.x + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
+      imageDimensions.width - LEEWAY_MARGIN
+    ) {
+      return (
+        imageBorder.right -
+        MENU_WIDTH -
+        TARGET_AREA_RADIUS -
+        TARGET_AREA_HALF_BORDER -
+        LEEWAY_MARGIN
+      );
+    } else if (
+      imagePosition.x - TARGET_AREA_RADIUS - TARGET_AREA_HALF_BORDER <
+      0 + LEEWAY_MARGIN
+    ) {
+      return (
+        imageBorder.left +
+        TARGET_AREA_RADIUS +
+        TARGET_AREA_HALF_BORDER +
+        LEEWAY_MARGIN
+      );
+    } else if (
+      clientPosition.x + MENU_WIDTH >
+      VIEWPORT_WIDTH - 2 * LEEWAY_MARGIN
+    ) {
       return clickPosition.x - MENU_WIDTH;
     }
     return clickPosition.x;
