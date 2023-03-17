@@ -15,7 +15,10 @@ const TargetArea = ({
       imageDimensions.height - LEEWAY_MARGIN
     ) {
       return (
-        imageBorder.bottom - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
+        imageBorder.bottom -
+        2 * AREA_RADIUS -
+        2 * AREA_HALF_BORDER -
+        LEEWAY_MARGIN
       );
     } else if (
       imagePosition.y - AREA_RADIUS - AREA_HALF_BORDER <
@@ -31,7 +34,10 @@ const TargetArea = ({
       imageDimensions.width - LEEWAY_MARGIN
     ) {
       return (
-        imageBorder.right - 2 * AREA_RADIUS - AREA_HALF_BORDER - LEEWAY_MARGIN
+        imageBorder.right -
+        2 * AREA_RADIUS -
+        2 * AREA_HALF_BORDER -
+        LEEWAY_MARGIN
       );
     } else if (
       imagePosition.x - AREA_RADIUS - AREA_HALF_BORDER <
