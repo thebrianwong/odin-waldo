@@ -2,7 +2,7 @@ const TargetArea = ({
   imagePosition,
   clickPosition,
   imageBorder,
-  imageDimensions,
+  gameData,
 }) => {
   const AREA_HEIGHT = 50;
   const AREA_WIDTH = 50;
@@ -12,7 +12,7 @@ const TargetArea = ({
   const normalizeYCoordinate = () => {
     if (
       imagePosition.y + AREA_RADIUS + AREA_HALF_BORDER >
-      imageDimensions.height - LEEWAY_MARGIN
+      gameData.imageDimensions.height - LEEWAY_MARGIN
     ) {
       return (
         imageBorder.bottom -
@@ -31,7 +31,7 @@ const TargetArea = ({
   const normalizeXCoordinate = () => {
     if (
       imagePosition.x + AREA_RADIUS + AREA_HALF_BORDER >
-      imageDimensions.width - LEEWAY_MARGIN
+      gameData.imageDimensions.width - LEEWAY_MARGIN
     ) {
       return (
         imageBorder.right -

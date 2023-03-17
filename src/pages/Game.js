@@ -4,9 +4,6 @@ import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
 
 const Game = ({ gameData, gameVersion }) => {
-  const imageDimensions = {
-    version1: { width: 2560, height: 1600 },
-  };
   const [startTime, setStartTime] = useState(null);
   const [currentTime, setCurrentTime] = useState(null);
   const intervalRef = useRef(null);
@@ -126,14 +123,13 @@ const Game = ({ gameData, gameVersion }) => {
             imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
             imageBorder={imageBorder}
-            imageDimensions={imageDimensions[gameVersion]}
+            gameData={gameData}
           />
           <DropdownMenu
             imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
             clientPosition={clientCoordinates}
             imageBorder={imageBorder}
-            imageDimensions={imageDimensions[gameVersion]}
             gameData={gameData}
             gameVersion={gameVersion}
             handlePickedOption={handlePickedOption}

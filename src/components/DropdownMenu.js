@@ -5,7 +5,6 @@ const DropdownMenu = ({
   clickPosition,
   clientPosition,
   imageBorder,
-  imageDimensions,
   gameData,
   gameVersion,
   handlePickedOption,
@@ -21,7 +20,7 @@ const DropdownMenu = ({
     if (
       // click near the bottom border of the image
       imagePosition.y + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
-      imageDimensions.height - LEEWAY_MARGIN
+      gameData.imageDimensions.height - LEEWAY_MARGIN
     ) {
       return (
         imageBorder.bottom -
@@ -57,7 +56,7 @@ const DropdownMenu = ({
     if (
       // click near the right border of the image
       imagePosition.x + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
-      imageDimensions.width - LEEWAY_MARGIN
+      gameData.imageDimensions.width - LEEWAY_MARGIN
     ) {
       return (
         imageBorder.right -

@@ -10,7 +10,7 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
         flexDirection: "column",
       }}
     >
-      {gameData.map((data) => {
+      {gameData.pokemonNames.map((data) => {
         return (
           <li
             style={{
