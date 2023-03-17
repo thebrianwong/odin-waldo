@@ -40,8 +40,11 @@ const DropdownMenu = ({
         LEEWAY_MARGIN
       );
     } else if (
-      clientPosition.y + MENU_HEIGHT >
-      VIEWPORT_HEIGHT - 3 * LEEWAY_MARGIN
+      VIEWPORT_HEIGHT +
+        window.visualViewport.offsetTop -
+        clientPosition.y -
+        MENU_HEIGHT <
+      0 + 3 * LEEWAY_MARGIN
     ) {
       return clickPosition.y - MENU_HEIGHT;
     }
