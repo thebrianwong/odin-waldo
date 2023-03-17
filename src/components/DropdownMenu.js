@@ -49,6 +49,7 @@ const DropdownMenu = ({
   };
   const normalizeXCoordinate = () => {
     if (
+      // click near the right border of the image
       imagePosition.x + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
       imageDimensions.width - LEEWAY_MARGIN
     ) {
@@ -60,6 +61,7 @@ const DropdownMenu = ({
         LEEWAY_MARGIN
       );
     } else if (
+      // click near the left border of the image
       imagePosition.x - TARGET_AREA_RADIUS - TARGET_AREA_HALF_BORDER <
       0 + LEEWAY_MARGIN
     ) {
@@ -70,8 +72,12 @@ const DropdownMenu = ({
         LEEWAY_MARGIN
       );
     } else if (
-      clientPosition.x + MENU_WIDTH >
-      VIEWPORT_WIDTH - 2 * LEEWAY_MARGIN
+      // click near the right edge of the viewport
+      VIEWPORT_WIDTH +
+        window.visualViewport.pageLeft -
+        clickPosition.x -
+        MENU_WIDTH <
+      0 + LEEWAY_MARGIN
     ) {
       return clickPosition.x - MENU_WIDTH;
     }
