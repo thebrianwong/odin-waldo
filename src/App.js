@@ -1,18 +1,36 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Homepage from "./pages/Homepage";
 import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
 import { gameData as data } from "./gameData";
 import { initializeApp } from "firebase/app";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
 
 function App() {
   const firebaseConfig = getFirebaseConfig();
   const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const docRef = doc(db, "pokemon-locations", "c7mMQDMECrbbBIQ7HxlC");
 
   const [gameVersion, setGameVersion] = useState("version1");
+  const [validationData, setValidationData] = useState(null);
   const gameData = data;
+
+  useEffect(() => {
+    const getValidationData = async () => {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setValidationData(docSnap.data());
+      } else {
+        console.error(
+          "There was an error loading the game. Try refreshing the page!"
+        );
+      }
+    };
+    getValidationData();
+  }, []);
   return (
     <>
       <BrowserRouter>
