@@ -1,6 +1,6 @@
 export const gameData = {
   version1: {
-    pokemonNames: ["Pikachu1", "Pikachu2", "Pikachu3"],
+    pokemonNames: ["Mudkip", "Gloom", "Politoed"],
     imageDimensions: {
       width: 2560,
       height: 1600,
