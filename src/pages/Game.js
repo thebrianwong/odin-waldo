@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import DropdownMenu from "../components/DropdownMenu";
 import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
+import AnswerReaction from "../components/AnswerReaction";
 
 const Game = ({ gameData, gameVersion, validationData }) => {
   const [gameProgress, setGameProgress] = useState({
@@ -34,6 +35,11 @@ const Game = ({ gameData, gameVersion, validationData }) => {
     right: null,
     bottom: null,
     left: null,
+  });
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
+  const [answerCoordinates, setAnswerCoordinates] = useState({
+    x: null,
+    y: null,
   });
   useEffect(() => {
     setStartTime(Date.now());
@@ -106,8 +112,8 @@ const Game = ({ gameData, gameVersion, validationData }) => {
     const imageBorderBottom = e.target.offsetTop + e.target.offsetHeight;
     const imageBorderLeft = e.target.offsetLeft;
     // console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop);
-    console.log(e);
-    // console.log(imageXCoordinate, imageYCoordinate);
+    // console.log(e);
+    console.log(imageXCoordinate, imageYCoordinate);
     setImageCoordinates({ x: imageXCoordinate, y: imageYCoordinate });
     setClickCoordinates({ x: clickXCoordinate, y: clickYCoordinate });
     setClientCoordinates({ x: clientXCoordinate, y: clientYCoordinate });
@@ -132,7 +138,7 @@ const Game = ({ gameData, gameVersion, validationData }) => {
     }
     return false;
   };
-  const handlePickedOption = (pickedPokemon) => {
+  const handlePickedOption = (e, pickedPokemon) => {
     // based on chosen option, look at key of game data, compare with imageCoordinates, if within range mark checked, if not no checked
     const pokemonCoordinates = validationData[pickedPokemon];
     if (
@@ -142,13 +148,27 @@ const Game = ({ gameData, gameVersion, validationData }) => {
       imageCoordinates.y <= pokemonCoordinates.maximumY
     ) {
       // flash green
+      setIsCorrectAnswer(true);
       setGameProgress({ ...gameProgress, [pickedPokemon]: true });
       // mark the nav bar sprite as translucent
     } else {
       // flash red
+      setIsCorrectAnswer(false);
     }
+    setAnswerCoordinates({
+      x: e.pageX,
+      y: e.pageY,
+    });
     setDisplayingMenu(!displayingMenu);
     resetState();
+    setTimeout(() => {
+      setIsCorrectAnswer(null);
+      setAnswerCoordinates({
+        x: null,
+        y: null,
+      });
+    }, 2500);
+    console.log(e.pageX, e.pageY);
   };
   return (
     <div>
@@ -178,6 +198,12 @@ const Game = ({ gameData, gameVersion, validationData }) => {
             handlePickedOption={handlePickedOption}
           />
         </>
+      ) : null}
+      {isCorrectAnswer !== null ? (
+        <AnswerReaction
+          isCorrect={isCorrectAnswer}
+          clickPosition={answerCoordinates}
+        />
       ) : null}
     </div>
   );

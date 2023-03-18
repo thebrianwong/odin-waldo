@@ -19,9 +19,9 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
               flex: "1",
               alignItems: "center",
             }}
-            onClick={() => {
+            onClick={(e) => {
               if (handlePickedOption) {
-                handlePickedOption(data);
+                handlePickedOption(e, data);
               }
             }}
             key={`${gameVersion} ${data}`}
