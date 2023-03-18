@@ -47,11 +47,25 @@ const Game = ({ gameData, gameVersion, validationData }) => {
     };
   }, []);
   useEffect(() => {
-   if (checkIfAllPokemonFound()) {
+    if (checkIfAllPokemonFound()) {
       clearInterval(intervalRef.current);
       // display modal to submit score to leaderboard
     }
-  }, [gameProgress]); 
+  }, [gameProgress]);
+  const resetState = () => {
+    setImageCoordinates({ x: null, y: null });
+    setClickCoordinates({ x: null, y: null });
+    setClientCoordinates({
+      x: null,
+      y: null,
+    });
+    setImageBorder({
+      top: null,
+      right: null,
+      bottom: null,
+      left: null,
+    });
+  };
   const formatElapsedTime = () => {
     const elapsedTime = Math.round((currentTime - startTime) / 1000);
     if (elapsedTime < 60) {
