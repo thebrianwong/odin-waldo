@@ -3,7 +3,12 @@ import DropdownMenu from "../components/DropdownMenu";
 import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
 
-const Game = ({ gameData, gameVersion }) => {
+const Game = ({ gameData, gameVersion, validationData }) => {
+  const [gameProgress, setGameProgress] = useState({
+    [gameData.pokemonNames[0]]: false,
+    [gameData.pokemonNames[1]]: false,
+    [gameData.pokemonNames[2]]: false,
+  });
   const [startTime, setStartTime] = useState(null);
   const [currentTime, setCurrentTime] = useState(null);
   const intervalRef = useRef(null);
@@ -41,6 +46,12 @@ const Game = ({ gameData, gameVersion }) => {
       clearInterval(intervalId);
     };
   }, []);
+  useEffect(() => {
+   if (checkIfAllPokemonFound()) {
+      clearInterval(intervalRef.current);
+      // display modal to submit score to leaderboard
+    }
+  }, [gameProgress]); 
   const formatElapsedTime = () => {
     const elapsedTime = Math.round((currentTime - startTime) / 1000);
     if (elapsedTime < 60) {
@@ -67,18 +78,7 @@ const Game = ({ gameData, gameVersion }) => {
   const handleImageClick = (e) => {
     setDisplayingMenu(!displayingMenu);
     if (displayingMenu) {
-      setImageCoordinates({ x: null, y: null });
-      setClickCoordinates({ x: null, y: null });
-      setClientCoordinates({
-        x: null,
-        y: null,
-      });
-      setImageBorder({
-        top: null,
-        right: null,
-        bottom: null,
-        left: null,
-      });
+      resetState();
       return;
     }
     const imageXCoordinate = e.pageX - e.target.offsetLeft;
@@ -103,6 +103,20 @@ const Game = ({ gameData, gameVersion }) => {
       bottom: imageBorderBottom,
       left: imageBorderLeft,
     });
+  };
+  const checkIfAllPokemonFound = () => {
+    console.log(gameProgress);
+    if (
+      Object.keys(gameProgress).every((pokemon) => {
+        if (gameProgress[pokemon] === true) {
+          return true;
+        }
+        return false;
+      })
+    ) {
+      return true;
+    }
+    return false;
   };
   const handlePickedOption = (pickedPokemon) => {
     // based on chosen option, look at key of game data, compare with imageCoordinates, if within range mark checked, if not no checked
