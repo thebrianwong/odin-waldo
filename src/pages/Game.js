@@ -104,8 +104,23 @@ const Game = ({ gameData, gameVersion }) => {
       left: imageBorderLeft,
     });
   };
-  const handlePickedOption = (option) => {
+  const handlePickedOption = (pickedPokemon) => {
     // based on chosen option, look at key of game data, compare with imageCoordinates, if within range mark checked, if not no checked
+    const pokemonCoordinates = validationData[pickedPokemon];
+    if (
+      imageCoordinates.x >= pokemonCoordinates.minimumX &&
+      imageCoordinates.x <= pokemonCoordinates.maximumX &&
+      imageCoordinates.y >= pokemonCoordinates.minimumY &&
+      imageCoordinates.y <= pokemonCoordinates.maximumY
+    ) {
+      // flash green
+      setGameProgress({ ...gameProgress, [pickedPokemon]: true });
+      // mark the nav bar sprite as translucent
+    } else {
+      // flash red
+    }
+    setDisplayingMenu(!displayingMenu);
+    resetState();
   };
   return (
     <div>
