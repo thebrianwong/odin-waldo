@@ -4,8 +4,13 @@ import Homepage from "./pages/Homepage";
 import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
 import { gameData as data } from "./gameData";
+import { initializeApp } from "firebase/app";
+import { getFirebaseConfig } from "./firebase-config";
 
 function App() {
+  const firebaseConfig = getFirebaseConfig();
+  const app = initializeApp(firebaseConfig);
+
   const [gameVersion, setGameVersion] = useState("version1");
   const gameData = data;
   return (
