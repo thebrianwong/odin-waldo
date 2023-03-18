@@ -47,10 +47,13 @@ function App() {
           <Route
             path="/game"
             element={
-              <Game
-                gameData={gameData[gameVersion]}
-                gameVersion={gameVersion}
-              />
+              validationData ? (
+                <Game
+                  gameData={gameData[gameVersion]}
+                  gameVersion={gameVersion}
+                  validationData={validationData[gameVersion]}
+                />
+              ) : null /* put a loading screen with a spinning pokeball */
             }
           />
           <Route path="leaderboard" element={<Leaderboard />} />
