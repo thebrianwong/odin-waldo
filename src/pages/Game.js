@@ -37,7 +37,15 @@ const Game = ({ gameData, gameVersion, validationData }) => {
     left: null,
   });
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
-  const [answerCoordinates, setAnswerCoordinates] = useState({
+  const [answerImageCoordinates, setAnswerImageCoordinates] = useState({
+    x: null,
+    y: null,
+  });
+  const [answerClickCoordinates, setAnswerClickCoordinates] = useState({
+    x: null,
+    y: null,
+  });
+  const [answerClientCoordinates, setAnswerClientCoordinates] = useState({
     x: null,
     y: null,
   });
@@ -155,20 +163,41 @@ const Game = ({ gameData, gameVersion, validationData }) => {
       // flash red
       setIsCorrectAnswer(false);
     }
-    setAnswerCoordinates({
-      x: e.pageX,
-      y: e.pageY,
+    const imageXCoordinate = e.pageX - e.target.offsetLeft;
+    const imageYCoordinate = e.pageY - e.target.offsetTop;
+    const clickXCoordinate = e.pageX;
+    const clickYCoordinate = e.pageY;
+    const clientXCoordinate = e.clientX;
+    const clientYCoordinate = e.clientY;
+    setAnswerImageCoordinates({
+      x: imageXCoordinate,
+      y: imageYCoordinate,
+    });
+    setAnswerClickCoordinates({
+      x: clickXCoordinate,
+      y: clickYCoordinate,
+    });
+    setAnswerClientCoordinates({
+      x: clientXCoordinate,
+      y: clientYCoordinate,
     });
     setDisplayingMenu(!displayingMenu);
     resetState();
     setTimeout(() => {
       setIsCorrectAnswer(null);
-      setAnswerCoordinates({
+      setAnswerImageCoordinates({
+        x: null,
+        y: null,
+      });
+      setAnswerClickCoordinates({
+        x: null,
+        y: null,
+      });
+      setAnswerClientCoordinates({
         x: null,
         y: null,
       });
     }, 2500);
-    console.log(e.pageX, e.pageY);
   };
   return (
     <div>
@@ -202,7 +231,11 @@ const Game = ({ gameData, gameVersion, validationData }) => {
       {isCorrectAnswer !== null ? (
         <AnswerReaction
           isCorrect={isCorrectAnswer}
-          clickPosition={answerCoordinates}
+          imagePosition={answerImageCoordinates}
+          clickPosition={answerClickCoordinates}
+          clientPosition={answerClientCoordinates}
+          imageBorder={imageBorder}
+          gameData={gameData}
         />
       ) : null}
     </div>
