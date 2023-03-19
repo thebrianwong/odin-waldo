@@ -7,14 +7,14 @@ export const gameData = {
     },
   },
   version2: {
-    pokemonNames: ["Pikachu4", "Pikachu5", "Pikachu6"],
+    pokemonNames: ["Pichu", "Graveler", "Slaking"],
     imageDimensions: {
       width: 1440,
       height: 900,
     },
   },
   version3: {
-    pokemonNames: ["Pikachu7", "Pikachu8", "Pikachu9"],
+    pokemonNames: ["Pikachu", "Charizard", "Snorlax"],
     imageDimensions: {
       width: 1440,
       height: 900,
