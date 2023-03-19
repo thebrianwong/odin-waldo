@@ -11,6 +11,7 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
       }}
     >
       {gameData.pokemonNames.map((data) => {
+        console.log(data);
         return (
           <li
             style={{
@@ -26,7 +27,7 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
             }}
             key={`${gameVersion} ${data}`}
           >
-            <img src={require("../assets/images/pikachu.png")} />
+            <img src={require(`../assets/images/${data}_list_sprite.png`)} />
             <p style={{ margin: "0" }}>{data}</p>
           </li>
         );
