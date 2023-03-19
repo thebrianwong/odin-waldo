@@ -30,6 +30,11 @@ const DropdownMenu = ({
         LEEWAY_MARGIN
       );
     } else if (
+      imagePosition.y + MENU_HEIGHT >
+      gameData.imageDimensions.height - LEEWAY_MARGIN
+    ) {
+      return clickPosition.y - MENU_HEIGHT;
+    } else if (
       // click near the top border of the image
       imagePosition.y - TARGET_AREA_RADIUS - TARGET_AREA_HALF_BORDER <
       0 + LEEWAY_MARGIN
