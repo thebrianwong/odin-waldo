@@ -133,10 +133,14 @@ function App() {
           <Route
             path="leaderboard"
             element={
-              <Leaderboard
-                leaderboardData={leaderboardData}
-                formatTime={formatTime}
-              />
+              leaderboardData ? (
+                <Leaderboard
+                  leaderboardData={leaderboardData}
+                  formatTime={formatTime}
+                />
+              ) : (
+                <LoadingPokeball />
+              )
             }
           />
         </Routes>
