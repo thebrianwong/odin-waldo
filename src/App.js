@@ -32,6 +32,29 @@ function App() {
     };
     getValidationData();
   }, []);
+  const formatTime = (timeInMilliseconds) => {
+    const timeInSeconds = Math.round(timeInMilliseconds / 1000);
+    if (timeInSeconds < 60) {
+      if (timeInSeconds < 10) {
+        return `00:0${timeInSeconds}`;
+      }
+      return `00:${timeInSeconds}`;
+    } else {
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = timeInSeconds % 60;
+      if (minutes < 10) {
+        if (seconds < 10) {
+          return `0${minutes}:0${seconds}`;
+        }
+        return `0${minutes}:${seconds}`;
+      } else {
+        if (seconds < 10) {
+          return `${minutes}:0${seconds}`;
+        }
+        return `${minutes}:${seconds}`;
+      }
+    }
+  };
   const submitScore = (
     timeInMilliseconds,
     playerName,
@@ -60,6 +83,7 @@ function App() {
                   gameData={gameData[gameVersion]}
                   gameVersion={gameVersion}
                   validationData={validationData[gameVersion]}
+                  formatTime={formatTime}
                   submitScore={submitScore}
                 />
               ) : (

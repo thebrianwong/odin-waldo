@@ -5,7 +5,13 @@ import TargetArea from "../components/TargetArea";
 import AnswerReaction from "../components/AnswerReaction";
 import SubmitScoreModal from "../components/SubmitScoreModal";
 
-const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
+const Game = ({
+  gameData,
+  gameVersion,
+  validationData,
+  formatTime,
+  submitScore,
+}) => {
   const [gameProgress, setGameProgress] = useState({
     [gameData.pokemonNames[0]]: false,
     [gameData.pokemonNames[1]]: false,
@@ -82,29 +88,6 @@ const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
       bottom: null,
       left: null,
     });
-  };
-  const formatElapsedTime = () => {
-    const elapsedTime = Math.round((currentTime - startTime) / 1000);
-    if (elapsedTime < 60) {
-      if (elapsedTime < 10) {
-        return `00:0${elapsedTime}`;
-      }
-      return `00:${elapsedTime}`;
-    } else {
-      const timeMinutes = Math.floor(elapsedTime / 60);
-      const timeSeconds = elapsedTime - timeMinutes * 60;
-      if (timeMinutes < 10) {
-        if (timeSeconds < 10) {
-          return `0${timeMinutes}:0${timeSeconds}`;
-        }
-        return `0${timeMinutes}:${timeSeconds}`;
-      } else {
-        if (timeSeconds < 10) {
-          return `${timeMinutes}:0${timeSeconds}`;
-        }
-        return `${timeMinutes}:${timeSeconds}`;
-      }
-    }
   };
   const handleImageClick = (e) => {
     setDisplayingMenu(!displayingMenu);
@@ -207,7 +190,7 @@ const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
       <NavBar
         gameData={gameData}
         gameProgress={gameProgress}
-        elapsedTime={formatElapsedTime()}
+        elapsedTime={formatTime(currentTime - startTime)}
       />
       <div>
         <img
@@ -248,7 +231,7 @@ const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
       {displayModal ? (
         <SubmitScoreModal
           timeScore={currentTime - startTime}
-          displayTime={formatElapsedTime()}
+          displayTime={formatTime(currentTime - startTime)}
           submitScore={submitScore}
           closeModal={() => setDisplayModal(false)}
         />
