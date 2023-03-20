@@ -7,6 +7,7 @@ import { gameData as data } from "./gameData";
 import { initializeApp } from "firebase/app";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
+import LoadingPokeball from "./components/LoadingPokeball";
 
 function App() {
   const firebaseConfig = getFirebaseConfig();
@@ -53,7 +54,9 @@ function App() {
                   gameVersion={gameVersion}
                   validationData={validationData[gameVersion]}
                 />
-              ) : null /* put a loading screen with a spinning pokeball */
+              ) : (
+                <LoadingPokeball />
+              ) /* put a loading screen with a spinning pokeball */
             }
           />
           <Route path="leaderboard" element={<Leaderboard />} />
