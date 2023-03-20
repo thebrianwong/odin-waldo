@@ -27,7 +27,9 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
             }}
             key={`${gameVersion} ${data}`}
           >
-            <img src={require(`../assets/images/${data}_list_sprite.png`)} />
+            <img
+              src={require(`../assets/images/list_sprites/${data}_list_sprite.png`)}
+            />
             <p style={{ margin: "0" }}>{data}</p>
           </li>
         );

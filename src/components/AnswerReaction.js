@@ -70,7 +70,7 @@ const AnswerReaction = ({
             height: "100px",
             width: "100px",
           }}
-          src={require("../assets/images/correct.png")}
+          src={require("../assets/images/answers/correct.png")}
         />
       ) : (
         <img
@@ -78,7 +78,7 @@ const AnswerReaction = ({
             height: "100px",
             width: "100px",
           }}
-          src={require("../assets/images/incorrect.png")}
+          src={require("../assets/images/answers/incorrect.png")}
         />
       )}
     </div>

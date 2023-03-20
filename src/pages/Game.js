@@ -205,7 +205,7 @@ const Game = ({ gameData, gameVersion, validationData }) => {
       <div>
         <img
           onClick={(e) => handleImageClick(e)}
-          src={require(`../assets/images/${gameVersion}.png`)}
+          src={require(`../assets/images/game_versions/${gameVersion}.png`)}
           alt="placeholder"
         />
       </div>
