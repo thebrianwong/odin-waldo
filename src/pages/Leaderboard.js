@@ -1,4 +1,7 @@
-const Leaderboard = () => {
+import { useState } from "react";
+
+const Leaderboard = ({ leaderboardData, formatTime }) => {
+  const [gameVersion, setGameVersion] = useState("version1");
   return (
     <>
       {

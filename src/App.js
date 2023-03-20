@@ -1,11 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, version } from "react";
 import Homepage from "./pages/Homepage";
 import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
 import { gameData as data } from "./gameData";
 import { initializeApp } from "firebase/app";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  collectionGroup,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+} from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball";
 
@@ -14,9 +22,14 @@ function App() {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const locationsRef = doc(db, "pokemon-locations", "c7mMQDMECrbbBIQ7HxlC");
+  const leaderboardRef = doc(db, "leaderboard", "aTP48l1FdA6uqGSRtxSW");
+  const version1Query = query(collectionGroup(db, "leaderboard-version1"));
+  const version2Query = query(collectionGroup(db, "leaderboard-version2"));
+  const version3Query = query(collectionGroup(db, "leaderboard-version3"));
 
   const [gameVersion, setGameVersion] = useState("version1");
   const [validationData, setValidationData] = useState(null);
+  const [leaderboardData, setLeaderboardData] = useState(null);
   const gameData = data;
 
   useEffect(() => {
@@ -31,6 +44,32 @@ function App() {
       }
     };
     getValidationData();
+  }, []);
+  useEffect(() => {
+    const getLeaderboardData = () => {
+      const leaderboardQuery = [version1Query, version2Query, version3Query];
+      const leaderboardScoresData = {};
+      leaderboardQuery.forEach(async (version, index) => {
+        try {
+          let versionData = [];
+          const versionDocuments = await getDocs(version);
+          versionDocuments.forEach((doc) => {
+            const leaderboardEntry = doc.data();
+            leaderboardEntry.timeStamp = leaderboardEntry.timeStamp
+              .toDate()
+              .toDateString();
+            versionData = versionData.concat(leaderboardEntry);
+          });
+          leaderboardScoresData[`version${index + 1}`] = versionData;
+          setLeaderboardData(leaderboardScoresData);
+        } catch (e) {
+          console.error(
+            "Some leaderboard scores are missing. Try refreshing the page!"
+          );
+        }
+      });
+    };
+    getLeaderboardData();
   }, []);
   const formatTime = (timeInMilliseconds) => {
     const timeInSeconds = Math.round(timeInMilliseconds / 1000);
@@ -91,7 +130,15 @@ function App() {
               ) /* put a loading screen with a spinning pokeball */
             }
           />
-          <Route path="leaderboard" element={<Leaderboard />} />
+          <Route
+            path="leaderboard"
+            element={
+              <Leaderboard
+                leaderboardData={leaderboardData}
+                formatTime={formatTime}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
