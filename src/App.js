@@ -13,7 +13,7 @@ function App() {
   const firebaseConfig = getFirebaseConfig();
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  const docRef = doc(db, "pokemon-locations", "c7mMQDMECrbbBIQ7HxlC");
+  const locationsRef = doc(db, "pokemon-locations", "c7mMQDMECrbbBIQ7HxlC");
 
   const [gameVersion, setGameVersion] = useState("version1");
   const [validationData, setValidationData] = useState(null);
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     const getValidationData = async () => {
-      const docSnap = await getDoc(docRef);
+      const docSnap = await getDoc(locationsRef);
       if (docSnap.exists()) {
         setValidationData(docSnap.data());
       } else {
