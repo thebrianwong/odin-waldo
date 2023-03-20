@@ -32,6 +32,13 @@ function App() {
     };
     getValidationData();
   }, []);
+  const submitScore = (
+    timeInMilliseconds,
+    playerName,
+    playerFavoritePokemon
+  ) => {
+    // add to the leaderboard collection in Firebase a new object, {name: playerName, score: timeInMilliseconds, favoritePokemon: playerFavoritePokemon}
+  };
   return (
     <>
       <BrowserRouter>
@@ -53,6 +60,7 @@ function App() {
                   gameData={gameData[gameVersion]}
                   gameVersion={gameVersion}
                   validationData={validationData[gameVersion]}
+                  submitScore={submitScore}
                 />
               ) : (
                 <LoadingPokeball />

@@ -1,4 +1,8 @@
-const SubmitScoreModal = ({ timeScore, displayTime }) => {
+import { useState } from "react";
+
+const SubmitScoreModal = ({ timeScore, displayTime, submitScore }) => {
+  const [name, setName] = useState("");
+  const [favoritePokemon, setFavoritePokemon] = useState("");
   return (
     <div
       style={{
@@ -29,14 +33,19 @@ const SubmitScoreModal = ({ timeScore, displayTime }) => {
         <div style={{ display: "flex" }}>
           <label style={{ display: "flex", flexDirection: "column" }}>
             Your Name
-            <input type="text" />
+            <input type="text" onChange={(e) => setName(e.target.value)} />
           </label>
           <label style={{ display: "flex", flexDirection: "column" }}>
             Your Favorite Pokemon
-            <input type="text" />
+            <input
+              type="text"
+              onChange={(e) => setFavoritePokemon(e.target.value)}
+            />
           </label>
         </div>
-        <button>Submit Score</button>
+        <button onClick={submitScore(timeScore, name, favoritePokemon)}>
+          Submit Score
+        </button>
       </div>
     </div>
   );

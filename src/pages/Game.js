@@ -5,7 +5,7 @@ import TargetArea from "../components/TargetArea";
 import AnswerReaction from "../components/AnswerReaction";
 import SubmitScoreModal from "../components/SubmitScoreModal";
 
-const Game = ({ gameData, gameVersion, validationData }) => {
+const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
   const [gameOver, setGameOver] = useState(false);
   const [gameProgress, setGameProgress] = useState({
     [gameData.pokemonNames[0]]: false,
@@ -249,6 +249,7 @@ const Game = ({ gameData, gameVersion, validationData }) => {
         <SubmitScoreModal
           timeScore={currentTime - startTime}
           displayTime={formatElapsedTime()}
+          submitScore={submitScore}
         />
       ) : null}
     </div>
