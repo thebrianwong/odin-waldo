@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 
-const NavBar = ({ gameData, elapsedTime }) => {
+const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
+  const indicateIfFound = (pokemon) => {
+    if (gameProgress[pokemon]) {
+      return "0.35";
+    } else {
+      return "1";
+    }
+  };
   return (
     <div>
       {
@@ -11,9 +18,11 @@ const NavBar = ({ gameData, elapsedTime }) => {
       </Link>
       <div>
         {gameData.pokemonNames.map((pokemon) => {
-          console.log(pokemon);
           return (
             <img
+              style={{
+                opacity: indicateIfFound(pokemon),
+              }}
               key={pokemon}
               src={require(`../assets/images/navbar_sprites/${pokemon}_navbar_sprite.png`)}
             />
