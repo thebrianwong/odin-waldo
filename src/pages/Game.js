@@ -201,7 +201,7 @@ const Game = ({ gameData, gameVersion, validationData }) => {
   };
   return (
     <div>
-      <NavBar elapsedTime={formatElapsedTime()} />
+      <NavBar gameData={gameData} elapsedTime={formatElapsedTime()} />
       <div>
         <img
           onClick={(e) => handleImageClick(e)}

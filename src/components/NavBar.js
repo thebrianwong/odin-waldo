@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NavBar = ({ elapsedTime }) => {
+const NavBar = ({ gameData, elapsedTime }) => {
   return (
     <div>
       {
@@ -10,9 +10,15 @@ const NavBar = ({ elapsedTime }) => {
         <button>Home</button>
       </Link>
       <div>
-        <img />
-        <img />
-        <img />
+        {gameData.pokemonNames.map((pokemon) => {
+          console.log(pokemon);
+          return (
+            <img
+              key={pokemon}
+              src={require(`../assets/images/navbar_sprites/${pokemon}_navbar_sprite.png`)}
+            />
+          );
+        })}
       </div>
       <div>
         <p>{`Time: ${elapsedTime}`}</p>
