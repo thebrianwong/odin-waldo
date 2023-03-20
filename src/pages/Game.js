@@ -3,8 +3,10 @@ import DropdownMenu from "../components/DropdownMenu";
 import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
 import AnswerReaction from "../components/AnswerReaction";
+import SubmitScoreModal from "../components/SubmitScoreModal";
 
 const Game = ({ gameData, gameVersion, validationData }) => {
+  const [gameOver, setGameOver] = useState(false);
   const [gameProgress, setGameProgress] = useState({
     [gameData.pokemonNames[0]]: false,
     [gameData.pokemonNames[1]]: false,
@@ -64,6 +66,7 @@ const Game = ({ gameData, gameVersion, validationData }) => {
     if (checkIfAllPokemonFound()) {
       clearInterval(intervalRef.current);
       // display modal to submit score to leaderboard
+      setGameOver(true);
     }
   }, [gameProgress]);
   const resetState = () => {
@@ -240,6 +243,12 @@ const Game = ({ gameData, gameVersion, validationData }) => {
           clientPosition={answerClientCoordinates}
           imageBorder={imageBorder}
           gameData={gameData}
+        />
+      ) : null}
+      {gameOver ? (
+        <SubmitScoreModal
+          timeScore={currentTime - startTime}
+          displayTime={formatElapsedTime()}
         />
       ) : null}
     </div>
