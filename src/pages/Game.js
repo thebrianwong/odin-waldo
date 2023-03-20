@@ -6,7 +6,6 @@ import AnswerReaction from "../components/AnswerReaction";
 import SubmitScoreModal from "../components/SubmitScoreModal";
 
 const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
-  const [gameOver, setGameOver] = useState(false);
   const [gameProgress, setGameProgress] = useState({
     [gameData.pokemonNames[0]]: false,
     [gameData.pokemonNames[1]]: false,
@@ -51,6 +50,7 @@ const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
     x: null,
     y: null,
   });
+  const [displayModal, setDisplayModal] = useState(false);
   useEffect(() => {
     setStartTime(Date.now());
     setCurrentTime(Date.now());
@@ -66,7 +66,7 @@ const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
     if (checkIfAllPokemonFound()) {
       clearInterval(intervalRef.current);
       // display modal to submit score to leaderboard
-      setGameOver(true);
+      setDisplayModal(true);
     }
   }, [gameProgress]);
   const resetState = () => {
@@ -245,11 +245,12 @@ const Game = ({ gameData, gameVersion, validationData, submitScore }) => {
           gameData={gameData}
         />
       ) : null}
-      {gameOver ? (
+      {displayModal ? (
         <SubmitScoreModal
           timeScore={currentTime - startTime}
           displayTime={formatElapsedTime()}
           submitScore={submitScore}
+          closeModal={() => setDisplayModal(false)}
         />
       ) : null}
     </div>

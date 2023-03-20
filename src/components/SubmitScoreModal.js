@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-const SubmitScoreModal = ({ timeScore, displayTime, submitScore }) => {
+const SubmitScoreModal = ({
+  timeScore,
+  displayTime,
+  submitScore,
+  closeModal,
+}) => {
   const [name, setName] = useState("");
   const [favoritePokemon, setFavoritePokemon] = useState("");
   return (
@@ -17,6 +22,7 @@ const SubmitScoreModal = ({ timeScore, displayTime, submitScore }) => {
         zIndex: "1",
         backgroundColor: "rgba(0,0,0,0.5)",
       }}
+      onClick={closeModal}
     >
       <div
         style={{
@@ -27,7 +33,9 @@ const SubmitScoreModal = ({ timeScore, displayTime, submitScore }) => {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <button style={{ alignSelf: "end" }}>X</button>
+        <button style={{ alignSelf: "end" }} onClick={closeModal}>
+          X
+        </button>
         <h1>You Found All of the Pokemon!</h1>
         <p>Score: {displayTime}</p>
         <div style={{ display: "flex" }}>
