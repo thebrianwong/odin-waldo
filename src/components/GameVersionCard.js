@@ -12,7 +12,10 @@ const GameVersionCard = ({ gameData, gameVersion, chooseGameVersion }) => {
   };
   return (
     <button onClick={() => chooseGameVersion(gameVersion)}>
-      <img />
+      <img
+        style={{ width: "500px" }}
+        src={require(`../assets/images/${gameVersion}.png`)}
+      />
       <p>{difficultyLabel()}</p>
       <PokemonNameList gameData={gameData} gameVersion={gameVersion} />
     </button>
