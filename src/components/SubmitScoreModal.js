@@ -51,7 +51,12 @@ const SubmitScoreModal = ({
             />
           </label>
         </div>
-        <button onClick={submitScore(timeScore, name, favoritePokemon)}>
+        <button
+          onClick={() => {
+            submitScore(timeScore, name, favoritePokemon);
+            closeModal();
+          }}
+        >
           Submit Score
         </button>
       </div>
