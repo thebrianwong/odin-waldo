@@ -48,8 +48,9 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
         <p>
           All assets belong to Nintendo and Game Freak. Weird level image by{" "}
           <a href="http://www.burntheinternet.com/p/the-impostor-minineko-pokedex.html">
-            Burn The Internet.
+            Burn The Internet
           </a>
+          .
         </p>
       </div>
     </>
