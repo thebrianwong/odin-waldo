@@ -136,7 +136,7 @@ const Game = ({ gameData, gameVersion, validationData }) => {
     console.log(gameProgress);
     if (
       Object.keys(gameProgress).every((pokemon) => {
-        if (gameProgress[pokemon] === true) {
+        if (gameProgress[pokemon]) {
           return true;
         }
         return false;
