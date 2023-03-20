@@ -4,8 +4,6 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
   const indicateIfFound = (pokemon) => {
     if (gameProgress[pokemon]) {
       return "0.35";
-    } else {
-      return "1";
     }
   };
   return (
