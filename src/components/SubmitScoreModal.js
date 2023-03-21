@@ -53,8 +53,14 @@ const SubmitScoreModal = ({
         </div>
         <button
           onClick={() => {
-            submitScore(timeScore, name, favoritePokemon);
-            closeModal();
+            const successfulSubmit = submitScore(
+              timeScore,
+              name,
+              favoritePokemon
+            );
+            if (successfulSubmit) {
+              closeModal();
+            }
           }}
         >
           Submit Score

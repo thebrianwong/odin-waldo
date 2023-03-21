@@ -6,6 +6,7 @@ import Leaderboard from "./pages/Leaderboard";
 import { gameData as data } from "./gameData";
 import { initializeApp } from "firebase/app";
 import {
+  addDoc,
   collection,
   collectionGroup,
   doc,
@@ -13,6 +14,7 @@ import {
   getDocs,
   getFirestore,
   query,
+  Timestamp,
 } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball";
@@ -22,7 +24,6 @@ function App() {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const locationsRef = doc(db, "pokemon-locations", "c7mMQDMECrbbBIQ7HxlC");
-  const leaderboardRef = doc(db, "leaderboard", "aTP48l1FdA6uqGSRtxSW");
   const version1Query = query(collectionGroup(db, "leaderboard-version1"));
   const version2Query = query(collectionGroup(db, "leaderboard-version2"));
   const version3Query = query(collectionGroup(db, "leaderboard-version3"));
@@ -94,12 +95,24 @@ function App() {
       }
     }
   };
-  const submitScore = (
+  const submitScore = async (
     timeInMilliseconds,
     playerName,
     playerFavoritePokemon
   ) => {
     // add to the leaderboard collection in Firebase a new object, {name: playerName, score: timeInMilliseconds, favoritePokemon: playerFavoritePokemon}
+    try {
+      await addDoc(collection(db, `leaderboard-${gameVersion}`), {
+        name: playerName,
+        score: timeInMilliseconds,
+        favoritePokemon: playerFavoritePokemon,
+        timeStamp: Timestamp.now(),
+      });
+      return true;
+    } catch (e) {
+      console.error("There was an error submitting your score. Try again!");
+      return false;
+    }
   };
   return (
     <>
