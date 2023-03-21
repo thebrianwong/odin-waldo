@@ -18,7 +18,10 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
         <button>Leaderboard</button>
       </Link>
       <div>
-        <p>Pokemon</p>
+        <img
+          style={{ width: "50vw" }}
+          src={require("../assets/images/misc/logo.png")}
+        />
         <p>Gotta find 'em all!</p>
       </div>
       <div>

@@ -28,7 +28,10 @@ const Leaderboard = ({ leaderboardData, formatTime }) => {
       }
       <div>
         <Link to="/">
-          <img />
+          <img
+            style={{ width: "50vw" }}
+            src={require("../assets/images/misc/logo.png")}
+          />
         </Link>
         <div>
           <div>
