@@ -119,7 +119,6 @@ const Game = ({
     });
   };
   const checkIfAllPokemonFound = () => {
-    console.log(gameProgress);
     if (
       Object.keys(gameProgress).every((pokemon) => {
         if (gameProgress[pokemon]) {

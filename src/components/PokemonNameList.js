@@ -11,7 +11,6 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
       }}
     >
       {gameData.pokemonNames.map((data) => {
-        console.log(data);
         return (
           <li
             style={{
