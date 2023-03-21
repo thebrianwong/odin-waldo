@@ -53,7 +53,7 @@ const Leaderboard = ({ leaderboardData, formatTime }) => {
             <thead>
               <tr>
                 <th scope="col">Rank</th>
-                <th scope="col">Player Name</th>
+                <th scope="col">Trainer Name</th>
                 <th scope="col">Time</th>
                 <th scope="col">Favorite Pokemon</th>
                 <th scope="col">Date</th>
