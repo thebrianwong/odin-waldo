@@ -95,6 +95,18 @@ function App() {
       }
     }
   };
+  const checkForEmptyName = (name) => {
+    if (name === "") {
+      return "Anonymous Trainer";
+    }
+    return name;
+  };
+  const checkForEmptyFavoritePokemon = (favoritePokemon) => {
+    if (favoritePokemon === "") {
+      return "Missingno";
+    }
+    return favoritePokemon;
+  };
   const submitScore = async (
     timeInMilliseconds,
     playerName,
@@ -103,9 +115,9 @@ function App() {
     // add to the leaderboard collection in Firebase a new object, {name: playerName, score: timeInMilliseconds, favoritePokemon: playerFavoritePokemon}
     try {
       await addDoc(collection(db, `leaderboard-${gameVersion}`), {
-        name: playerName,
+        name: checkForEmptyName(playerName),
         score: timeInMilliseconds,
-        favoritePokemon: playerFavoritePokemon,
+        favoritePokemon: checkForEmptyFavoritePokemon(playerFavoritePokemon),
         timeStamp: Timestamp.now(),
       });
       return true;
