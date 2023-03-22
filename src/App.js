@@ -13,6 +13,7 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  onSnapshot,
   query,
   Timestamp,
 } from "firebase/firestore";
@@ -50,25 +51,20 @@ function App() {
     const getLeaderboardData = () => {
       const leaderboardQuery = [version1Query, version2Query, version3Query];
       const leaderboardScoresData = {};
-      leaderboardQuery.forEach(async (version, index) => {
-        try {
-          let versionData = [];
-          const versionDocuments = await getDocs(version);
-          versionDocuments.forEach((doc) => {
+      leaderboardQuery.forEach((versionQuery, index) => {
+        onSnapshot(versionQuery, (snapshot) => {
+          const versionData = [];
+          snapshot.docs.forEach((doc) => {
             const leaderboardEntry = doc.data();
             leaderboardEntry.timeStamp = leaderboardEntry.timeStamp
               .toDate()
               .toDateString();
-            versionData = versionData.concat(leaderboardEntry);
+            versionData.push(leaderboardEntry);
           });
           leaderboardScoresData[`version${index + 1}`] = versionData;
-          setLeaderboardData(leaderboardScoresData);
-        } catch (e) {
-          console.error(
-            "Some leaderboard scores are missing. Try refreshing the page!"
-          );
-        }
+        });
       });
+      setLeaderboardData(leaderboardScoresData);
     };
     getLeaderboardData();
   }, []);
@@ -158,7 +154,7 @@ function App() {
           <Route
             path="leaderboard"
             element={
-              leaderboardData ? (
+              leaderboardData && Object.keys(leaderboardData).length > 0 ? (
                 <Leaderboard
                   leaderboardData={leaderboardData}
                   formatTime={formatTime}
