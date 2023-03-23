@@ -44,6 +44,7 @@ const Game = ({
     left: null,
   });
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
+  const answerTimerId = useRef(null);
   const [answerImageCoordinates, setAnswerImageCoordinates] = useState({
     x: null,
     y: null,
@@ -75,6 +76,22 @@ const Game = ({
       setDisplayModal(true);
     }
   }, [gameProgress]);
+  useEffect(() => {
+    if (isCorrectAnswer === null) {
+      setAnswerImageCoordinates({
+        x: null,
+        y: null,
+      });
+      setAnswerClickCoordinates({
+        x: null,
+        y: null,
+      });
+      setAnswerClientCoordinates({
+        x: null,
+        y: null,
+      });
+    }
+  }, [isCorrectAnswer]);
   const resetState = () => {
     setImageCoordinates({ x: null, y: null });
     setClickCoordinates({ x: null, y: null });
@@ -168,21 +185,12 @@ const Game = ({
     });
     setDisplayingMenu(!displayingMenu);
     resetState();
-    setTimeout(() => {
+    clearTimeout(answerTimerId.current);
+    const timerId = setTimeout(() => {
       setIsCorrectAnswer(null);
-      setAnswerImageCoordinates({
-        x: null,
-        y: null,
-      });
-      setAnswerClickCoordinates({
-        x: null,
-        y: null,
-      });
-      setAnswerClientCoordinates({
-        x: null,
-        y: null,
-      });
+      answerTimerId.current = null;
     }, 2500);
+    answerTimerId.current = timerId;
   };
   return (
     <div>
