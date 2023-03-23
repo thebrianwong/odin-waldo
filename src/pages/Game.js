@@ -201,7 +201,11 @@ const Game = ({
       />
       <div>
         <img
-          onClick={(e) => handleImageClick(e)}
+          onClick={(e) => {
+            if (!checkIfAllPokemonFound()) {
+              handleImageClick(e);
+            }
+          }}
           src={require(`../assets/images/game_versions/${gameVersion}.png`)}
           alt="placeholder"
         />
