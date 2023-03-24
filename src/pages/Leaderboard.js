@@ -64,7 +64,7 @@ const Leaderboard = ({ leaderboardData, formatTime }) => {
               {sortedLeaderboardData().map((entry, index) => {
                 return (
                   <tr key={index}>
-                    <td scope="row">#{index + 1}</td>
+                    <td>#{index + 1}</td>
                     <td>{entry.name}</td>
                     <td>{formatTime(entry.score)}</td>
                     <td>{entry.favoritePokemon}</td>
