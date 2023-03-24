@@ -7,17 +7,21 @@ const SubmitScoreModal = ({
   closeModal,
 }) => {
   const nameInputRef = useRef(null);
+
   const [name, setName] = useState("");
   const [favoritePokemon, setFavoritePokemon] = useState("");
+
   useEffect(() => {
     nameInputRef.current.focus();
   }, []);
+
   const attemptSubmit = () => {
     const successfulSubmit = submitScore(timeScore, name, favoritePokemon);
     if (successfulSubmit) {
       closeModal();
     }
   };
+
   return (
     <div
       style={{

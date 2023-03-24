@@ -16,6 +16,7 @@ const DropdownMenu = ({
   const LEEWAY_MARGIN = 5;
   const TARGET_AREA_RADIUS = 25;
   const TARGET_AREA_HALF_BORDER = 1;
+
   const normalizeYCoordinate = () => {
     if (
       // click near the bottom border of the image
@@ -57,6 +58,7 @@ const DropdownMenu = ({
     }
     return clickPosition.y;
   };
+
   const normalizeXCoordinate = () => {
     if (
       // click near the right border of the image
@@ -98,6 +100,7 @@ const DropdownMenu = ({
     }
     return clickPosition.x;
   };
+
   return (
     <div
       style={{

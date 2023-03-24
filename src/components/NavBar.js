@@ -6,6 +6,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
       return "0.35";
     }
   };
+
   return (
     <nav>
       {

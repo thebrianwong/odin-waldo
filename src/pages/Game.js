@@ -14,15 +14,23 @@ const Game = ({
 }) => {
   const intervalRef = useRef(null);
   const answerTimerId = useRef(null);
+
   const [gameProgress, setGameProgress] = useState({
     [gameData.pokemonNames[0]]: false,
     [gameData.pokemonNames[1]]: false,
     [gameData.pokemonNames[2]]: false,
   });
+
   const [startTime, setStartTime] = useState(null);
   const [currentTime, setCurrentTime] = useState(null);
 
-  const [displayingMenu, setDisplayingMenu] = useState(false);
+  // how far down or left from the page is each border of the image
+  const [imageBorder, setImageBorder] = useState({
+    top: null,
+    right: null,
+    bottom: null,
+    left: null,
+  });
   // coordinates of the click relative to image, starts at top left corner of image
   const [imageCoordinates, setImageCoordinates] = useState({
     x: null,
@@ -38,14 +46,6 @@ const Game = ({
     x: null,
     y: null,
   });
-  // how far down or left from the page is each border of the image
-  const [imageBorder, setImageBorder] = useState({
-    top: null,
-    right: null,
-    bottom: null,
-    left: null,
-  });
-  const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
 
   const [answerImageCoordinates, setAnswerImageCoordinates] = useState({
     x: null,
@@ -59,7 +59,11 @@ const Game = ({
     x: null,
     y: null,
   });
+
+  const [displayingMenu, setDisplayingMenu] = useState(false);
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
+
   const checkIfAllPokemonFound = useCallback(() => {
     if (
       Object.keys(gameProgress).every((pokemon) => {
@@ -73,6 +77,7 @@ const Game = ({
     }
     return false;
   }, [gameProgress]);
+
   useEffect(() => {
     setStartTime(Date.now());
     setCurrentTime(Date.now());
@@ -84,6 +89,7 @@ const Game = ({
       clearInterval(intervalId);
     };
   }, []);
+
   useEffect(() => {
     if (checkIfAllPokemonFound()) {
       clearInterval(intervalRef.current);
@@ -91,6 +97,7 @@ const Game = ({
       setDisplayModal(true);
     }
   }, [gameProgress, checkIfAllPokemonFound]);
+
   useEffect(() => {
     if (isCorrectAnswer === null) {
       setAnswerImageCoordinates({
@@ -107,6 +114,7 @@ const Game = ({
       });
     }
   }, [isCorrectAnswer]);
+
   const resetState = () => {
     setImageCoordinates({ x: null, y: null });
     setClickCoordinates({ x: null, y: null });
@@ -121,6 +129,7 @@ const Game = ({
       left: null,
     });
   };
+
   const handleImageClick = (e) => {
     setDisplayingMenu(!displayingMenu);
     if (displayingMenu) {
@@ -195,6 +204,7 @@ const Game = ({
     }, 2500);
     answerTimerId.current = timerId;
   };
+
   return (
     <div>
       <NavBar

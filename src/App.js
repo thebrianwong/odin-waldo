@@ -21,6 +21,8 @@ import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball";
 
 function App() {
+  const gameData = data;
+
   const firebaseConfig = getFirebaseConfig();
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -32,7 +34,6 @@ function App() {
   const [gameVersion, setGameVersion] = useState("version1");
   const [validationData, setValidationData] = useState(null);
   const [leaderboardData, setLeaderboardData] = useState(null);
-  const gameData = data;
 
   useEffect(() => {
     const getValidationData = async () => {
@@ -47,6 +48,7 @@ function App() {
     };
     getValidationData();
   }, []);
+
   useEffect(() => {
     const getLeaderboardData = () => {
       const leaderboardQuery = [version1Query, version2Query, version3Query];
@@ -68,6 +70,7 @@ function App() {
     };
     getLeaderboardData();
   }, []);
+
   const formatTime = (timeInMilliseconds) => {
     const timeInSeconds = Math.round(timeInMilliseconds / 1000);
     if (timeInSeconds < 60) {
@@ -91,18 +94,21 @@ function App() {
       }
     }
   };
+
   const checkForEmptyName = (name) => {
     if (name === "") {
       return "Anonymous Trainer";
     }
     return name;
   };
+
   const checkForEmptyFavoritePokemon = (favoritePokemon) => {
     if (favoritePokemon === "") {
       return "Missingno";
     }
     return favoritePokemon;
   };
+
   const submitScore = async (
     timeInMilliseconds,
     playerName,
@@ -122,6 +128,7 @@ function App() {
       return false;
     }
   };
+
   return (
     <>
       <BrowserRouter>

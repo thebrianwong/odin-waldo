@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Leaderboard = ({ leaderboardData, formatTime }) => {
   const [gameVersion, setGameVersion] = useState("version1");
+
   const difficultyLabel = () => {
     if (gameVersion === "version1") {
       return "Normal";
@@ -12,11 +13,13 @@ const Leaderboard = ({ leaderboardData, formatTime }) => {
       return "Weird";
     }
   };
+
   const sortedLeaderboardData = () => {
     return leaderboardData[gameVersion].sort((a, b) => {
       return a.score - b.score;
     });
   };
+
   return (
     <div>
       {

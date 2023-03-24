@@ -9,6 +9,7 @@ const TargetArea = ({
   const AREA_RADIUS = 25;
   const AREA_HALF_BORDER = 1;
   const LEEWAY_MARGIN = 5;
+
   const normalizeYCoordinate = () => {
     if (
       imagePosition.y + AREA_RADIUS + AREA_HALF_BORDER >
@@ -28,6 +29,7 @@ const TargetArea = ({
     }
     return clickPosition.y - AREA_RADIUS - AREA_HALF_BORDER;
   };
+
   const normalizeXCoordinate = () => {
     if (
       imagePosition.x + AREA_RADIUS + AREA_HALF_BORDER >

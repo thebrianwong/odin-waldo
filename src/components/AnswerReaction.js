@@ -6,15 +6,16 @@ const AnswerReaction = ({
   imageBorder,
   gameData,
 }) => {
-  const bgColor = isCorrect ? "rgba(116,255,98,0.78)" : "rgba(255,98,116,0.78)";
-  const brdColor = isCorrect ? "green" : "red";
-
   const VIEWPORT_HEIGHT = window.visualViewport.height;
   const VIEWPORT_WIDTH = window.visualViewport.width;
   const REACTION_HEIGHT = 100;
   const REACTION_WIDTH = 100;
   const REACTION_HALF_BORDER = 5;
   const LEEWAY_MARGIN = 5;
+
+  const bgColor = isCorrect ? "rgba(116,255,98,0.78)" : "rgba(255,98,116,0.78)";
+  const brdColor = isCorrect ? "green" : "red";
+
   const normalizeYCoordinate = () => {
     if (
       // click near the bottom border of the image
@@ -32,6 +33,7 @@ const AnswerReaction = ({
     }
     return clickPosition.y;
   };
+
   const normalizeXCoordinate = () => {
     if (
       // click near the right border of the image
@@ -49,6 +51,7 @@ const AnswerReaction = ({
     }
     return clickPosition.x;
   };
+
   return (
     <div
       style={{
