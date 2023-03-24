@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import DropdownMenu from "../components/DropdownMenu";
 import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
@@ -69,13 +69,26 @@ const Game = ({
       clearInterval(intervalId);
     };
   }, []);
+  const checkIfAllPokemonFound = useCallback(() => {
+    if (
+      Object.keys(gameProgress).every((pokemon) => {
+        if (gameProgress[pokemon]) {
+          return true;
+        }
+        return false;
+      })
+    ) {
+      return true;
+    }
+    return false;
+  }, [gameProgress]);
   useEffect(() => {
     if (checkIfAllPokemonFound()) {
       clearInterval(intervalRef.current);
       // display modal to submit score to leaderboard
       setDisplayModal(true);
     }
-  }, [gameProgress]);
+  }, [gameProgress, checkIfAllPokemonFound]);
   useEffect(() => {
     if (isCorrectAnswer === null) {
       setAnswerImageCoordinates({
@@ -135,19 +148,7 @@ const Game = ({
       left: imageBorderLeft,
     });
   };
-  const checkIfAllPokemonFound = () => {
-    if (
-      Object.keys(gameProgress).every((pokemon) => {
-        if (gameProgress[pokemon]) {
-          return true;
-        }
-        return false;
-      })
-    ) {
-      return true;
-    }
-    return false;
-  };
+
   const handlePickedOption = (e, pickedPokemon) => {
     // based on chosen option, look at key of game data, compare with imageCoordinates, if within range mark checked, if not no checked
     const pokemonCoordinates = validationData[pickedPokemon];
