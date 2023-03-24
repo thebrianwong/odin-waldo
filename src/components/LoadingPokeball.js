@@ -4,7 +4,7 @@ const LoadingPokeball = () => {
       <img
         style={{ width: "50vw" }}
         src={require("../assets/images/misc/pokeball.png")}
-        alt="A minimalistic rendition of the classic Pokeball,
+        alt="A minimalist rendition of the classic Pokeball,
         with red and white semicircles separated by a line that meets in the middle to form another circle."
       />
       <h1>Loading...</h1>
