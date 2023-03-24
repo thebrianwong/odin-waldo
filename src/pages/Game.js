@@ -12,6 +12,8 @@ const Game = ({
   formatTime,
   submitScore,
 }) => {
+  const intervalRef = useRef(null);
+  const answerTimerId = useRef(null);
   const [gameProgress, setGameProgress] = useState({
     [gameData.pokemonNames[0]]: false,
     [gameData.pokemonNames[1]]: false,
@@ -19,7 +21,7 @@ const Game = ({
   });
   const [startTime, setStartTime] = useState(null);
   const [currentTime, setCurrentTime] = useState(null);
-  const intervalRef = useRef(null);
+
   const [displayingMenu, setDisplayingMenu] = useState(false);
   // coordinates of the click relative to image, starts at top left corner of image
   const [imageCoordinates, setImageCoordinates] = useState({
@@ -44,7 +46,7 @@ const Game = ({
     left: null,
   });
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
-  const answerTimerId = useRef(null);
+
   const [answerImageCoordinates, setAnswerImageCoordinates] = useState({
     x: null,
     y: null,
@@ -58,17 +60,6 @@ const Game = ({
     y: null,
   });
   const [displayModal, setDisplayModal] = useState(false);
-  useEffect(() => {
-    setStartTime(Date.now());
-    setCurrentTime(Date.now());
-    const intervalId = setInterval(() => {
-      setCurrentTime(Date.now());
-    }, 1000);
-    intervalRef.current = intervalId;
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
   const checkIfAllPokemonFound = useCallback(() => {
     if (
       Object.keys(gameProgress).every((pokemon) => {
@@ -82,6 +73,17 @@ const Game = ({
     }
     return false;
   }, [gameProgress]);
+  useEffect(() => {
+    setStartTime(Date.now());
+    setCurrentTime(Date.now());
+    const intervalId = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 1000);
+    intervalRef.current = intervalId;
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
   useEffect(() => {
     if (checkIfAllPokemonFound()) {
       clearInterval(intervalRef.current);
