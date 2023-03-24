@@ -12,8 +12,8 @@ const Game = ({
   formatTime,
   submitScore,
 }) => {
-  const intervalRef = useRef(null);
-  const answerTimerId = useRef(null);
+  const elapsedTimeIntervalRef = useRef(null);
+  const answerReactionTimerIdRef = useRef(null);
 
   const [gameProgress, setGameProgress] = useState({
     [gameData.pokemonNames[0]]: false,
@@ -60,7 +60,7 @@ const Game = ({
     y: null,
   });
 
-  const [displayingMenu, setDisplayingMenu] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
 
@@ -84,7 +84,7 @@ const Game = ({
     const intervalId = setInterval(() => {
       setCurrentTime(Date.now());
     }, 1000);
-    intervalRef.current = intervalId;
+    elapsedTimeIntervalRef.current = intervalId;
     return () => {
       clearInterval(intervalId);
     };
@@ -92,7 +92,7 @@ const Game = ({
 
   useEffect(() => {
     if (checkIfAllPokemonFound()) {
-      clearInterval(intervalRef.current);
+      clearInterval(elapsedTimeIntervalRef.current);
       // display modal to submit score to leaderboard
       setDisplayModal(true);
     }
@@ -115,7 +115,7 @@ const Game = ({
     }
   }, [isCorrectAnswer]);
 
-  const resetState = () => {
+  const resetClickState = () => {
     setImageCoordinates({ x: null, y: null });
     setClickCoordinates({ x: null, y: null });
     setClientCoordinates({
@@ -131,9 +131,9 @@ const Game = ({
   };
 
   const handleImageClick = (e) => {
-    setDisplayingMenu(!displayingMenu);
-    if (displayingMenu) {
-      resetState();
+    setDisplayMenu(!displayMenu);
+    if (displayMenu) {
+      resetClickState();
       return;
     }
     const imageXCoordinate = e.pageX - e.target.offsetLeft;
@@ -195,14 +195,14 @@ const Game = ({
       x: clientXCoordinate,
       y: clientYCoordinate,
     });
-    setDisplayingMenu(!displayingMenu);
-    resetState();
-    clearTimeout(answerTimerId.current);
+    setDisplayMenu(!displayMenu);
+    resetClickState();
+    clearTimeout(answerReactionTimerIdRef.current);
     const timerId = setTimeout(() => {
       setIsCorrectAnswer(null);
-      answerTimerId.current = null;
+      answerReactionTimerIdRef.current = null;
     }, 2500);
-    answerTimerId.current = timerId;
+    answerReactionTimerIdRef.current = timerId;
   };
 
   return (
@@ -227,7 +227,7 @@ const Game = ({
           }
         />
       </main>
-      {displayingMenu ? (
+      {displayMenu ? (
         <>
           <TargetArea
             imagePosition={imageCoordinates}

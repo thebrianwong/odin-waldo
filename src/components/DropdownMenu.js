@@ -15,7 +15,7 @@ const DropdownMenu = ({
   const ELEMENT_WIDTH = 175;
   const LEEWAY_MARGIN = 5;
   const TARGET_AREA_RADIUS = 25;
-  const TARGET_AREA_BORDER = 1;
+  const TARGET_AREA_BORDER = 2;
 
   const normalizeYCoordinate = () => {
     if (
