@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SubmitScoreModal = ({
   timeScore,
@@ -8,12 +8,16 @@ const SubmitScoreModal = ({
 }) => {
   const [name, setName] = useState("");
   const [favoritePokemon, setFavoritePokemon] = useState("");
+  const nameInputRef = useRef(null);
   const attemptSubmit = () => {
     const successfulSubmit = submitScore(timeScore, name, favoritePokemon);
     if (successfulSubmit) {
       closeModal();
     }
   };
+  useEffect(() => {
+    nameInputRef.current.focus();
+  }, []);
   return (
     <div
       style={{
@@ -54,6 +58,7 @@ const SubmitScoreModal = ({
             Your Name
             <input
               type="text"
+              ref={nameInputRef}
               onChange={(e) => setName(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
