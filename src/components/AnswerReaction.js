@@ -2,8 +2,6 @@ const AnswerReaction = ({
   isCorrect,
   imagePosition,
   clickPosition,
-  clientPosition,
-  imageBorder,
   gameData,
 }) => {
   const VIEWPORT_HEIGHT = window.visualViewport.height;

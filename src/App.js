@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect, useState, version } from "react";
+import { useEffect, useState } from "react";
 import Homepage from "./pages/Homepage";
 import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
@@ -11,7 +11,6 @@ import {
   collectionGroup,
   doc,
   getDoc,
-  getDocs,
   getFirestore,
   onSnapshot,
   query,

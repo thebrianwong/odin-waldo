@@ -251,8 +251,6 @@ const Game = ({
           isCorrect={isCorrectAnswer}
           imagePosition={answerImageCoordinates}
           clickPosition={answerClickCoordinates}
-          clientPosition={answerClientCoordinates}
-          imageBorder={imageBorder}
           gameData={gameData}
         />
       ) : null}
