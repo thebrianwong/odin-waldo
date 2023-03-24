@@ -9,6 +9,7 @@ const GameVersionCard = ({
   return (
     <button onClick={() => chooseGameVersion(gameVersion)}>
       <img
+        data-testid="preview-image"
         style={{ width: "500px" }}
         src={require(`../assets/images/game_versions/${gameVersion}.png`)}
         alt={`A preview thumbnail of the ${difficulty} version of the game.`}
