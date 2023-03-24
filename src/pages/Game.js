@@ -205,7 +205,7 @@ const Game = ({
           }
         />
       </main>
-      {displayMenu ? (
+      {displayMenu && (
         <>
           <TargetArea
             imagePosition={imageCoordinates}
@@ -223,23 +223,23 @@ const Game = ({
             handlePickedOption={handlePickedOption}
           />
         </>
-      ) : null}
-      {isCorrectAnswer !== null ? (
+      )}
+      {isCorrectAnswer !== null && (
         <AnswerReaction
           isCorrect={isCorrectAnswer}
           imagePosition={answerImageCoordinates}
           clickPosition={answerClickCoordinates}
           gameData={gameData}
         />
-      ) : null}
-      {displayModal ? (
+      )}
+      {displayModal && (
         <SubmitScoreModal
           timeScore={currentTime - startTime}
           displayTime={formatTime(currentTime - startTime)}
           submitScore={submitScore}
           closeModal={() => setDisplayModal(false)}
         />
-      ) : null}
+      )}
     </div>
   );
 };
