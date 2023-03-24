@@ -17,14 +17,14 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
       <Link to="/leaderboard">
         <button>Leaderboard</button>
       </Link>
-      <div>
+      <header>
         <img
           style={{ width: "50vw" }}
           src={require("../assets/images/misc/logo.png")}
         />
         <p>Gotta find 'em all!</p>
-      </div>
-      <div>
+      </header>
+      <main>
         <Link to="/game">
           <GameVersionCard
             difficulty="Normal"
@@ -49,8 +49,8 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
             chooseGameVersion={chooseGameVersion}
           />
         </Link>
-      </div>
-      <div>
+      </main>
+      <footer>
         <p>
           All assets belong to Nintendo and Game Freak. Weird level image by{" "}
           <a href="http://www.burntheinternet.com/p/the-impostor-minineko-pokedex.html">
@@ -58,7 +58,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           </a>
           .
         </p>
-      </div>
+      </footer>
     </>
   );
 };

@@ -7,7 +7,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
     }
   };
   return (
-    <div>
+    <nav>
       {
         // Order: Link to Home, 3 sprites of the Pokemon to find, timer as the very middle, link to leaderboard
       }
@@ -33,7 +33,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
       <Link to="/leaderboard">
         <button>Leaderboard</button>
       </Link>
-    </div>
+    </nav>
   );
 };
 

@@ -33,7 +33,7 @@ const Leaderboard = ({ leaderboardData, formatTime }) => {
             src={require("../assets/images/misc/logo.png")}
           />
         </Link>
-        <div>
+        <main>
           <div>
             <h1>{difficultyLabel()}</h1>
             <label htmlFor="difficulty">
@@ -73,7 +73,7 @@ const Leaderboard = ({ leaderboardData, formatTime }) => {
               })}
             </tbody>
           </table>
-        </div>
+        </main>
       </div>
     </div>
   );

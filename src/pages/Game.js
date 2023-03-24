@@ -199,7 +199,7 @@ const Game = ({
         gameProgress={gameProgress}
         elapsedTime={formatTime(currentTime - startTime)}
       />
-      <div>
+      <main>
         <img
           onClick={(e) => {
             if (!checkIfAllPokemonFound()) {
@@ -209,7 +209,7 @@ const Game = ({
           src={require(`../assets/images/game_versions/${gameVersion}.png`)}
           alt="placeholder"
         />
-      </div>
+      </main>
       {displayingMenu ? (
         <>
           <TargetArea
