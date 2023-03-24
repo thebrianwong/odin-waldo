@@ -53,7 +53,7 @@ const SubmitScoreModal = ({
         </button>
         <h1>You Found All of the Pokemon!</h1>
         <p>Score: {displayTime}</p>
-        <div style={{ display: "flex" }}>
+        <form style={{ display: "flex" }}>
           <label style={{ display: "flex", flexDirection: "column" }}>
             Your Name
             <input
@@ -79,7 +79,7 @@ const SubmitScoreModal = ({
               }}
             />
           </label>
-        </div>
+        </form>
         <button onClick={attemptSubmit}>Submit Score</button>
       </div>
     </div>
