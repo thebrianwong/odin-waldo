@@ -11,6 +11,7 @@ const GameVersionCard = ({
       <img
         style={{ width: "500px" }}
         src={require(`../assets/images/game_versions/${gameVersion}.png`)}
+        alt={`A preview thumbnail of the ${difficulty} version of the game.`}
       />
       <p>{difficulty}</p>
       <PokemonNameList gameData={gameData} gameVersion={gameVersion} />

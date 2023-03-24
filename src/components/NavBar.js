@@ -23,6 +23,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
               }}
               key={pokemon}
               src={require(`../assets/images/navbar_sprites/${pokemon}_navbar_sprite.png`)}
+              alt={`The sprite of ${pokemon} as it appears as an opposing Pokemon in Pokemon HeartGold and SoulSilver.`}
             />
           );
         })}

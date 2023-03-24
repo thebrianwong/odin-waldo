@@ -71,6 +71,7 @@ const AnswerReaction = ({
             width: "100px",
           }}
           src={require("../assets/images/answers/correct.png")}
+          alt="Winking Pikachu posing with the V sign, indicating a correct answer."
         />
       ) : (
         <img
@@ -79,6 +80,8 @@ const AnswerReaction = ({
             width: "100px",
           }}
           src={require("../assets/images/answers/incorrect.png")}
+          alt="Frowning Pikachu making an X sign with its arms with a blue X behind it,
+          indicating an incorrect answer."
         />
       )}
     </div>

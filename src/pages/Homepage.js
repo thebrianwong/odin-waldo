@@ -21,6 +21,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
         <img
           style={{ width: "50vw" }}
           src={require("../assets/images/misc/logo.png")}
+          alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
         />
         <p>Gotta find 'em all!</p>
       </header>

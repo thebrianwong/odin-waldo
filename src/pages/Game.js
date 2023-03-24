@@ -207,7 +207,11 @@ const Game = ({
             }
           }}
           src={require(`../assets/images/game_versions/${gameVersion}.png`)}
-          alt="placeholder"
+          alt={
+            gameVersion === "version2"
+              ? "A compilation of all Pokemon released up to Generation 5."
+              : "A compilation of all Pokemon released up to Generation 4."
+          }
         />
       </main>
       {displayingMenu ? (

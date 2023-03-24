@@ -28,6 +28,7 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
           >
             <img
               src={require(`../assets/images/list_sprites/${data}_list_sprite.png`)}
+              alt={`The menu sprite of ${data} from the Generation 3 and 4 Pokemon games.`}
             />
             <p style={{ margin: "0" }}>{data}</p>
           </li>
