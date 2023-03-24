@@ -54,6 +54,7 @@ const AnswerReaction = ({
 
   return (
     <div
+      data-testid="answer-reaction"
       style={{
         position: "absolute",
         top: normalizeYCoordinate(),
