@@ -89,7 +89,6 @@ const Game = ({
   useEffect(() => {
     if (checkIfAllPokemonFound()) {
       clearInterval(elapsedTimeIntervalRef.current);
-      // display modal to submit score to leaderboard
       setDisplayModal(true);
     }
   }, [gameProgress, checkIfAllPokemonFound]);
@@ -138,9 +137,6 @@ const Game = ({
     const imageBorderRight = e.target.offsetLeft + e.target.offsetWidth;
     const imageBorderBottom = e.target.offsetTop + e.target.offsetHeight;
     const imageBorderLeft = e.target.offsetLeft;
-    // console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop);
-    // console.log(e);
-    console.log(imageXCoordinate, imageYCoordinate);
     setImageCoordinates({ x: imageXCoordinate, y: imageYCoordinate });
     setClickCoordinates({ x: clickXCoordinate, y: clickYCoordinate });
     setClientCoordinates({ x: clientXCoordinate, y: clientYCoordinate });
@@ -153,7 +149,6 @@ const Game = ({
   };
 
   const handlePickedOption = (e, pickedPokemon) => {
-    // based on chosen option, look at key of game data, compare with imageCoordinates, if within range mark checked, if not no checked
     const pokemonCoordinates = validationData[pickedPokemon];
     if (
       imageCoordinates.x >= pokemonCoordinates.minimumX &&
@@ -161,12 +156,9 @@ const Game = ({
       imageCoordinates.y >= pokemonCoordinates.minimumY &&
       imageCoordinates.y <= pokemonCoordinates.maximumY
     ) {
-      // flash green
       setIsCorrectAnswer(true);
       setGameProgress({ ...gameProgress, [pickedPokemon]: true });
-      // mark the nav bar sprite as translucent
     } else {
-      // flash red
       setIsCorrectAnswer(false);
     }
     const imageXCoordinate = e.pageX - e.target.offsetLeft;

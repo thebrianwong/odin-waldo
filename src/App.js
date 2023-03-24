@@ -113,7 +113,6 @@ function App() {
     playerName,
     playerFavoritePokemon
   ) => {
-    // add to the leaderboard collection in Firebase a new object, {name: playerName, score: timeInMilliseconds, favoritePokemon: playerFavoritePokemon}
     try {
       await addDoc(collection(db, `leaderboard-${gameVersion}`), {
         name: checkForEmptyName(playerName),
@@ -154,7 +153,7 @@ function App() {
                 />
               ) : (
                 <LoadingPokeball />
-              ) /* put a loading screen with a spinning pokeball */
+              )
             }
           />
           <Route
