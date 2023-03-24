@@ -8,6 +8,12 @@ const SubmitScoreModal = ({
 }) => {
   const [name, setName] = useState("");
   const [favoritePokemon, setFavoritePokemon] = useState("");
+  const attemptSubmit = () => {
+    const successfulSubmit = submitScore(timeScore, name, favoritePokemon);
+    if (successfulSubmit) {
+      closeModal();
+    }
+  };
   return (
     <div
       style={{
@@ -23,6 +29,11 @@ const SubmitScoreModal = ({
         backgroundColor: "rgba(0,0,0,0.5)",
       }}
       onClick={closeModal}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      }}
     >
       <div
         style={{
@@ -41,30 +52,30 @@ const SubmitScoreModal = ({
         <div style={{ display: "flex" }}>
           <label style={{ display: "flex", flexDirection: "column" }}>
             Your Name
-            <input type="text" onChange={(e) => setName(e.target.value)} />
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  attemptSubmit();
+                }
+              }}
+            />
           </label>
           <label style={{ display: "flex", flexDirection: "column" }}>
             Your Favorite Pokemon
             <input
               type="text"
               onChange={(e) => setFavoritePokemon(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  attemptSubmit();
+                }
+              }}
             />
           </label>
         </div>
-        <button
-          onClick={() => {
-            const successfulSubmit = submitScore(
-              timeScore,
-              name,
-              favoritePokemon
-            );
-            if (successfulSubmit) {
-              closeModal();
-            }
-          }}
-        >
-          Submit Score
-        </button>
+        <button onClick={attemptSubmit}>Submit Score</button>
       </div>
     </div>
   );
