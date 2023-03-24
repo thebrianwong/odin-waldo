@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Leaderboard = ({ leaderboardData, formatTime }) => {
-  const [gameVersion, setGameVersion] = useState("version1");
+const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
+  const [gameVersion, setGameVersion] = useState(initialGameVersion);
 
   const difficultyLabel = () => {
     if (gameVersion === "version1") {
@@ -46,6 +46,7 @@ const Leaderboard = ({ leaderboardData, formatTime }) => {
                 onChange={(e) => setGameVersion(e.target.value)}
                 name="difficulty"
                 id="difficulty"
+                value={gameVersion}
               >
                 <option value="version1">Normal</option>
                 <option value="version2">Hard</option>

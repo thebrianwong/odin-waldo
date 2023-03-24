@@ -163,6 +163,7 @@ function App() {
               leaderboardData && Object.keys(leaderboardData).length > 0 ? (
                 <Leaderboard
                   leaderboardData={leaderboardData}
+                  initialGameVersion={gameVersion}
                   formatTime={formatTime}
                 />
               ) : (
