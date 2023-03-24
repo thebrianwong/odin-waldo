@@ -49,7 +49,7 @@ const TargetArea = ({
     }
     return clickPosition.x - AREA_RADIUS - AREA_HALF_BORDER;
   };
-  normalizeXCoordinate();
+
   return (
     <div
       style={{
