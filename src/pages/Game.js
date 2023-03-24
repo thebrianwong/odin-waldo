@@ -55,10 +55,6 @@ const Game = ({
     x: null,
     y: null,
   });
-  const [answerClientCoordinates, setAnswerClientCoordinates] = useState({
-    x: null,
-    y: null,
-  });
 
   const [displayMenu, setDisplayMenu] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
@@ -105,10 +101,6 @@ const Game = ({
         y: null,
       });
       setAnswerClickCoordinates({
-        x: null,
-        y: null,
-      });
-      setAnswerClientCoordinates({
         x: null,
         y: null,
       });
@@ -181,8 +173,6 @@ const Game = ({
     const imageYCoordinate = e.pageY - e.target.offsetTop;
     const clickXCoordinate = e.pageX;
     const clickYCoordinate = e.pageY;
-    const clientXCoordinate = e.clientX;
-    const clientYCoordinate = e.clientY;
     setAnswerImageCoordinates({
       x: imageXCoordinate,
       y: imageYCoordinate,
@@ -190,10 +180,6 @@ const Game = ({
     setAnswerClickCoordinates({
       x: clickXCoordinate,
       y: clickYCoordinate,
-    });
-    setAnswerClientCoordinates({
-      x: clientXCoordinate,
-      y: clientYCoordinate,
     });
     setDisplayMenu(!displayMenu);
     resetClickState();
