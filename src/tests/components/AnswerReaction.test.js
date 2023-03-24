@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import AnswerReaction from "../../components/AnswerReaction";
 
-test("The element can be queried via test id", () => {
+test("The component can be queried via test id", () => {
   global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
@@ -47,7 +47,7 @@ test("The appropriate image is shown when the answer is incorrect", () => {
   expect(incorrectImageAltText).toBeInTheDocument();
 });
 
-test("The element is green when the answer is correct", () => {
+test("The component is green when the answer is correct", () => {
   global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
@@ -65,7 +65,7 @@ test("The element is green when the answer is correct", () => {
   expect(style.borderColor).toBe("green");
 });
 
-test("The element is red when the answer is incorrect", () => {
+test("The component is red when the answer is incorrect", () => {
   global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
@@ -83,7 +83,7 @@ test("The element is red when the answer is incorrect", () => {
   expect(style.borderColor).toBe("red");
 });
 
-test("The element has the appropriate top styling when not clicking near the image or viewport bottom edge", () => {
+test("The component has the appropriate top styling when not clicking near the image or viewport bottom edge", () => {
   global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
@@ -100,7 +100,7 @@ test("The element has the appropriate top styling when not clicking near the ima
   expect(style.top).toBe("100px");
 });
 
-test("The element has the appropriate top styling when clicking near the image bottom edge", () => {
+test("The component has the appropriate top styling when clicking near the image bottom edge", () => {
   global.visualViewport = { width: 1900, height: 1900 };
   render(
     <AnswerReaction
@@ -117,7 +117,7 @@ test("The element has the appropriate top styling when clicking near the image b
   expect(style.top).toBe("990px");
 });
 
-test("The element has the appropriate top styling when clicking near the viewport bottom edge", () => {
+test("The component has the appropriate top styling when clicking near the viewport bottom edge", () => {
   global.visualViewport = { width: 900, height: 900, offsetTop: 0 };
   render(
     <AnswerReaction
@@ -151,7 +151,7 @@ test("Scrolling down the page does not affect top styling when clicking near the
   expect(style.top).toBe("890px");
 });
 
-test("The element has the appropriate left styling when not clicking near the image or viewport right edge", () => {
+test("The component has the appropriate left styling when not clicking near the image or viewport right edge", () => {
   global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
@@ -168,7 +168,7 @@ test("The element has the appropriate left styling when not clicking near the im
   expect(style.left).toBe("100px");
 });
 
-test("The element has the appropriate left styling when clicking near the image right edge", () => {
+test("The component has the appropriate left styling when clicking near the image right edge", () => {
   global.visualViewport = { width: 1900, height: 1900 };
   render(
     <AnswerReaction
@@ -185,7 +185,7 @@ test("The element has the appropriate left styling when clicking near the image 
   expect(style.left).toBe("990px");
 });
 
-test("The element has the appropriate left styling when clicking near the viewport right edge", () => {
+test("The component has the appropriate left styling when clicking near the viewport right edge", () => {
   global.visualViewport = { width: 900, height: 900, pageLeft: 0 };
   render(
     <AnswerReaction
