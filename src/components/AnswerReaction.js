@@ -6,28 +6,30 @@ const AnswerReaction = ({
 }) => {
   const VIEWPORT_HEIGHT = window.visualViewport.height;
   const VIEWPORT_WIDTH = window.visualViewport.width;
-  const REACTION_HEIGHT = 100;
-  const REACTION_WIDTH = 100;
-  const REACTION_HALF_BORDER = 5;
+  const ELEMENT_HEIGHT = 100;
+  const ELEMENT_WIDTH = 100;
+  const ELEMENT_BORDER_WIDTH = 5;
   const LEEWAY_MARGIN = 5;
 
-  const bgColor = isCorrect ? "rgba(116,255,98,0.78)" : "rgba(255,98,116,0.78)";
-  const brdColor = isCorrect ? "green" : "red";
+  const backgroundColor = isCorrect
+    ? "rgba(116,255,98,0.78)"
+    : "rgba(255,98,116,0.78)";
+  const borderColor = isCorrect ? "green" : "red";
 
   const normalizeYCoordinate = () => {
     if (
       // click near the bottom border of the image
-      imagePosition.y + REACTION_HEIGHT + 2 * REACTION_HALF_BORDER >
+      imagePosition.y + ELEMENT_HEIGHT + 2 * ELEMENT_BORDER_WIDTH >
         gameData.imageDimensions.height - LEEWAY_MARGIN ||
       // click near the bottom edge of the visual viewport
       VIEWPORT_HEIGHT +
         window.visualViewport.offsetTop -
         clickPosition.y -
-        REACTION_HEIGHT -
-        2 * REACTION_HALF_BORDER <
+        ELEMENT_HEIGHT -
+        2 * ELEMENT_BORDER_WIDTH <
         0 + 3 * LEEWAY_MARGIN
     ) {
-      return clickPosition.y - REACTION_HEIGHT - 2 * REACTION_HALF_BORDER;
+      return clickPosition.y - ELEMENT_HEIGHT - 2 * ELEMENT_BORDER_WIDTH;
     }
     return clickPosition.y;
   };
@@ -35,17 +37,17 @@ const AnswerReaction = ({
   const normalizeXCoordinate = () => {
     if (
       // click near the right border of the image
-      imagePosition.x + REACTION_WIDTH + 2 * REACTION_HALF_BORDER >
+      imagePosition.x + ELEMENT_WIDTH + 2 * ELEMENT_BORDER_WIDTH >
         gameData.imageDimensions.width - LEEWAY_MARGIN ||
       // click near the right edge of the visual viewport
       VIEWPORT_WIDTH +
         window.visualViewport.pageLeft -
         clickPosition.x -
-        REACTION_WIDTH -
-        2 * REACTION_HALF_BORDER <
+        ELEMENT_WIDTH -
+        2 * ELEMENT_BORDER_WIDTH <
         0 + LEEWAY_MARGIN
     ) {
-      return clickPosition.x - REACTION_WIDTH - 2 * REACTION_HALF_BORDER;
+      return clickPosition.x - ELEMENT_WIDTH - 2 * ELEMENT_BORDER_WIDTH;
     }
     return clickPosition.x;
   };
@@ -58,10 +60,10 @@ const AnswerReaction = ({
         left: normalizeXCoordinate(),
         height: "100px",
         width: "100px",
-        backgroundColor: bgColor,
+        backgroundColor: backgroundColor,
         borderStyle: "solid",
         borderWidth: "5px",
-        borderColor: brdColor,
+        borderColor: borderColor,
         borderRadius: "8px",
       }}
     >

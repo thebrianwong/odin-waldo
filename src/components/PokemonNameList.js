@@ -10,7 +10,7 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
         flexDirection: "column",
       }}
     >
-      {gameData.pokemonNames.map((data) => {
+      {gameData.pokemonNames.map((pokemon) => {
         return (
           <li
             style={{
@@ -21,16 +21,16 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
             }}
             onClick={(e) => {
               if (handlePickedOption) {
-                handlePickedOption(e, data);
+                handlePickedOption(e, pokemon);
               }
             }}
-            key={`${gameVersion} ${data}`}
+            key={`${gameVersion} ${pokemon}`}
           >
             <img
-              src={require(`../assets/images/list_sprites/${data}_list_sprite.png`)}
-              alt={`The menu sprite of ${data} from the Generation 3 and 4 Pokemon games.`}
+              src={require(`../assets/images/list_sprites/${pokemon}_list_sprite.png`)}
+              alt={`The menu sprite of ${pokemon} from the Generation 3 and 4 Pokemon games.`}
             />
-            <p style={{ margin: "0" }}>{data}</p>
+            <p style={{ margin: "0" }}>{pokemon}</p>
           </li>
         );
       })}

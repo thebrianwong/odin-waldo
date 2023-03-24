@@ -11,39 +11,39 @@ const DropdownMenu = ({
 }) => {
   const VIEWPORT_HEIGHT = window.visualViewport.height;
   const VIEWPORT_WIDTH = window.visualViewport.width;
-  const MENU_HEIGHT = 150;
-  const MENU_WIDTH = 175;
+  const ELEMENT_HEIGHT = 150;
+  const ELEMENT_WIDTH = 175;
   const LEEWAY_MARGIN = 5;
   const TARGET_AREA_RADIUS = 25;
-  const TARGET_AREA_HALF_BORDER = 1;
+  const TARGET_AREA_BORDER = 1;
 
   const normalizeYCoordinate = () => {
     if (
       // click near the bottom border of the image
-      imagePosition.y + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
+      imagePosition.y + TARGET_AREA_RADIUS + TARGET_AREA_BORDER >
       gameData.imageDimensions.height - LEEWAY_MARGIN
     ) {
       return (
         imageBorder.bottom -
-        MENU_HEIGHT -
+        ELEMENT_HEIGHT -
         TARGET_AREA_RADIUS -
-        TARGET_AREA_HALF_BORDER -
+        TARGET_AREA_BORDER -
         LEEWAY_MARGIN
       );
     } else if (
-      imagePosition.y + MENU_HEIGHT >
+      imagePosition.y + ELEMENT_HEIGHT >
       gameData.imageDimensions.height - LEEWAY_MARGIN
     ) {
-      return clickPosition.y - MENU_HEIGHT;
+      return clickPosition.y - ELEMENT_HEIGHT;
     } else if (
       // click near the top border of the image
-      imagePosition.y - TARGET_AREA_RADIUS - TARGET_AREA_HALF_BORDER <
+      imagePosition.y - TARGET_AREA_RADIUS - TARGET_AREA_BORDER <
       0 + LEEWAY_MARGIN
     ) {
       return (
         imageBorder.top +
         TARGET_AREA_RADIUS +
-        TARGET_AREA_HALF_BORDER +
+        TARGET_AREA_BORDER +
         LEEWAY_MARGIN
       );
     } else if (
@@ -51,10 +51,10 @@ const DropdownMenu = ({
       VIEWPORT_HEIGHT +
         window.visualViewport.offsetTop -
         clientPosition.y -
-        MENU_HEIGHT <
+        ELEMENT_HEIGHT <
       0 + 3 * LEEWAY_MARGIN
     ) {
-      return clickPosition.y - MENU_HEIGHT;
+      return clickPosition.y - ELEMENT_HEIGHT;
     }
     return clickPosition.y;
   };
@@ -62,30 +62,30 @@ const DropdownMenu = ({
   const normalizeXCoordinate = () => {
     if (
       // click near the right border of the image
-      imagePosition.x + TARGET_AREA_RADIUS + TARGET_AREA_HALF_BORDER >
+      imagePosition.x + TARGET_AREA_RADIUS + TARGET_AREA_BORDER >
       gameData.imageDimensions.width - LEEWAY_MARGIN
     ) {
       return (
         imageBorder.right -
-        MENU_WIDTH -
+        ELEMENT_WIDTH -
         TARGET_AREA_RADIUS -
-        TARGET_AREA_HALF_BORDER -
+        TARGET_AREA_BORDER -
         LEEWAY_MARGIN
       );
     } else if (
-      imagePosition.x + MENU_WIDTH >
+      imagePosition.x + ELEMENT_WIDTH >
       gameData.imageDimensions.width - LEEWAY_MARGIN
     ) {
-      return clickPosition.x - MENU_WIDTH;
+      return clickPosition.x - ELEMENT_WIDTH;
     } else if (
       // click near the left border of the image
-      imagePosition.x - TARGET_AREA_RADIUS - TARGET_AREA_HALF_BORDER <
+      imagePosition.x - TARGET_AREA_RADIUS - TARGET_AREA_BORDER <
       0 + LEEWAY_MARGIN
     ) {
       return (
         imageBorder.left +
         TARGET_AREA_RADIUS +
-        TARGET_AREA_HALF_BORDER +
+        TARGET_AREA_BORDER +
         LEEWAY_MARGIN
       );
     } else if (
@@ -93,10 +93,10 @@ const DropdownMenu = ({
       VIEWPORT_WIDTH +
         window.visualViewport.pageLeft -
         clickPosition.x -
-        MENU_WIDTH <
+        ELEMENT_WIDTH <
       0 + LEEWAY_MARGIN
     ) {
-      return clickPosition.x - MENU_WIDTH;
+      return clickPosition.x - ELEMENT_WIDTH;
     }
     return clickPosition.x;
   };

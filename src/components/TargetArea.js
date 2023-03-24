@@ -4,8 +4,6 @@ const TargetArea = ({
   imageBorder,
   gameData,
 }) => {
-  const AREA_HEIGHT = 50;
-  const AREA_WIDTH = 50;
   const AREA_RADIUS = 25;
   const AREA_HALF_BORDER = 1;
   const LEEWAY_MARGIN = 5;
@@ -56,8 +54,8 @@ const TargetArea = ({
         position: "absolute",
         top: normalizeYCoordinate(),
         left: normalizeXCoordinate(),
-        height: `${AREA_HEIGHT}px`,
-        width: `${AREA_WIDTH}px`,
+        height: "50px",
+        width: "50px",
         border: "dashed 2px red",
         borderRadius: "100px",
         backgroundColor: "darkgray",
