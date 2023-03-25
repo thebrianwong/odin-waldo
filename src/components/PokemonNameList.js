@@ -24,7 +24,7 @@ const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
                 handlePickedOption(e, pokemon);
               }
             }}
-            key={`${gameVersion} ${pokemon}`}
+            key={`List-${pokemon}`}
           >
             <img
               src={require(`../assets/images/list_sprites/${pokemon}_list_sprite.png`)}

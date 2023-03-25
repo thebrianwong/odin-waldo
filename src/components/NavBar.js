@@ -19,7 +19,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
               style={{
                 opacity: indicateIfFound(pokemon),
               }}
-              key={pokemon}
+              key={`Nav-${pokemon}`}
               src={require(`../assets/images/navbar_sprites/${pokemon}_navbar_sprite.png`)}
               alt={`The sprite of ${pokemon} as it appears as an opposing Pokemon in Pokemon HeartGold and SoulSilver.`}
             />
