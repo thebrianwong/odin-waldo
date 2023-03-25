@@ -58,9 +58,13 @@ const SubmitScoreModal = ({
         <h1>You Found All of the Pokemon!</h1>
         <p>Score: {displayTime}</p>
         <form style={{ display: "flex" }}>
-          <label style={{ display: "flex", flexDirection: "column" }}>
+          <label
+            htmlFor="name"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
             Your Name
             <input
+              id="name"
               type="text"
               ref={nameInputRef}
               onChange={(e) => setName(e.target.value)}
@@ -71,9 +75,13 @@ const SubmitScoreModal = ({
               }}
             />
           </label>
-          <label style={{ display: "flex", flexDirection: "column" }}>
+          <label
+            htmlFor="favorite"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
             Your Favorite Pokemon
             <input
+              id="favorite"
               type="text"
               onChange={(e) => setFavoritePokemon(e.target.value)}
               onKeyDown={(e) => {
