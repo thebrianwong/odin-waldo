@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { gameData as data } from "../../gameData";
 import GameVersionCard from "../../components/GameVersionCard";
+import userEvent from "@testing-library/user-event";
 
 test("The component gets rendered correctly", () => {
   render(
@@ -43,4 +44,19 @@ test("The image corresponds to the gameVersion prop", () => {
   );
   const image = screen.getByTestId("preview-image");
   expect(image).toBeInTheDocument();
+});
+
+test("The component handles clicks", () => {
+  const dummyFunction = jest.fn();
+  render(
+    <GameVersionCard
+      difficulty={"Normal"}
+      gameData={data.version1}
+      gameVersion="version1"
+      chooseGameVersion={dummyFunction}
+    />
+  );
+  const button = screen.getByRole("button");
+  userEvent.click(button);
+  expect(dummyFunction).toHaveBeenCalled();
 });
