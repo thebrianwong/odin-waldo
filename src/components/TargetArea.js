@@ -55,7 +55,7 @@ const TargetArea = ({
         backgroundColor: "darkgray",
         opacity: "0.75",
       }}
-    ></div>
+    />
   );
 };
 
