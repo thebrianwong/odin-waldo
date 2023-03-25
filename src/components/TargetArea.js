@@ -44,6 +44,7 @@ const TargetArea = ({
 
   return (
     <div
+      data-testid="target-area"
       style={{
         position: "absolute",
         top: normalizeYCoordinate(),
