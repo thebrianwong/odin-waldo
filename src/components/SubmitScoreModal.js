@@ -24,6 +24,7 @@ const SubmitScoreModal = ({
 
   return (
     <div
+      data-testid="modal-background"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -44,6 +45,7 @@ const SubmitScoreModal = ({
       }}
     >
       <div
+        data-testid="modal"
         style={{
           display: "flex",
           flexFlow: "column",
