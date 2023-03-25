@@ -3,13 +3,15 @@ import { gameData as data } from "../../gameData";
 import GameVersionCard from "../../components/GameVersionCard";
 import userEvent from "@testing-library/user-event";
 
+const mockFunction = jest.fn();
+
 test("The component gets rendered correctly", () => {
   render(
     <GameVersionCard
       difficulty={"Normal"}
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={jest.fn()}
+      chooseGameVersion={mockFunction}
     />
   );
   const button = screen.getByRole("button");
@@ -22,7 +24,7 @@ test("The difficulty and alt text are rendered properly based on the difficulty 
       difficulty={"Normal"}
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={jest.fn()}
+      chooseGameVersion={mockFunction}
     />
   );
   const difficulty = screen.getByText("Normal");
@@ -39,7 +41,7 @@ test("The image corresponds to the gameVersion prop", () => {
       difficulty={"Normal"}
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={jest.fn()}
+      chooseGameVersion={mockFunction}
     />
   );
   const image = screen.getByTestId("preview-image");
@@ -47,16 +49,15 @@ test("The image corresponds to the gameVersion prop", () => {
 });
 
 test("The component handles clicks", () => {
-  const dummyFunction = jest.fn();
   render(
     <GameVersionCard
       difficulty={"Normal"}
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={dummyFunction}
+      chooseGameVersion={mockFunction}
     />
   );
   const button = screen.getByRole("button");
   userEvent.click(button);
-  expect(dummyFunction).toHaveBeenCalled();
+  expect(mockFunction).toHaveBeenCalled();
 });
