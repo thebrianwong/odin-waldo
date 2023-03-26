@@ -21,7 +21,7 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
   };
 
   return (
-    <div>
+    <div data-testid="leaderboard">
       <div>
         <Link to="/">
           <img
@@ -36,6 +36,7 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
             <label htmlFor="difficulty">
               Change difficulty: {""}
               <select
+                data-testid="select-menu"
                 onChange={(e) => setGameVersion(e.target.value)}
                 name="difficulty"
                 id="difficulty"
@@ -57,7 +58,7 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
                 <th scope="col">Date</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody data-testid="table-body">
               {sortedLeaderboardData().map((entry, index) => {
                 return (
                   <tr key={index}>
