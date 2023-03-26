@@ -3,7 +3,7 @@ import GameVersionCard from "../components/GameVersionCard";
 
 const Homepage = ({ gameData, chooseGameVersion }) => {
   return (
-    <>
+    <div>
       <Link to="/leaderboard">
         <button>Leaderboard</button>
       </Link>
@@ -50,7 +50,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           .
         </p>
       </footer>
-    </>
+    </div>
   );
 };
 
