@@ -3,7 +3,7 @@ import GameVersionCard from "../components/GameVersionCard";
 
 const Homepage = ({ gameData, chooseGameVersion }) => {
   return (
-    <div>
+    <div data-testid="homepage">
       <Link to="/leaderboard">
         <button>Leaderboard</button>
       </Link>
