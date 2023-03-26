@@ -103,6 +103,7 @@ const DropdownMenu = ({
 
   return (
     <div
+      data-testid="dropdown-menu"
       style={{
         position: "absolute",
         top: normalizeYCoordinate(),
