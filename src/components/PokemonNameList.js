@@ -1,4 +1,4 @@
-const PokemonNameList = ({ gameData, gameVersion, handlePickedOption }) => {
+const PokemonNameList = ({ gameData, handlePickedOption }) => {
   return (
     <ul
       style={{

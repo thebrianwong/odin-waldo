@@ -113,7 +113,6 @@ const DropdownMenu = ({
     >
       <PokemonNameList
         gameData={gameData}
-        gameVersion={gameVersion}
         handlePickedOption={handlePickedOption}
       />
     </div>
