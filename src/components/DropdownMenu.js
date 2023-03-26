@@ -6,7 +6,6 @@ const DropdownMenu = ({
   clientPosition,
   imageBorder,
   gameData,
-  gameVersion,
   handlePickedOption,
 }) => {
   const VIEWPORT_HEIGHT = window.visualViewport.height;
@@ -100,7 +99,6 @@ const DropdownMenu = ({
     }
     return clickPosition.x;
   };
-
   return (
     <div
       data-testid="dropdown-menu"

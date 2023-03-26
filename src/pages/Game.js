@@ -219,7 +219,6 @@ const Game = ({
             clientPosition={clientCoordinates}
             imageBorder={imageBorder}
             gameData={gameData}
-            gameVersion={gameVersion}
             handlePickedOption={handlePickedOption}
           />
         </>
