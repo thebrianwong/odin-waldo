@@ -20,7 +20,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           <GameVersionCard
             difficulty="Normal"
             gameData={gameData.version1}
-            gameVersion={"version1"}
+            gameVersion="version1"
             chooseGameVersion={chooseGameVersion}
           />
         </Link>
@@ -28,7 +28,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           <GameVersionCard
             difficulty="Hard"
             gameData={gameData.version2}
-            gameVersion={"version2"}
+            gameVersion="version2"
             chooseGameVersion={chooseGameVersion}
           />
         </Link>
@@ -36,7 +36,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           <GameVersionCard
             difficulty="Weird"
             gameData={gameData.version3}
-            gameVersion={"version3"}
+            gameVersion="version3"
             chooseGameVersion={chooseGameVersion}
           />
         </Link>

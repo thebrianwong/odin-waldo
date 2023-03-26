@@ -8,7 +8,7 @@ const mockFunction = jest.fn();
 test("The component gets rendered correctly", () => {
   render(
     <GameVersionCard
-      difficulty={"Normal"}
+      difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
       chooseGameVersion={mockFunction}
@@ -21,7 +21,7 @@ test("The component gets rendered correctly", () => {
 test("The difficulty and alt text are rendered properly based on the difficulty prop", () => {
   render(
     <GameVersionCard
-      difficulty={"Normal"}
+      difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
       chooseGameVersion={mockFunction}
@@ -38,7 +38,7 @@ test("The difficulty and alt text are rendered properly based on the difficulty 
 test("The image corresponds to the gameVersion prop", () => {
   render(
     <GameVersionCard
-      difficulty={"Normal"}
+      difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
       chooseGameVersion={mockFunction}
@@ -51,7 +51,7 @@ test("The image corresponds to the gameVersion prop", () => {
 test("The component handles clicks", () => {
   render(
     <GameVersionCard
-      difficulty={"Normal"}
+      difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
       chooseGameVersion={mockFunction}

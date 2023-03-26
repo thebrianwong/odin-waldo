@@ -8,7 +8,7 @@ test("The component renders", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={mockFunction}
       closeModal={mockFunction}
     />
@@ -23,7 +23,7 @@ test("The display time is displayed properly", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={mockFunction}
       closeModal={mockFunction}
     />
@@ -36,7 +36,7 @@ test("The name input is auto-focused", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={mockFunction}
       closeModal={mockFunction}
     />
@@ -52,7 +52,7 @@ test("Player name and favorite Pokemon can be typed in", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={mockFunction}
       closeModal={mockFunction}
     />
@@ -74,7 +74,7 @@ test("The modal can be closed in 3 ways without submitting a score", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={mockFunction}
       closeModal={mockFunction}
     />
@@ -97,7 +97,7 @@ test("The modal does not close when clicked due to propagation", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={mockFunction}
       closeModal={mockFunction}
     />
@@ -114,7 +114,7 @@ test("The score can be submitted in 3 ways", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={submitMock}
       closeModal={mockFunction}
     />
@@ -142,7 +142,7 @@ test("The modal is closed when the the score is successfully submitted", () => {
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={submitMock}
       closeModal={closeMock}
     />
@@ -163,7 +163,7 @@ test("The modal is not closed if the score is not submitted successfully", () =>
   render(
     <SubmitScoreModal
       timeScore={123}
-      displayTime={"00:00"}
+      displayTime="00:00"
       submitScore={submitMock}
       closeModal={closeMock}
     />
