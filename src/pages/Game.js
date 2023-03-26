@@ -184,7 +184,7 @@ const Game = ({
   };
 
   return (
-    <div>
+    <div data-testid="game">
       <NavBar
         gameData={gameData}
         gameProgress={gameProgress}
