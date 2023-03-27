@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
   const [gameVersion, setGameVersion] = useState(initialGameVersion);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const difficultyLabel = () => {
     if (gameVersion === "version1") {

@@ -75,6 +75,10 @@ const Game = ({
   }, [gameProgress]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     setStartTime(Date.now());
     setCurrentTime(Date.now());
     const intervalId = setInterval(() => {

@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import GameVersionCard from "../components/GameVersionCard";
 
 const Homepage = ({ gameData, chooseGameVersion }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div data-testid="homepage">
       <Link to="/leaderboard">
@@ -13,7 +18,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           src={require("../assets/images/misc/logo.png")}
           alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
         />
-        <p>Gotta find 'em all!</p>
+        <p className="slogan">Gotta find 'em all!</p>
       </header>
       <main>
         <Link to="/game">
