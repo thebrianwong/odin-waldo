@@ -18,6 +18,8 @@ import {
 } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball";
+import "./styles/normalize.css";
+import "./styles/styles.css";
 
 function App() {
   const gameData = data;
