@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Pokemon";
+  src: local("Pokemon_Solid"), url("../assets/fonts/Pokemon_Solid.ttf") format("truetype")
+}
+
+:root {
+  font-family: 'Roboto Slab', serif;
+}
+
+.slogan  {
+  font-family: Pokemon;
+  color: rgb(255, 203, 5);
+  text-shadow: 0 -1px rgb(42, 117, 187),
+  1px 0 rgb(42, 117, 187),
+  0 1px rgb(42, 117, 187),
+  -1px 0 rgb(42, 117, 187)
+}
+
+
