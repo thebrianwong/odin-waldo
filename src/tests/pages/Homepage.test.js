@@ -32,14 +32,18 @@ test("The footer contains all expected elements", () => {
     wrapper: BrowserRouter,
   });
   const credits = screen.getByText(
-    "All assets belong to Nintendo and Game Freak. Weird level image by ."
+    "All assets belong to Nintendo and Game Freak. Weird level image by . Favicon by ."
   );
-  const link = screen.getByRole("link", {
+  const link1 = screen.getByRole("link", {
     name: "Burn The Internet",
     link: "http://www.burntheinternet.com/p/the-impostor-minineko-pokedex.html",
   });
+  const link2 = screen.getByRole("link", {
+    name: "Davi Andrade",
+    link: "https://www.deviantart.com/davi-1",
+  });
   expect(credits).toBeInTheDocument();
-  expect(link).toBeInTheDocument();
+  expect(link1).toBeInTheDocument();
 });
 
 test("There are 3 buttons for each game version", () => {

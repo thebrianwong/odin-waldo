@@ -47,7 +47,8 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           <a href="http://www.burntheinternet.com/p/the-impostor-minineko-pokedex.html">
             Burn The Internet
           </a>
-          .
+          . Favicon by{" "}
+          <a href="https://www.deviantart.com/davi-1">Davi Andrade</a>.
         </p>
       </footer>
     </div>
