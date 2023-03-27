@@ -194,7 +194,7 @@ const Game = ({
         gameProgress={gameProgress}
         elapsedTime={formatTime(currentTime - startTime)}
       />
-      <main>
+      <main className="game-area">
         <img
           onClick={(e) => {
             if (!checkIfAllPokemonFound()) {

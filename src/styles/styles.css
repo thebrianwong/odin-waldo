@@ -7,6 +7,12 @@
   font-family: 'Roboto Slab', serif;
 }
 
+.nav-button {
+  background: linear-gradient(to bottom, red, black, white);
+  color: white;
+  border-radius: 20px;
+}
+
 .slogan  {
   font-family: Pokemon;
   color: rgb(255, 203, 5);
@@ -16,4 +22,19 @@
   -1px 0 rgb(42, 117, 187)
 }
 
+.game-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 1px 4px darkgray;
+  height: 10vh;
+  width: 100vw;
+}
 
+.game-area {
+  padding-top: 10vh;
+}
