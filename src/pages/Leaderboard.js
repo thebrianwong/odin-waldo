@@ -29,7 +29,7 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
       <div>
         <Link to="/">
           <img
-            style={{ width: "50vw" }}
+            className="pokemon-logo"
             src={require("../assets/images/misc/logo.png")}
             alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
           />

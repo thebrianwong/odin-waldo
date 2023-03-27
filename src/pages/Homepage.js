@@ -8,13 +8,13 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
   }, []);
 
   return (
-    <div data-testid="homepage">
-      <Link to="/leaderboard">
+    <div className="homepage" data-testid="homepage">
+      <Link className="homepage-nav-button" to="/leaderboard">
         <button className="nav-button">Leaderboard</button>
       </Link>
       <header>
         <img
-          style={{ width: "50vw" }}
+          className="pokemon-logo"
           src={require("../assets/images/misc/logo.png")}
           alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
         />
@@ -46,7 +46,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
           />
         </Link>
       </main>
-      <footer>
+      <footer className="credits">
         <p>
           All assets belong to Nintendo and Game Freak. Weird level image by{" "}
           <a href="http://www.burntheinternet.com/p/the-impostor-minineko-pokedex.html">
