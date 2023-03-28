@@ -46,10 +46,32 @@ button:hover {
   0 1px var(--pokemon-logo-blue),
   -1px 0 var(--pokemon-logo-blue);
   text-align: center;
+  margin: 0 0 20px;
+}
+
+.homepage-game-options-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.homepage-game-option-button {
+  background-color: var(--pokemon-logo-yellow);
+  border: solid 4px var(--pokemon-logo-blue);
+  border-radius: 8px;
+  padding: 0;
+}
+
+.homepage-game-option-difficulty {
+  font-size: larger;
+  font-weight: 600;
 }
 
 .credits {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .game-navbar {
@@ -67,4 +89,33 @@ button:hover {
 
 .game-area {
   padding-top: 10vh;
+}
+
+.name-list {
+  padding: 0;
+  margin: 0;
+  height: 150px;
+  width: 175px;
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-game-option-button .name-list {
+  flex-direction: row;
+  align-items: center;
+  width: inherit;
+  height: 100px;
+}
+
+.name-list-entry {
+  display: flex;
+  height: 35px;
+  flex: 1;
+  align-items: center;
+}
+
+.homepage-game-option-button .name-list-entry {
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
