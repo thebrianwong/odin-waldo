@@ -3,12 +3,15 @@
   src: local("Pokemon_Solid"), url("../assets/fonts/Pokemon_Solid.ttf") format("truetype")
 }
 
-
-
 :root {
   font-family: 'Roboto Slab', serif;
   --pokemon-logo-blue: rgb(42, 117, 187);
   --pokemon-logo-yellow: rgb(255, 203, 5);
+  --background-gray: rgba(211, 211, 211, 0.75)
+}
+
+#root {
+  background-image: url("../assets/images/misc/kanto_map.png");
 }
 
 button:hover {
@@ -40,12 +43,14 @@ button:hover {
 .slogan {
   font-family: Pokemon;
   font-size: xx-large;
+  background-color: var(--background-gray);
   color: var(--pokemon-logo-yellow);
   text-shadow: 0 -1px var(--pokemon-logo-blue),
   1px 0 var(--pokemon-logo-blue),
   0 1px var(--pokemon-logo-blue),
   -1px 0 var(--pokemon-logo-blue);
   text-align: center;
+  line-height: 60px;
   margin: 0 0 20px;
 }
 
@@ -70,8 +75,10 @@ button:hover {
 }
 
 .credits {
+  background-color: var(--background-gray);
   text-align: center;
   margin-bottom: 30px;
+  padding: 0 10px;
 }
 
 .game-navbar {
