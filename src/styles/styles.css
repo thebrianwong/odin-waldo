@@ -3,6 +3,8 @@
   src: local("Pokemon_Solid"), url("../assets/fonts/Pokemon_Solid.ttf") format("truetype")
 }
 
+/* general */
+
 :root {
   font-family: 'Roboto Slab', serif;
   --pokemon-logo-blue: rgb(42, 117, 187);
@@ -17,6 +19,13 @@
 button:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+
+/* multiple elements/pages */
+
+.pokemon-logo {
+  width: 30vw;
 }
 
 .nav-button {
@@ -34,9 +43,36 @@ button:hover {
   filter: grayscale(60%);
 }
 
-.pokemon-logo {
-  width: 30vw;
+.name-list {
+  padding: 0;
+  margin: 0;
+  height: 150px;
+  width: 175px;
+  display: flex;
+  flex-direction: column;
 }
+
+.homepage-game-option-button .name-list {
+  flex-direction: row;
+  align-items: center;
+  width: inherit;
+  height: 100px;
+}
+
+.name-list-entry {
+  display: flex;
+  height: 35px;
+  flex: 1;
+  align-items: center;
+}
+
+.homepage-game-option-button .name-list-entry {
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/* homepage */
 
 .homepage {
   display: flex;
@@ -91,6 +127,8 @@ button:hover {
   padding: 0 10px;
 }
 
+/* game page */
+
 .game-navbar {
   position: fixed;
   top: 0;
@@ -108,31 +146,3 @@ button:hover {
   padding-top: 10vh;
 }
 
-.name-list {
-  padding: 0;
-  margin: 0;
-  height: 150px;
-  width: 175px;
-  display: flex;
-  flex-direction: column;
-}
-
-.homepage-game-option-button .name-list {
-  flex-direction: row;
-  align-items: center;
-  width: inherit;
-  height: 100px;
-}
-
-.name-list-entry {
-  display: flex;
-  height: 35px;
-  flex: 1;
-  align-items: center;
-}
-
-.homepage-game-option-button .name-list-entry {
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
