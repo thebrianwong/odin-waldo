@@ -1,8 +1,8 @@
 const LoadingPokeball = () => {
   return (
-    <div>
+    <div className="loading-pokeball-container">
       <img
-        style={{ width: "50vw" }}
+        className="loading-pokeball"
         src={require("../assets/images/misc/pokeball.png")}
         alt="A minimalist rendition of the classic Pokeball,
         with red and white semicircles separated by a line that meets in the middle to form another circle."
