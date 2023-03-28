@@ -20,7 +20,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
         />
         <p className="slogan">Gotta find 'em all!</p>
       </header>
-      <main>
+      <main className="homepage-game-options-container">
         <Link to="/game">
           <GameVersionCard
             difficulty="Normal"

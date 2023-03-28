@@ -1,24 +1,10 @@
 const PokemonNameList = ({ gameData, handlePickedOption }) => {
   return (
-    <ul
-      style={{
-        padding: "0",
-        margin: "0",
-        height: "150px",
-        width: "175px",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <ul className="name-list">
       {gameData.pokemonNames.map((pokemon) => {
         return (
           <li
-            style={{
-              display: "flex",
-              height: "35px",
-              flex: "1",
-              alignItems: "center",
-            }}
+            className="name-list-entry"
             onClick={(e) => {
               if (handlePickedOption) {
                 handlePickedOption(e, pokemon);
