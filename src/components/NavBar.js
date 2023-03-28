@@ -26,7 +26,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
           );
         })}
       </div>
-      <div>
+      <div className="nav-timer">
         <p>{`Time: ${elapsedTime}`}</p>
       </div>
       <Link to="/leaderboard">

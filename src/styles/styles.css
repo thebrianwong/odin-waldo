@@ -172,6 +172,13 @@ button:hover {
   padding-top: 10vh;
 }
 
+/* nav bar */
+
+.nav-timer {
+  text-align: center;
+  width: 90px;
+}
+
 /* leaderboard page */
 
 .leaderboard-page {
