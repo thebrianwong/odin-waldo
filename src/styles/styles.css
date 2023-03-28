@@ -3,8 +3,16 @@
   src: local("Pokemon_Solid"), url("../assets/fonts/Pokemon_Solid.ttf") format("truetype")
 }
 
+
+
 :root {
   font-family: 'Roboto Slab', serif;
+  --pokemon-logo-blue: rgb(42, 117, 187);
+  --pokemon-logo-yellow: rgb(255, 203, 5);
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .nav-button {
@@ -31,11 +39,12 @@
 
 .slogan {
   font-family: Pokemon;
-  color: rgb(255, 203, 5);
-  text-shadow: 0 -1px rgb(42, 117, 187),
-  1px 0 rgb(42, 117, 187),
-  0 1px rgb(42, 117, 187),
-  -1px 0 rgb(42, 117, 187);
+  font-size: xx-large;
+  color: var(--pokemon-logo-yellow);
+  text-shadow: 0 -1px var(--pokemon-logo-blue),
+  1px 0 var(--pokemon-logo-blue),
+  0 1px var(--pokemon-logo-blue),
+  -1px 0 var(--pokemon-logo-blue);
   text-align: center;
 }
 
