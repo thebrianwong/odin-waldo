@@ -16,12 +16,22 @@
 
 button:hover {
   cursor: pointer;
+  transform: scale(1.05);
 }
 
 .nav-button {
   background: linear-gradient(to bottom, red, black, white);
   color: white;
+  border: solid 2px black;
   border-radius: 20px;
+}
+
+.nav-button:hover {
+  filter: grayscale(30%);
+}
+
+.nav-button:active {
+  filter: grayscale(60%);
 }
 
 .pokemon-logo {
