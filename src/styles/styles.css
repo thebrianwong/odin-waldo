@@ -240,6 +240,19 @@ button:hover {
 
 /* responsive */
 
+@media (max-width: 420px) {
+  .game-navbar {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 500px) {
+ .game-navbar {
+  overflow-x: scroll;
+  white-space: nowrap;
+ }
+}
+
 @media (min-width: 1440px) {
   .game-page-version2,
   .game-page-version3 {
