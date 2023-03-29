@@ -36,9 +36,13 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
       <main className="leaderboard-contents">
         <div className="leaderboard-difficulty-container">
           <h1>{difficultyLabel()}</h1>
-          <label className="leaderboard-difficulty-select" htmlFor="difficulty">
+          <label
+            className="leaderboard-difficulty-select-label"
+            htmlFor="difficulty"
+          >
             Change difficulty: {""}
             <select
+              className="leaderboard-difficulty-select"
               data-testid="select-menu"
               onChange={(e) => setGameVersion(e.target.value)}
               name="difficulty"

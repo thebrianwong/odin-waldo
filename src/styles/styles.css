@@ -300,8 +300,18 @@ button:hover {
   align-items: center;
 }
 
-.leaderboard-difficulty-select {
+.leaderboard-difficulty-select-label {
   text-align: end;
+}
+
+.leaderboard-difficulty-select {
+  background-color: var(--pokemon-logo-yellow);
+  color: var(--pokemon-logo-blue);
+  border-color: var(--pokemon-logo-blue);
+}
+
+.leaderboard-difficulty-select:focus-visible {
+  outline-color: darkgray;
 }
 
 .leaderboard-score-table-container {
