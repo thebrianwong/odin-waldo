@@ -10,7 +10,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
   return (
     <nav className="game-navbar">
       <Link to="/">
-        <button className="nav-button">Home</button>
+        <button className="nav-button nav-home">Home</button>
       </Link>
       <div className="game-navbar-sprite-container">
         {gameData.pokemonNames.map((pokemon) => {
@@ -31,7 +31,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
         <p>{`Time: ${elapsedTime}`}</p>
       </div>
       <Link to="/leaderboard">
-        <button className="nav-button">Leaderboard</button>
+        <button className="nav-button nav-leaderboard">Leaderboard</button>
       </Link>
     </nav>
   );

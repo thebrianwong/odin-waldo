@@ -181,10 +181,6 @@ button:hover {
   z-index: 2;
 }
 
-.game-navbar-sprite {
-  height: 9vh;
-}
-
 .game-area {
   padding-top: 10vh;
 }
@@ -195,9 +191,22 @@ button:hover {
 
 /* nav bar */
 
+.nav-home {
+  margin-left: 15px;
+}
+
+.game-navbar-sprite {
+  height: 9vh;
+}
+
 .nav-timer {
   text-align: center;
+  margin-right: 15px;
   width: 90px;
+}
+
+.nav-leaderboard {
+  margin-right: 15px;
 }
 
 /* modal */
