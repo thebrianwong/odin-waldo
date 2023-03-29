@@ -109,10 +109,8 @@ const DropdownMenu = ({
       className="dropdown-menu"
       data-testid="dropdown-menu"
       style={{
-        position: "absolute",
         top: normalizeYCoordinate(),
         left: normalizeXCoordinate(),
-        backgroundColor: "rgba(211,211,211, 0.78)",
       }}
     >
       <PokemonNameList

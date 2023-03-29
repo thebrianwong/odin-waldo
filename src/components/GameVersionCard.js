@@ -14,7 +14,6 @@ const GameVersionCard = ({
       <img
         className="homepage-preview-image"
         data-testid="preview-image"
-        // style={{ width: "500px" }}
         src={require(`../assets/images/game_versions/${gameVersion}.png`)}
         alt={`A preview thumbnail of the ${difficulty} version of the game.`}
       />

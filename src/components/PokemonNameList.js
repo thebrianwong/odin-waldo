@@ -16,7 +16,7 @@ const PokemonNameList = ({ gameData, handlePickedOption }) => {
               src={require(`../assets/images/list_sprites/${pokemon}_list_sprite.png`)}
               alt={`The menu sprite of ${pokemon} from the Generation 3 and 4 Pokemon games.`}
             />
-            <p style={{ margin: "0" }}>{pokemon}</p>
+            <p>{pokemon}</p>
           </li>
         );
       })}

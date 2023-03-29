@@ -54,35 +54,24 @@ const AnswerReaction = ({
 
   return (
     <div
+      className="answer-reaction"
       data-testid="answer-reaction"
       style={{
-        position: "absolute",
         top: normalizeYCoordinate(),
         left: normalizeXCoordinate(),
-        height: "100px",
-        width: "100px",
         backgroundColor: backgroundColor,
-        borderStyle: "solid",
-        borderWidth: "5px",
         borderColor: borderColor,
-        borderRadius: "8px",
       }}
     >
       {isCorrect ? (
         <img
-          style={{
-            height: "100px",
-            width: "100px",
-          }}
+          className="answer-reaction-image"
           src={require("../assets/images/answers/correct.png")}
           alt="Winking Pikachu posing with the V sign, indicating a correct answer."
         />
       ) : (
         <img
-          style={{
-            height: "100px",
-            width: "100px",
-          }}
+          className="answer-reaction-image"
           src={require("../assets/images/answers/incorrect.png")}
           alt="Frowning Pikachu making an X sign with its arms with a blue X behind it,
           indicating an incorrect answer."

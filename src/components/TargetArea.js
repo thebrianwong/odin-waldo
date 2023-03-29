@@ -44,17 +44,11 @@ const TargetArea = ({
 
   return (
     <div
+      className="target-area"
       data-testid="target-area"
       style={{
-        position: "absolute",
         top: normalizeYCoordinate(),
         left: normalizeXCoordinate(),
-        height: "50px",
-        width: "50px",
-        border: "dashed 2px red",
-        borderRadius: "100px",
-        backgroundColor: "darkgray",
-        opacity: "0.75",
       }}
     />
   );
