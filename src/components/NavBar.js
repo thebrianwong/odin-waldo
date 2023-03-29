@@ -12,10 +12,11 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
       <Link to="/">
         <button className="nav-button">Home</button>
       </Link>
-      <div>
+      <div className="game-navbar-sprite-container">
         {gameData.pokemonNames.map((pokemon) => {
           return (
             <img
+              className="game-navbar-sprite"
               style={{
                 opacity: indicateIfFound(pokemon),
               }}
