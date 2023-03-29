@@ -216,6 +216,14 @@ button:hover {
   margin-right: 15px;
 }
 
+/* dropdown menu */
+
+.dropdown-menu {
+  border: solid 2px darkgray;
+  /* border-radius: 8px;
+  border-top-left-radius: 0px; */
+}
+
 /* modal */
 
 .modal-background {

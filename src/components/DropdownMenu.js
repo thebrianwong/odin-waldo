@@ -12,6 +12,7 @@ const DropdownMenu = ({
   const VIEWPORT_WIDTH = window.visualViewport.width;
   const ELEMENT_HEIGHT = 150;
   const ELEMENT_WIDTH = 125;
+  const BORDER_WIDTH = 2;
   const LEEWAY_MARGIN = 5;
   const TARGET_AREA_RADIUS = 25;
   const TARGET_AREA_BORDER = 2;
@@ -25,6 +26,7 @@ const DropdownMenu = ({
       return (
         imageBorder.bottom -
         ELEMENT_HEIGHT -
+        BORDER_WIDTH -
         TARGET_AREA_RADIUS -
         TARGET_AREA_BORDER -
         LEEWAY_MARGIN
@@ -33,7 +35,7 @@ const DropdownMenu = ({
       imagePosition.y + ELEMENT_HEIGHT >
       gameData.imageDimensions.height - LEEWAY_MARGIN
     ) {
-      return clickPosition.y - ELEMENT_HEIGHT;
+      return clickPosition.y - ELEMENT_HEIGHT - BORDER_WIDTH;
     } else if (
       // click near the top border of the image
       imagePosition.y - TARGET_AREA_RADIUS - TARGET_AREA_BORDER <
@@ -43,6 +45,7 @@ const DropdownMenu = ({
         imageBorder.top +
         TARGET_AREA_RADIUS +
         TARGET_AREA_BORDER +
+        BORDER_WIDTH +
         LEEWAY_MARGIN
       );
     } else if (
@@ -53,9 +56,9 @@ const DropdownMenu = ({
         ELEMENT_HEIGHT <
       0 + 3 * LEEWAY_MARGIN
     ) {
-      return clickPosition.y - ELEMENT_HEIGHT;
+      return clickPosition.y - ELEMENT_HEIGHT - BORDER_WIDTH;
     }
-    return clickPosition.y;
+    return clickPosition.y - BORDER_WIDTH;
   };
 
   const normalizeXCoordinate = () => {
@@ -67,6 +70,7 @@ const DropdownMenu = ({
       return (
         imageBorder.right -
         ELEMENT_WIDTH -
+        BORDER_WIDTH -
         TARGET_AREA_RADIUS -
         TARGET_AREA_BORDER -
         LEEWAY_MARGIN
@@ -75,7 +79,7 @@ const DropdownMenu = ({
       imagePosition.x + ELEMENT_WIDTH >
       gameData.imageDimensions.width - LEEWAY_MARGIN
     ) {
-      return clickPosition.x - ELEMENT_WIDTH;
+      return clickPosition.x - ELEMENT_WIDTH - BORDER_WIDTH;
     } else if (
       // click near the left border of the image
       imagePosition.x - TARGET_AREA_RADIUS - TARGET_AREA_BORDER <
@@ -85,6 +89,7 @@ const DropdownMenu = ({
         imageBorder.left +
         TARGET_AREA_RADIUS +
         TARGET_AREA_BORDER +
+        BORDER_WIDTH +
         LEEWAY_MARGIN
       );
     } else if (
@@ -95,12 +100,13 @@ const DropdownMenu = ({
         ELEMENT_WIDTH <
       0 + LEEWAY_MARGIN
     ) {
-      return clickPosition.x - ELEMENT_WIDTH;
+      return clickPosition.x - ELEMENT_WIDTH - BORDER_WIDTH;
     }
-    return clickPosition.x;
+    return clickPosition.x - BORDER_WIDTH;
   };
   return (
     <div
+      className="dropdown-menu"
       data-testid="dropdown-menu"
       style={{
         position: "absolute",

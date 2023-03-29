@@ -15,6 +15,9 @@ import {
 import { act } from "react-dom/test-utils";
 import App from "../App";
 
+const spyScrollTo = jest.fn();
+Object.defineProperty(global.window, "scrollTo", { value: spyScrollTo });
+
 jest.mock("firebase/app", () => {
   const mInitializeApp = jest.fn(() => {
     return true;

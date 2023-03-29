@@ -25,8 +25,8 @@ test("The component renders with its top left corner on the cursor", () => {
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.top).toBe("500px");
-  expect(style.left).toBe("500px");
+  expect(style.top).toBe("498px");
+  expect(style.left).toBe("498px");
 });
 
 test("The dropdown's corner overlaps with the target area's center when clicked at the image bottom edge", () => {
@@ -43,7 +43,7 @@ test("The dropdown's corner overlaps with the target area's center when clicked 
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.top).toBe("918px");
+  expect(style.top).toBe("916px");
 });
 
 test("The dropdown doesn't cross over the image when clicked near the image bottom edge", () => {
@@ -60,7 +60,7 @@ test("The dropdown doesn't cross over the image when clicked near the image bott
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.top).toBe("350px");
+  expect(style.top).toBe("348px");
 });
 
 test("The dropdown's corner overlaps with the target area's center when clicked at the image top edge", () => {
@@ -77,7 +77,7 @@ test("The dropdown's corner overlaps with the target area's center when clicked 
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.top).toBe("32px");
+  expect(style.top).toBe("34px");
 });
 
 test("The dropdown stays in the viewport when clicked near the bottom of the viewport bottom edge", () => {
@@ -95,7 +95,7 @@ test("The dropdown stays in the viewport when clicked near the bottom of the vie
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.top).toBe("350px");
+  expect(style.top).toBe("348px");
 });
 
 test("The dropdown's corner overlaps with the target area's center when clicked at the image right edge", () => {
@@ -112,7 +112,7 @@ test("The dropdown's corner overlaps with the target area's center when clicked 
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.left).toBe("1443px");
+  expect(style.left).toBe("1441px");
 });
 
 test("The dropdown doesn't cross over the image when clicked near the image right edge", () => {
@@ -129,7 +129,7 @@ test("The dropdown doesn't cross over the image when clicked near the image righ
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.left).toBe("375px");
+  expect(style.left).toBe("373px");
 });
 
 test("The dropdown's corner overlaps with the target area's center when clicked at the image left edge", () => {
@@ -146,7 +146,7 @@ test("The dropdown's corner overlaps with the target area's center when clicked 
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.left).toBe("32px");
+  expect(style.left).toBe("34px");
 });
 
 test("The dropdown stays in the viewport when clicked near the right of the viewport right edge", () => {
@@ -164,5 +164,5 @@ test("The dropdown stays in the viewport when clicked near the right of the view
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.left).toBe("765px");
+  expect(style.left).toBe("763px");
 });
