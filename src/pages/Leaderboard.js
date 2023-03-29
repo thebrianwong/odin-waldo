@@ -36,7 +36,7 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
       <main className="leaderboard-contents">
         <div className="leaderboard-difficulty-container">
           <h1>{difficultyLabel()}</h1>
-          <label htmlFor="difficulty">
+          <label className="leaderboard-difficulty-select" htmlFor="difficulty">
             Change difficulty: {""}
             <select
               data-testid="select-menu"

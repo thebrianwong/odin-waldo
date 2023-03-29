@@ -284,10 +284,11 @@ button:hover {
 }
 
 .leaderboard-contents {
+  overflow-x: auto;
   background-color: var(--background-gray);
   border: solid 4px darkgray;
   border-radius: 8px;
-  width: 50vw;
+  width: 85vw;
   max-width: 500px;
   padding: 10px;
 }
@@ -296,6 +297,10 @@ button:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.leaderboard-difficulty-select {
+  text-align: end;
 }
 
 .leaderboard-score-table {
