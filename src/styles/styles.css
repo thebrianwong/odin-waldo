@@ -232,6 +232,8 @@ button:hover {
   background-color: white;
   border: solid 6px lightgray;
   border-radius: 8px;
+  width: 85vw;
+  max-width: 500px;
   padding: 10px;
 }
 
@@ -245,6 +247,10 @@ button:hover {
 .modal-form {
   display: flex;
   gap: 15px;
+}
+
+.modal-congrats {
+  text-align: center;
 }
 
 .modal-score {
@@ -322,6 +328,15 @@ button:hover {
   overflow-x: scroll;
   white-space: nowrap;
  }
+}
+
+@media (max-width: 530px) {
+  .modal-form {
+    flex-direction: column;
+  }
+  .modal-form .modal-label:first-child {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: 1440px) {

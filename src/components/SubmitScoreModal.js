@@ -41,7 +41,7 @@ const SubmitScoreModal = ({
         <button className="modal-close-button" onClick={closeModal}>
           X
         </button>
-        <h1>You Found All of the Pokemon!</h1>
+        <h1 className="modal-congrats">You Found All of the Pokemon!</h1>
         <p className="modal-score">Score: {displayTime}</p>
         <form className="modal-form">
           <label className="modal-label" htmlFor="name">
