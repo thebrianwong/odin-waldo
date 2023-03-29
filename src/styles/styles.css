@@ -60,7 +60,7 @@ button:hover {
   padding: 0;
   margin: 0;
   height: 150px;
-  width: 175px;
+  width: 125px;
   display: flex;
   flex-flow: column wrap;
   gap: 5px;
@@ -75,9 +75,11 @@ button:hover {
 
 .name-list-entry {
   display: flex;
-  height: 35px;
-  flex: 1;
+  justify-content: center;
   align-items: center;
+  flex: 1;
+  gap: 5px;
+  height: 35px;
 }
 
 .homepage-game-option-button .name-list-entry {

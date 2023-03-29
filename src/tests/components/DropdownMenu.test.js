@@ -112,7 +112,7 @@ test("The dropdown's corner overlaps with the target area's center when clicked 
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.left).toBe("1393px");
+  expect(style.left).toBe("1443px");
 });
 
 test("The dropdown doesn't cross over the image when clicked near the image right edge", () => {
@@ -129,7 +129,7 @@ test("The dropdown doesn't cross over the image when clicked near the image righ
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.left).toBe("325px");
+  expect(style.left).toBe("375px");
 });
 
 test("The dropdown's corner overlaps with the target area's center when clicked at the image left edge", () => {
@@ -164,5 +164,5 @@ test("The dropdown stays in the viewport when clicked near the right of the view
   );
   const dropdownElement = screen.getByTestId("dropdown-menu");
   const style = window.getComputedStyle(dropdownElement);
-  expect(style.left).toBe("715px");
+  expect(style.left).toBe("765px");
 });
