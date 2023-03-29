@@ -42,11 +42,12 @@ const SubmitScoreModal = ({
           X
         </button>
         <h1>You Found All of the Pokemon!</h1>
-        <p>Score: {displayTime}</p>
+        <p className="modal-score">Score: {displayTime}</p>
         <form className="modal-form">
           <label className="modal-label" htmlFor="name">
             Your Name
             <input
+              className="modal-input"
               id="name"
               type="text"
               ref={nameInputRef}
@@ -61,6 +62,7 @@ const SubmitScoreModal = ({
           <label className="modal-label" htmlFor="favorite">
             Your Favorite Pokemon
             <input
+              className="modal-input"
               id="favorite"
               type="text"
               onChange={(e) => setFavoritePokemon(e.target.value)}
@@ -72,7 +74,9 @@ const SubmitScoreModal = ({
             />
           </label>
         </form>
-        <button onClick={attemptSubmit}>Submit Score</button>
+        <button className="modal-submit-button" onClick={attemptSubmit}>
+          Submit Score
+        </button>
       </div>
     </div>
   );

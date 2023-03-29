@@ -37,18 +37,21 @@ button:hover {
   width: 30vw;
 }
 
-.nav-button {
+.nav-button,
+.modal-submit-button {
   background: linear-gradient(to bottom, red, black, white);
   color: white;
   border: solid 2px black;
   border-radius: 20px;
 }
 
-.nav-button:hover {
+.nav-button:hover,
+.modal-submit-button:hover {
   filter: grayscale(30%);
 }
 
-.nav-button:active {
+.nav-button:active,
+.modal-submit-button:active {
   filter: grayscale(60%);
 }
 
@@ -208,19 +211,33 @@ button:hover {
   flex-flow: column;
   align-items: center;
   background-color: white;
+  border: solid 6px lightgray;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .modal-close-button {
   align-self: end;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 }
 
 .modal-form {
   display: flex;
+  gap: 15px;
+}
+
+.modal-score {
+  margin-top: 0;
 }
 
 .modal-label {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  gap: 5px;
+  margin-bottom: 20px;
 }
 
 /* leaderboard page */
