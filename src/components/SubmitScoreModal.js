@@ -24,19 +24,8 @@ const SubmitScoreModal = ({
 
   return (
     <div
+      className="modal-background"
       data-testid="modal-background"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "fixed",
-        left: "0",
-        top: "0",
-        width: "100%",
-        height: "100%",
-        zIndex: "1",
-        backgroundColor: "rgba(0,0,0,0.5)",
-      }}
       onClick={closeModal}
       onKeyDown={(e) => {
         if (e.key === "Escape") {
@@ -45,25 +34,17 @@ const SubmitScoreModal = ({
       }}
     >
       <div
+        className="modal"
         data-testid="modal"
-        style={{
-          display: "flex",
-          flexFlow: "column",
-          alignItems: "center",
-          backgroundColor: "white",
-        }}
         onClick={(e) => e.stopPropagation()}
       >
-        <button style={{ alignSelf: "end" }} onClick={closeModal}>
+        <button className="modal-close-button" onClick={closeModal}>
           X
         </button>
         <h1>You Found All of the Pokemon!</h1>
         <p>Score: {displayTime}</p>
-        <form style={{ display: "flex" }}>
-          <label
-            htmlFor="name"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
+        <form className="modal-form">
+          <label className="modal-label" htmlFor="name">
             Your Name
             <input
               id="name"
@@ -77,10 +58,7 @@ const SubmitScoreModal = ({
               }}
             />
           </label>
-          <label
-            htmlFor="favorite"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
+          <label className="modal-label" htmlFor="favorite">
             Your Favorite Pokemon
             <input
               id="favorite"

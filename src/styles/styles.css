@@ -188,6 +188,41 @@ button:hover {
   width: 90px;
 }
 
+/* modal */
+
+.modal-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: white;
+}
+
+.modal-close-button {
+  align-self: end;
+}
+
+.modal-form {
+  display: flex;
+}
+
+.modal-label {
+  display: flex;
+  flex-direction: column;
+}
+
 /* leaderboard page */
 
 .leaderboard-page {
