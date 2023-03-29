@@ -228,6 +228,14 @@ button:hover {
   border: solid 2px darkgray;
 }
 
+.game-page .name-list-entry {
+  justify-content: flex-start;
+}
+
+.game-page .name-list-sprite {
+  margin-left: 10px;
+}
+
 /* target area */
 
 .target-area {

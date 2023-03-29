@@ -13,10 +13,11 @@ const PokemonNameList = ({ gameData, handlePickedOption }) => {
             key={`List-${pokemon}`}
           >
             <img
+              className="name-list-sprite"
               src={require(`../assets/images/list_sprites/${pokemon}_list_sprite.png`)}
               alt={`The menu sprite of ${pokemon} from the Generation 3 and 4 Pokemon games.`}
             />
-            <p>{pokemon}</p>
+            <p className="name-list-name">{pokemon}</p>
           </li>
         );
       })}
