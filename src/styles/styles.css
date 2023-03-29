@@ -176,6 +176,8 @@ button:hover {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
   box-shadow: 0 1px 4px darkgray;
   height: 10vh;
   width: 100vw;
@@ -325,17 +327,10 @@ button:hover {
 
 /* responsive */
 
-@media (max-width: 420px) {
+@media (max-width: 450px) {
   .game-navbar {
     justify-content: flex-start;
   }
-}
-
-@media (max-width: 500px) {
- .game-navbar {
-  overflow-x: scroll;
-  white-space: nowrap;
- }
 }
 
 @media (max-width: 530px) {
