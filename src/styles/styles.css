@@ -30,7 +30,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-
 /* multiple elements/pages */
 
 .pokemon-logo {
@@ -40,6 +39,11 @@ button:hover {
 
 .pokemon-logo:hover {
   transform: scale(1.05);
+}
+
+.slogan,
+.credits {
+  border-radius: 8px;
 }
 
 .nav-button,
