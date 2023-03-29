@@ -188,7 +188,7 @@ const Game = ({
   };
 
   return (
-    <div data-testid="game">
+    <div className={`game-page game-page-${gameVersion}`} data-testid="game">
       <NavBar
         gameData={gameData}
         gameProgress={gameProgress}
@@ -196,6 +196,7 @@ const Game = ({
       />
       <main className="game-area">
         <img
+          className="game-image"
           onClick={(e) => {
             if (!checkIfAllPokemonFound()) {
               handleImageClick(e);
