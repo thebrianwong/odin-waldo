@@ -228,3 +228,31 @@ button:hover {
 .leaderboard-score-table td {
   padding-bottom: 10px;
 }
+
+/* responsive */
+
+@media (min-width: 1440px) {
+  .game-page-version2,
+  .game-page-version3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .game-page-version2 .game-image,
+  .game-page-version3 .game-image {
+    box-shadow: 1px 0 4px lightgray,
+      -1px 0 4px lightgray;
+  }
+}
+
+@media (min-width: 2560px) {
+  .game-page-version1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .game-page-version1 .game-image {
+    box-shadow: 1px 0 4px lightgray,
+      -1px 0 4px lightgray;
+  }
+}
