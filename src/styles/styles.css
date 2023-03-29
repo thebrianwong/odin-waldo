@@ -63,7 +63,6 @@ button:hover {
   width: 175px;
   display: flex;
   flex-flow: column wrap;
-  align-content: space-around;
   gap: 5px;
 }
 
