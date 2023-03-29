@@ -331,7 +331,7 @@ button:hover {
   border: solid 4px darkgray;
   border-radius: 8px;
   width: 85vw;
-  max-width: 500px;
+  max-width: 600px;
   padding: 10px;
 }
 
@@ -361,6 +361,7 @@ button:hover {
 
 .leaderboard-score-table {
   text-align: center;
+  width: 100%;
 }
 
 .leaderboard-score-table th {
