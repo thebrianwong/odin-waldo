@@ -318,6 +318,10 @@ button:hover {
   font-size: small;
 }
 
+.modal-input::placeholder {
+  font-style: italic;
+}
+
 /* leaderboard page */
 
 .leaderboard-nav-button {

@@ -52,6 +52,7 @@ const SubmitScoreModal = ({
               className="modal-input"
               id="name"
               type="text"
+              placeholder="Anonymous Trainer"
               ref={nameInputRef}
               onChange={(e) => setName(e.target.value)}
               onKeyDown={(e) => {
@@ -70,6 +71,7 @@ const SubmitScoreModal = ({
               className="modal-input"
               id="favorite"
               type="text"
+              placeholder="Missingno"
               onChange={(e) => setFavoritePokemon(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
