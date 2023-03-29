@@ -172,6 +172,10 @@ button:hover {
   padding-top: 10vh;
 }
 
+.game-image {
+  margin-bottom: -3px;
+}
+
 /* nav bar */
 
 .nav-timer {
