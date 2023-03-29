@@ -310,6 +310,14 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.modal-label p {
+  margin: 0;
+}
+
+.modal-label-optional {
+  font-size: small;
+}
+
 /* leaderboard page */
 
 .leaderboard-nav-button {
@@ -385,7 +393,7 @@ button:hover {
   }
 }
 
-@media (max-width: 530px) {
+@media (max-width: 580px) {
   .modal-form {
     flex-direction: column;
   }

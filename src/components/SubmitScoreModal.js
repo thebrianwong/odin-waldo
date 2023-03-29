@@ -45,7 +45,9 @@ const SubmitScoreModal = ({
         <p className="modal-score">Score: {displayTime}</p>
         <form className="modal-form">
           <label className="modal-label" htmlFor="name">
-            Your Name
+            <p>
+              Your Name <span className="modal-label-optional">(optional)</span>
+            </p>
             <input
               className="modal-input"
               id="name"
@@ -60,7 +62,10 @@ const SubmitScoreModal = ({
             />
           </label>
           <label className="modal-label" htmlFor="favorite">
-            Your Favorite Pokemon
+            <p>
+              Your Favorite Pokemon{" "}
+              <span className="modal-label-optional">(optional)</span>
+            </p>
             <input
               className="modal-input"
               id="favorite"
