@@ -38,6 +38,10 @@ button:hover {
   min-width: 300px;
 }
 
+.pokemon-logo:hover {
+  transform: scale(1.05);
+}
+
 .nav-button,
 .modal-submit-button {
   background: linear-gradient(to bottom, red, black, white);
@@ -269,20 +273,18 @@ button:hover {
 
 /* leaderboard page */
 
+.leaderboard-nav-button {
+  align-self: flex-end;
+  height: 25px;
+  margin: 10px;
+}
+
 .leaderboard-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   padding: 10px 10px 30px;
-}
-
-.leaderboard-page .pokemon-logo {
-  margin-top: 45px;
-}
-
-.leaderboard-page .pokemon-logo:hover {
-  transform: scale(1.05);
 }
 
 .leaderboard-contents {

@@ -26,13 +26,18 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
 
   return (
     <div className="leaderboard-page" data-testid="leaderboard">
-      <Link to="/">
-        <img
-          className="pokemon-logo"
-          src={require("../assets/images/misc/logo.png")}
-          alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
-        />
+      <Link className="leaderboard-nav-button" to="/">
+        <button className="nav-button">Home</button>
       </Link>
+      <header>
+        <a href="https://www.youtube.com/watch?v=fCkeLBGSINs">
+          <img
+            className="pokemon-logo"
+            src={require("../assets/images/misc/logo.png")}
+            alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
+          />
+        </a>
+      </header>
       <main className="leaderboard-contents">
         <div className="leaderboard-difficulty-container">
           <h1>{difficultyLabel()}</h1>

@@ -13,11 +13,13 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
         <button className="nav-button">Leaderboard</button>
       </Link>
       <header>
-        <img
-          className="pokemon-logo"
-          src={require("../assets/images/misc/logo.png")}
-          alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
-        />
+        <a href="https://www.youtube.com/watch?v=fCkeLBGSINs">
+          <img
+            className="pokemon-logo"
+            src={require("../assets/images/misc/logo.png")}
+            alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
+          />
+        </a>
         <p className="slogan">Gotta find 'em all!</p>
       </header>
       <main className="homepage-game-options-container">
