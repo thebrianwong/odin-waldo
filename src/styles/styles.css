@@ -284,7 +284,6 @@ button:hover {
 }
 
 .leaderboard-contents {
-  overflow-x: auto;
   background-color: var(--background-gray);
   border: solid 4px darkgray;
   border-radius: 8px;
@@ -301,6 +300,10 @@ button:hover {
 
 .leaderboard-difficulty-select {
   text-align: end;
+}
+
+.leaderboard-score-table-container {
+  overflow-x: auto;
 }
 
 .leaderboard-score-table {

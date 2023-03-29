@@ -51,30 +51,32 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
             </select>
           </label>
         </div>
-        <table className="leaderboard-score-table">
-          <thead>
-            <tr>
-              <th scope="col">Rank</th>
-              <th scope="col">Trainer Name</th>
-              <th scope="col">Time</th>
-              <th scope="col">Favorite Pokemon</th>
-              <th scope="col">Date</th>
-            </tr>
-          </thead>
-          <tbody data-testid="table-body">
-            {sortedLeaderboardData().map((entry, index) => {
-              return (
-                <tr key={index}>
-                  <td>#{index + 1}</td>
-                  <td>{entry.name}</td>
-                  <td>{formatTime(entry.score)}</td>
-                  <td>{entry.favoritePokemon}</td>
-                  <td>{entry.timeStamp}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="leaderboard-score-table-container">
+          <table className="leaderboard-score-table">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Trainer Name</th>
+                <th scope="col">Time</th>
+                <th scope="col">Favorite Pokemon</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody data-testid="table-body">
+              {sortedLeaderboardData().map((entry, index) => {
+                return (
+                  <tr key={index}>
+                    <td>#{index + 1}</td>
+                    <td>{entry.name}</td>
+                    <td>{formatTime(entry.score)}</td>
+                    <td>{entry.favoritePokemon}</td>
+                    <td>{entry.timeStamp}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </main>
     </div>
   );
