@@ -46,6 +46,16 @@ button:hover {
   border-radius: 8px;
 }
 
+.nav-button-container {
+  align-self: flex-end;
+}
+
+.homepage .nav-button,
+.leaderboard-page .nav-button {
+  height: 50px;
+  margin: 10px;
+}
+
 .nav-button,
 .modal-submit-button {
   background: linear-gradient(to bottom, red, black, white);
@@ -119,12 +129,6 @@ button:hover {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-}
-
-.homepage-nav-button {
-  align-self: flex-end;
-  height: 25px;
-  margin: 10px;
 }
 
 .slogan {
@@ -331,12 +335,6 @@ button:hover {
 }
 
 /* leaderboard page */
-
-.leaderboard-nav-button {
-  align-self: flex-end;
-  height: 25px;
-  margin: 10px;
-}
 
 .leaderboard-page {
   display: flex;

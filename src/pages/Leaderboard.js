@@ -26,7 +26,7 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
 
   return (
     <div className="leaderboard-page" data-testid="leaderboard">
-      <Link className="leaderboard-nav-button" to="/">
+      <Link className="nav-button-container" to="/">
         <button className="nav-button">Home</button>
       </Link>
       <header>

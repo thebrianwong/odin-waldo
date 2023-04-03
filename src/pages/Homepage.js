@@ -9,7 +9,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
 
   return (
     <div className="homepage" data-testid="homepage">
-      <Link className="homepage-nav-button" to="/leaderboard">
+      <Link className="nav-button-container" to="/leaderboard">
         <button className="nav-button">Leaderboard</button>
       </Link>
       <header>
