@@ -22,6 +22,15 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
         </a>
         <p className="slogan">Gotta find 'em all!</p>
       </header>
+      <div className="homepage-instructions">
+        <h1>Instructions</h1>
+        <p>1) Choose a level below.</p>
+        <p>
+          2) Find all 3 Pokemon hidden in the provided image.<br></br>
+          Click or tap the image when you think you've found them.
+        </p>
+        <p>3) Optionally submit your score to the leaderboard.</p>
+      </div>
       <main className="homepage-game-options-container">
         <Link to="/game">
           <GameVersionCard
