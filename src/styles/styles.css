@@ -23,6 +23,8 @@
 
 #root {
   background-image: url("../assets/images/misc/kanto_map.png");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 button:hover {
