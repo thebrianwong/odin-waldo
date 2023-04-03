@@ -18,7 +18,8 @@
   font-family: 'Roboto Slab', serif;
   --pokemon-logo-blue: rgb(42, 117, 187);
   --pokemon-logo-yellow: rgb(255, 203, 5);
-  --background-gray: rgba(211, 211, 211, 0.75)
+  --background-gray: rgba(211, 211, 211, 0.75);
+  text-align: center;
 }
 
 #root {
@@ -29,7 +30,6 @@
 
 button:hover {
   cursor: pointer;
-  transform: scale(1.05);
 }
 
 /* multiple elements/pages */
@@ -39,13 +39,18 @@ button:hover {
   min-width: 300px;
 }
 
+
+button:hover,
 .pokemon-logo:hover {
   transform: scale(1.05);
 }
 
 .slogan,
 .homepage-instructions,
-.credits {
+.credits,
+.leaderboard-contents {
+  background-color: var(--background-gray);
+  border: solid 4px darkgray;
   border-radius: 8px;
 }
 
@@ -137,13 +142,11 @@ button:hover {
 .slogan {
   font-family: Pokemon;
   font-size: xx-large;
-  background-color: var(--background-gray);
   color: var(--pokemon-logo-yellow);
   text-shadow: 0 -1px var(--pokemon-logo-blue),
   1px 0 var(--pokemon-logo-blue),
   0 1px var(--pokemon-logo-blue),
   -1px 0 var(--pokemon-logo-blue);
-  text-align: center;
   line-height: 60px;
   margin: 0 0 20px;
 }
@@ -152,8 +155,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--background-gray);
-  text-align: center;
   margin: 0 10px 20px;
   padding: 10px;
 }
@@ -185,8 +186,6 @@ button:hover {
 }
 
 .credits {
-  background-color: var(--background-gray);
-  text-align: center;
   margin: 0 10px 30px;
   padding: 0 10px;
 }
@@ -228,7 +227,6 @@ button:hover {
 }
 
 .nav-timer {
-  text-align: center;
   margin-right: 15px;
   width: 90px;
 }
@@ -319,10 +317,6 @@ button:hover {
   gap: 15px;
 }
 
-.modal-congrats {
-  text-align: center;
-}
-
 .modal-score {
   margin-top: 0;
 }
@@ -330,7 +324,6 @@ button:hover {
 .modal-label {
   display: flex;
   flex-direction: column;
-  text-align: center;
   gap: 5px;
   margin-bottom: 20px;
 }
@@ -358,8 +351,6 @@ button:hover {
 }
 
 .leaderboard-contents {
-  background-color: var(--background-gray);
-  border: solid 4px darkgray;
   border-radius: 8px;
   width: 85vw;
   max-width: 600px;
@@ -391,7 +382,6 @@ button:hover {
 }
 
 .leaderboard-score-table {
-  text-align: center;
   width: 100%;
 }
 
