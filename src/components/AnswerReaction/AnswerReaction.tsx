@@ -1,11 +1,13 @@
+import AnswerReactionProps from "./type";
+
 const AnswerReaction = ({
   isCorrect,
   imagePosition,
   clickPosition,
   gameData,
-}) => {
-  const VIEWPORT_HEIGHT = window.visualViewport.height;
-  const VIEWPORT_WIDTH = window.visualViewport.width;
+}: AnswerReactionProps) => {
+  const VIEWPORT_HEIGHT = window.visualViewport!.height;
+  const VIEWPORT_WIDTH = window.visualViewport!.width;
   const ELEMENT_HEIGHT = 100;
   const ELEMENT_WIDTH = 100;
   const ELEMENT_BORDER_WIDTH = 5;
@@ -23,7 +25,7 @@ const AnswerReaction = ({
         gameData.imageDimensions.height - LEEWAY_MARGIN ||
       // click near the bottom edge of the visual viewport
       VIEWPORT_HEIGHT +
-        window.visualViewport.offsetTop -
+        window.visualViewport!.offsetTop -
         clickPosition.y -
         ELEMENT_HEIGHT -
         2 * ELEMENT_BORDER_WIDTH <
@@ -41,7 +43,7 @@ const AnswerReaction = ({
         gameData.imageDimensions.width - LEEWAY_MARGIN ||
       // click near the right edge of the visual viewport
       VIEWPORT_WIDTH +
-        window.visualViewport.pageLeft -
+        window.visualViewport!.pageLeft -
         clickPosition.x -
         ELEMENT_WIDTH -
         2 * ELEMENT_BORDER_WIDTH <
@@ -66,13 +68,13 @@ const AnswerReaction = ({
       {isCorrect ? (
         <img
           className="answer-reaction-image"
-          src={require("../assets/images/answers/correct.png")}
+          src={require("../../assets/images/answers/correct.png")}
           alt="Winking Pikachu posing with the V sign, indicating a correct answer."
         />
       ) : (
         <img
           className="answer-reaction-image"
-          src={require("../assets/images/answers/incorrect.png")}
+          src={require("../../assets/images/answers/incorrect.png")}
           alt="Frowning Pikachu making an X sign with its arms with a blue X behind it,
           indicating an incorrect answer."
         />

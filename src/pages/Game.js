@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import DropdownMenu from "../components/DropdownMenu";
 import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
-import AnswerReaction from "../components/AnswerReaction";
+import AnswerReaction from "../components/AnswerReaction/AnswerReaction";
 import SubmitScoreModal from "../components/SubmitScoreModal";
 
 const Game = ({
