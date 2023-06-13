@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AnswerReaction from "../../components/AnswerReaction";
+import AnswerReaction from "../../components/AnswerReaction/AnswerReaction";
 
 test("The component can be queried via test id", () => {
   global.visualViewport = { width: 900, height: 900 };
