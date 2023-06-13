@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import NavBarProps from "./type";
 
-const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
-  const indicateIfFound = (pokemon) => {
+const NavBar = ({ gameData, gameProgress, elapsedTime }: NavBarProps) => {
+  const indicateIfFound = (pokemon: string) => {
     if (gameProgress[pokemon]) {
       return "0.35";
     }
@@ -21,7 +22,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }) => {
                 opacity: indicateIfFound(pokemon),
               }}
               key={`Nav-${pokemon}`}
-              src={require(`../assets/images/navbar_sprites/${pokemon}_navbar_sprite.png`)}
+              src={require(`../../assets/images/navbar_sprites/${pokemon}_navbar_sprite.png`)}
               alt={`The sprite of ${pokemon} as it appears as an opposing Pokemon in Pokemon HeartGold and SoulSilver.`}
             />
           );

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import DropdownMenu from "../components/DropdownMenu/DropdownMenu";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar/NavBar";
 import TargetArea from "../components/TargetArea";
 import AnswerReaction from "../components/AnswerReaction/AnswerReaction";
 import SubmitScoreModal from "../components/SubmitScoreModal";
