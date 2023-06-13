@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import GameVersionCard from "../components/GameVersionCard";
+import GameVersionCard from "../components/GameVersionCard/GameVersionCard";
 
 const Homepage = ({ gameData, chooseGameVersion }) => {
   useEffect(() => {
