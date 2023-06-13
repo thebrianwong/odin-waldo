@@ -1,6 +1,7 @@
 import Position from "../../types/position.type";
 import ImageBorder from "../../types/imageBorder.type";
 import VersionData from "../../types/versionData.type";
+import { MouseEvent } from "react";
 
 type DropdownMenuProps = {
   imagePosition: Position;
