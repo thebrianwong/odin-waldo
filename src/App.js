@@ -17,7 +17,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
-import LoadingPokeball from "./components/LoadingPokeball";
+import LoadingPokeball from "./components/LoadingPokeball/LoadingPokeball";
 import "./styles/normalize.css";
 import "./styles/styles.css";
 
