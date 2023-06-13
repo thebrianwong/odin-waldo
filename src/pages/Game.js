@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import DropdownMenu from "../components/DropdownMenu";
+import DropdownMenu from "../components/DropdownMenu/DropdownMenu";
 import NavBar from "../components/NavBar";
 import TargetArea from "../components/TargetArea";
 import AnswerReaction from "../components/AnswerReaction/AnswerReaction";

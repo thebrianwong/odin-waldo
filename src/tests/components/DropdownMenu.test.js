@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import DropdownMenu from "../../components/DropdownMenu";
+import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 global.visualViewport = { width: 900, height: 900 };
 const gameData = {

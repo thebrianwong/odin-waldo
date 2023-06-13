@@ -1,4 +1,5 @@
-import PokemonNameList from "./PokemonNameList";
+import DropdownMenuProps from "./type";
+import PokemonNameList from "../PokemonNameList";
 
 const DropdownMenu = ({
   imagePosition,
@@ -7,9 +8,9 @@ const DropdownMenu = ({
   imageBorder,
   gameData,
   handlePickedOption,
-}) => {
-  const VIEWPORT_HEIGHT = window.visualViewport.height;
-  const VIEWPORT_WIDTH = window.visualViewport.width;
+}: DropdownMenuProps) => {
+  const VIEWPORT_HEIGHT = window.visualViewport!.height;
+  const VIEWPORT_WIDTH = window.visualViewport!.width;
   const ELEMENT_HEIGHT = 150;
   const ELEMENT_WIDTH = 125;
   const BORDER_WIDTH = 2;
@@ -51,7 +52,7 @@ const DropdownMenu = ({
     } else if (
       // click near the bottom edge of the visual viewport
       VIEWPORT_HEIGHT +
-        window.visualViewport.offsetTop -
+        window.visualViewport!.offsetTop -
         clientPosition.y -
         ELEMENT_HEIGHT <
       0 + 3 * LEEWAY_MARGIN
@@ -95,7 +96,7 @@ const DropdownMenu = ({
     } else if (
       // click near the right edge of the visual viewport
       VIEWPORT_WIDTH +
-        window.visualViewport.pageLeft -
+        window.visualViewport!.pageLeft -
         clickPosition.x -
         ELEMENT_WIDTH <
       0 + LEEWAY_MARGIN
