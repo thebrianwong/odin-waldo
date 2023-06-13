@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import PokemonNameList from "../../components/PokemonNameList";
+import PokemonNameList from "../../components/PokemonNameList/PokemonNameList";
 
 const gameData = { pokemonNames: ["Pichu", "Graveler", "Slaking"] };
 const mockFunction = jest.fn();

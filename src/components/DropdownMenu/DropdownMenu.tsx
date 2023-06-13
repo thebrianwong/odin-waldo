@@ -1,5 +1,5 @@
 import DropdownMenuProps from "./type";
-import PokemonNameList from "../PokemonNameList";
+import PokemonNameList from "../PokemonNameList/PokemonNameList";
 
 const DropdownMenu = ({
   imagePosition,
