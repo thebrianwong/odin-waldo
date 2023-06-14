@@ -3,7 +3,7 @@ import DropdownMenu from "../components/DropdownMenu/DropdownMenu";
 import NavBar from "../components/NavBar/NavBar";
 import TargetArea from "../components/TargetArea";
 import AnswerReaction from "../components/AnswerReaction/AnswerReaction";
-import SubmitScoreModal from "../components/SubmitScoreModal";
+import SubmitScoreModal from "../components/SubmitScoreModal/SubmitScoreModal";
 
 const Game = ({
   gameData,

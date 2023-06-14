@@ -1,18 +1,19 @@
 import { useEffect, useRef, useState } from "react";
+import SubmitScoreModalProps from "./type";
 
 const SubmitScoreModal = ({
   timeScore,
   displayTime,
   submitScore,
   closeModal,
-}) => {
-  const nameInputRef = useRef(null);
+}: SubmitScoreModalProps) => {
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
 
-  const [name, setName] = useState("");
-  const [favoritePokemon, setFavoritePokemon] = useState("");
+  const [name, setName] = useState<string>("");
+  const [favoritePokemon, setFavoritePokemon] = useState<string>("");
 
   useEffect(() => {
-    nameInputRef.current.focus();
+    nameInputRef.current!.focus();
   }, []);
 
   const attemptSubmit = () => {
