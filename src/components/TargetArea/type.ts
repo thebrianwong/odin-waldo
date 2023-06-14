@@ -1,6 +1,6 @@
 import ImageBorder from "../../types/imageBorder.type";
 import Position from "../../types/position.type";
-import VersionData from "../../types/versionData.type";
+import { VersionData } from "../../types/pokemonData.type";
 
 type TargetAreaProps = {
   imagePosition: Position;

@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import VersionData from "../../types/versionData.type";
+import { VersionData } from "../../types/pokemonData.type";
 
 type PokemonNameListProps = {
   gameData: VersionData;

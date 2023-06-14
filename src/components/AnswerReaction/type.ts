@@ -1,5 +1,5 @@
 import Position from "../../types/position.type";
-import VersionData from "../../types/versionData.type";
+import { VersionData } from "../../types/pokemonData.type";
 
 type AnswerReactionProps = {
   isCorrect: boolean;

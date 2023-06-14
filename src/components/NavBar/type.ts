@@ -1,5 +1,5 @@
 import GameProgress from "../../types/gameProgress.type";
-import VersionData from "../../types/versionData.type";
+import { VersionData } from "../../types/pokemonData.type";
 
 type NavBarProps = {
   gameData: VersionData;
