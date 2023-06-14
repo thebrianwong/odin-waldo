@@ -1,9 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import DropdownMenu from "../components/DropdownMenu/DropdownMenu";
-import NavBar from "../components/NavBar/NavBar";
-import TargetArea from "../components/TargetArea/TargetArea";
-import AnswerReaction from "../components/AnswerReaction/AnswerReaction";
-import SubmitScoreModal from "../components/SubmitScoreModal/SubmitScoreModal";
+import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
+import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+import NavBar from "../../components/NavBar/NavBar";
+import TargetArea from "../../components/TargetArea/TargetArea";
+import AnswerReaction from "../../components/AnswerReaction/AnswerReaction";
+import SubmitScoreModal from "../../components/SubmitScoreModal/SubmitScoreModal";
+import GameProps from "./type";
+import GameProgress from "../../types/gameProgress.type";
+import ImageBorder from "../../types/imageBorder.type";
+import Position from "../../types/position.type";
 
 const Game = ({
   gameData,
@@ -11,54 +15,56 @@ const Game = ({
   validationData,
   formatTime,
   submitScore,
-}) => {
-  const elapsedTimeIntervalRef = useRef(null);
-  const answerReactionTimerIdRef = useRef(null);
+}: GameProps) => {
+  const elapsedTimeIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const answerReactionTimerIdRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [gameProgress, setGameProgress] = useState({
+  const [gameProgress, setGameProgress] = useState<GameProgress>({
     [gameData.pokemonNames[0]]: false,
     [gameData.pokemonNames[1]]: false,
     [gameData.pokemonNames[2]]: false,
   });
 
-  const [startTime, setStartTime] = useState(null);
-  const [currentTime, setCurrentTime] = useState(null);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [currentTime, setCurrentTime] = useState<number | null>(null);
 
   // how far down or left from the page is each border of the image
-  const [imageBorder, setImageBorder] = useState({
-    top: null,
-    right: null,
-    bottom: null,
-    left: null,
+  const [imageBorder, setImageBorder] = useState<ImageBorder>({
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
   });
   // coordinates of the click relative to image, starts at top left corner of image
-  const [imageCoordinates, setImageCoordinates] = useState({
-    x: null,
-    y: null,
+  const [imageCoordinates, setImageCoordinates] = useState<Position>({
+    x: 0,
+    y: 0,
   });
   // coordinates of the click relative to the entire page, starts at the top left corner of the page
-  const [clickCoordinates, setClickCoordinates] = useState({
-    x: null,
-    y: null,
+  const [clickCoordinates, setClickCoordinates] = useState<Position>({
+    x: 0,
+    y: 0,
   });
   // coordinates of the click relative to the viewport, starts at the top left corner of what is being displayed
-  const [clientCoordinates, setClientCoordinates] = useState({
-    x: null,
-    y: null,
+  const [clientCoordinates, setClientCoordinates] = useState<Position>({
+    x: 0,
+    y: 0,
   });
 
-  const [answerImageCoordinates, setAnswerImageCoordinates] = useState({
-    x: null,
-    y: null,
-  });
-  const [answerClickCoordinates, setAnswerClickCoordinates] = useState({
-    x: null,
-    y: null,
-  });
+  const [answerImageCoordinates, setAnswerImageCoordinates] =
+    useState<Position>({
+      x: 0,
+      y: 0,
+    });
+  const [answerClickCoordinates, setAnswerClickCoordinates] =
+    useState<Position>({
+      x: 0,
+      y: 0,
+    });
 
-  const [displayMenu, setDisplayMenu] = useState(false);
-  const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
-  const [displayModal, setDisplayModal] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState<boolean>(false);
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean | null>(null);
+  const [displayModal, setDisplayModal] = useState<boolean>(false);
 
   const checkIfAllPokemonFound = useCallback(() => {
     if (
@@ -92,7 +98,7 @@ const Game = ({
 
   useEffect(() => {
     if (checkIfAllPokemonFound()) {
-      clearInterval(elapsedTimeIntervalRef.current);
+      clearInterval(elapsedTimeIntervalRef.current!);
       setDisplayModal(true);
     }
   }, [gameProgress, checkIfAllPokemonFound]);
@@ -100,47 +106,49 @@ const Game = ({
   useEffect(() => {
     if (isCorrectAnswer === null) {
       setAnswerImageCoordinates({
-        x: null,
-        y: null,
+        x: 0,
+        y: 0,
       });
       setAnswerClickCoordinates({
-        x: null,
-        y: null,
+        x: 0,
+        y: 0,
       });
     }
   }, [isCorrectAnswer]);
 
   const resetClickState = () => {
-    setImageCoordinates({ x: null, y: null });
-    setClickCoordinates({ x: null, y: null });
+    setImageCoordinates({ x: 0, y: 0 });
+    setClickCoordinates({ x: 0, y: 0 });
     setClientCoordinates({
-      x: null,
-      y: null,
+      x: 0,
+      y: 0,
     });
     setImageBorder({
-      top: null,
-      right: null,
-      bottom: null,
-      left: null,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
     });
   };
 
-  const handleImageClick = (e) => {
+  const handleImageClick = (e: MouseEvent) => {
     setDisplayMenu(!displayMenu);
     if (displayMenu) {
       resetClickState();
       return;
     }
-    const imageXCoordinate = e.pageX - e.target.offsetLeft;
-    const imageYCoordinate = e.pageY - e.target.offsetTop;
+    const imageElement = e.target as HTMLImageElement;
+    const imageXCoordinate = e.pageX - imageElement.offsetLeft;
+    const imageYCoordinate = e.pageY - imageElement.offsetTop;
     const clickXCoordinate = e.pageX;
     const clickYCoordinate = e.pageY;
     const clientXCoordinate = e.clientX;
     const clientYCoordinate = e.clientY;
-    const imageBorderTop = e.target.offsetTop;
-    const imageBorderRight = e.target.offsetLeft + e.target.offsetWidth;
-    const imageBorderBottom = e.target.offsetTop + e.target.offsetHeight;
-    const imageBorderLeft = e.target.offsetLeft;
+    const imageBorderTop = imageElement.offsetTop;
+    const imageBorderRight = imageElement.offsetLeft + imageElement.offsetWidth;
+    const imageBorderBottom =
+      imageElement.offsetTop + imageElement.offsetHeight;
+    const imageBorderLeft = imageElement.offsetLeft;
     setImageCoordinates({ x: imageXCoordinate, y: imageYCoordinate });
     setClickCoordinates({ x: clickXCoordinate, y: clickYCoordinate });
     setClientCoordinates({ x: clientXCoordinate, y: clientYCoordinate });
@@ -152,7 +160,7 @@ const Game = ({
     });
   };
 
-  const handlePickedOption = (e, pickedPokemon) => {
+  const handlePickedOption = (e: MouseEvent, pickedPokemon: string) => {
     const pokemonCoordinates = validationData[pickedPokemon];
     if (
       imageCoordinates.x >= pokemonCoordinates.minimumX &&
@@ -165,8 +173,9 @@ const Game = ({
     } else {
       setIsCorrectAnswer(false);
     }
-    const imageXCoordinate = e.pageX - e.target.offsetLeft;
-    const imageYCoordinate = e.pageY - e.target.offsetTop;
+    const pickedOptionElement = e.target as HTMLLIElement;
+    const imageXCoordinate = e.pageX - pickedOptionElement.offsetLeft;
+    const imageYCoordinate = e.pageY - pickedOptionElement.offsetTop;
     const clickXCoordinate = e.pageX;
     const clickYCoordinate = e.pageY;
     setAnswerImageCoordinates({
@@ -179,7 +188,7 @@ const Game = ({
     });
     setDisplayMenu(!displayMenu);
     resetClickState();
-    clearTimeout(answerReactionTimerIdRef.current);
+    clearTimeout(answerReactionTimerIdRef.current!);
     const timerId = setTimeout(() => {
       setIsCorrectAnswer(null);
       answerReactionTimerIdRef.current = null;
@@ -192,17 +201,17 @@ const Game = ({
       <NavBar
         gameData={gameData}
         gameProgress={gameProgress}
-        elapsedTime={formatTime(currentTime - startTime)}
+        elapsedTime={formatTime(currentTime! - startTime!)}
       />
       <main className="game-area">
         <img
           className="game-image"
-          onClick={(e) => {
+          onClick={(e: MouseEvent) => {
             if (!checkIfAllPokemonFound()) {
               handleImageClick(e);
             }
           }}
-          src={require(`../assets/images/game_versions/${gameVersion}.png`)}
+          src={require(`../../assets/images/game_versions/${gameVersion}.png`)}
           alt={
             gameVersion === "version2"
               ? "A compilation of all Pokemon released up to Generation 5."
@@ -238,8 +247,8 @@ const Game = ({
       )}
       {displayModal && (
         <SubmitScoreModal
-          timeScore={currentTime - startTime}
-          displayTime={formatTime(currentTime - startTime)}
+          timeScore={currentTime! - startTime!}
+          displayTime={formatTime(currentTime! - startTime!)}
           submitScore={submitScore}
           closeModal={() => setDisplayModal(false)}
         />
