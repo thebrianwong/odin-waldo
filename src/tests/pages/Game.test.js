@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
 import { gameData } from "../../gameData";
-import Game from "../../pages/Game";
+import Game from "../../pages/Game/Game";
 
 const validationData = {
   version1: {

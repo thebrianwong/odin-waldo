@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import TargetArea from "../../components/TargetArea";
+import TargetArea from "../../components/TargetArea/TargetArea";
 
 test("The component render with the center of the circle on the click", () => {
   render(
