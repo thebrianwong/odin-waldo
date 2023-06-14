@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
-import Leaderboard from "../../pages/Leaderboard";
+import Leaderboard from "../../pages/Leaderboard/Leaderboard";
 
 const leaderboardData = {
   version1: [

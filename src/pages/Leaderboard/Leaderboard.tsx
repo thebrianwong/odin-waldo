@@ -1,8 +1,15 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import LeaderboardProps from "./type";
+import GameVersion from "../../types/gameVersion.type";
 
-const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
-  const [gameVersion, setGameVersion] = useState(initialGameVersion);
+const Leaderboard = ({
+  leaderboardData,
+  initialGameVersion,
+  formatTime,
+}: LeaderboardProps) => {
+  const [gameVersion, setGameVersion] =
+    useState<GameVersion>(initialGameVersion);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,7 +40,7 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
         <a href="https://www.youtube.com/watch?v=fCkeLBGSINs">
           <img
             className="pokemon-logo"
-            src={require("../assets/images/misc/logo.png")}
+            src={require("../../assets/images/misc/logo.png")}
             alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
           />
         </a>
@@ -49,7 +56,11 @@ const Leaderboard = ({ leaderboardData, initialGameVersion, formatTime }) => {
             <select
               className="leaderboard-difficulty-select"
               data-testid="select-menu"
-              onChange={(e) => setGameVersion(e.target.value)}
+              onChange={(e: ChangeEvent) =>
+                setGameVersion(
+                  (e.target as HTMLOptionElement).value as GameVersion
+                )
+              }
               name="difficulty"
               id="difficulty"
               value={gameVersion}

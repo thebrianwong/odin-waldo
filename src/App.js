@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Homepage from "./pages/Homepage";
 import Game from "./pages/Game/Game";
-import Leaderboard from "./pages/Leaderboard";
+import Leaderboard from "./pages/Leaderboard/Leaderboard";
 import { gameData as data } from "./gameData";
 import { initializeApp } from "firebase/app";
 import {
