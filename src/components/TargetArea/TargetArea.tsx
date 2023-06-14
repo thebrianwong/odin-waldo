@@ -1,9 +1,11 @@
+import TargetAreaProps from "./type";
+
 const TargetArea = ({
   imagePosition,
   clickPosition,
   imageBorder,
   gameData,
-}) => {
+}: TargetAreaProps) => {
   const AREA_RADIUS = 25;
   const BORDER_WIDTH = 2;
   const LEEWAY_MARGIN = 5;
