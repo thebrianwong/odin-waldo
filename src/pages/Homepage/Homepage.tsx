@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import GameVersionCard from "../components/GameVersionCard/GameVersionCard";
+import GameVersionCard from "../../components/GameVersionCard/GameVersionCard";
+import HomepageProps from "./type";
 
-const Homepage = ({ gameData, chooseGameVersion }) => {
+const Homepage = ({ gameData, chooseGameVersion }: HomepageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -16,7 +17,7 @@ const Homepage = ({ gameData, chooseGameVersion }) => {
         <a href="https://www.youtube.com/watch?v=fCkeLBGSINs">
           <img
             className="pokemon-logo"
-            src={require("../assets/images/misc/logo.png")}
+            src={require("../../assets/images/misc/logo.png")}
             alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
           />
         </a>

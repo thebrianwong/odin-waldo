@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { gameData } from "../../gameData";
-import Homepage from "../../pages/Homepage";
+import Homepage from "../../pages/Homepage/Homepage";
 
 const mockFunction = jest.fn();
 
