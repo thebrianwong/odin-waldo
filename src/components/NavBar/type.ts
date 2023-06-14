@@ -1,8 +1,9 @@
+import GameProgress from "../../types/gameProgress.type";
 import VersionData from "../../types/versionData.type";
 
 type NavBarProps = {
   gameData: VersionData;
-  gameProgress: { [pokemonName: string]: boolean };
+  gameProgress: GameProgress;
   elapsedTime: string;
 };
 
