@@ -6,9 +6,7 @@ type LeaderboardEntry = {
 };
 
 type LeaderboardTotal = {
-  version1: Array<LeaderboardEntry>;
-  version2: Array<LeaderboardEntry>;
-  version3: Array<LeaderboardEntry>;
+  [version: string]: Array<LeaderboardEntry>;
 };
 
 export { LeaderboardEntry, LeaderboardTotal };

@@ -5,7 +5,7 @@ type SubmitScoreModalProps = {
     timeInMilliseconds: number,
     playerName: string,
     playerFavoritePokemon: string
-  ) => boolean;
+  ) => Promise<boolean>;
   closeModal: () => void;
 };
 

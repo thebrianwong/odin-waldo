@@ -12,7 +12,7 @@ type GameProps = {
     timeInMilliseconds: number,
     playerName: string,
     playerFavoritePokemon: string
-  ) => boolean;
+  ) => Promise<boolean>;
 };
 
 export default GameProps;
