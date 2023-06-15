@@ -1,9 +1,9 @@
 import FormatTime from "../../types/formatTime.type";
 import GameVersion from "../../types/gameVersion.type";
-import { Leaderboard } from "../../types/leaderboardData.type";
+import { LeaderboardTotal } from "../../types/leaderboardData.type";
 
 type LeaderboardProps = {
-  leaderboardData: Leaderboard;
+  leaderboardData: LeaderboardTotal;
   initialGameVersion: GameVersion;
   formatTime: FormatTime;
 };

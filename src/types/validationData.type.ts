@@ -1,4 +1,4 @@
-type ValidationData = {
+type VersionValidationData = {
   [pokemonName: string]: {
     minimumX: number;
     maximumX: number;
@@ -7,4 +7,10 @@ type ValidationData = {
   };
 };
 
-export default ValidationData;
+type TotalValidationData = {
+  version1: VersionValidationData;
+  version2: VersionValidationData;
+  version3: VersionValidationData;
+};
+
+export { VersionValidationData, TotalValidationData };

@@ -5,10 +5,10 @@ type LeaderboardEntry = {
   timeStamp: string;
 };
 
-type Leaderboard = {
+type LeaderboardTotal = {
   version1: Array<LeaderboardEntry>;
   version2: Array<LeaderboardEntry>;
   version3: Array<LeaderboardEntry>;
 };
 
-export { LeaderboardEntry, Leaderboard };
+export { LeaderboardEntry, LeaderboardTotal };
