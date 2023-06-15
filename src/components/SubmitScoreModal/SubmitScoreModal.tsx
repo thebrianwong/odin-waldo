@@ -16,8 +16,12 @@ const SubmitScoreModal = ({
     nameInputRef.current!.focus();
   }, []);
 
-  const attemptSubmit = () => {
-    const successfulSubmit = submitScore(timeScore, name, favoritePokemon);
+  const attemptSubmit = async () => {
+    const successfulSubmit = await submitScore(
+      timeScore,
+      name,
+      favoritePokemon
+    );
     if (successfulSubmit) {
       closeModal();
     }
