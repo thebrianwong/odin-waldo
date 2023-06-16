@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import Homepage from "./pages/Homepage/Homepage";
 import Game from "./pages/Game/Game";
 import Leaderboard from "./pages/Leaderboard/Leaderboard";
-import { gameData as data } from "./gameData";
+import data from "./gameData.json";
 import { initializeApp } from "firebase/app";
 import {
   addDoc,
   collection,
   collectionGroup,
   doc,
+  DocumentData,
   getDoc,
   getFirestore,
   onSnapshot,
@@ -20,9 +21,16 @@ import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball/LoadingPokeball";
 import "./styles/normalize.css";
 import "./styles/styles.css";
+import { TotalValidationData } from "./types/validationData.type";
+import {
+  LeaderboardEntry,
+  LeaderboardTotal,
+} from "./types/leaderboardData.type";
+import { GameData } from "./types/pokemonData.type";
+import GameVersion from "./types/gameVersion.type";
 
 function App() {
-  const gameData = data;
+  const gameData = data as GameData;
 
   const firebaseConfig = getFirebaseConfig();
   const app = initializeApp(firebaseConfig);
@@ -32,15 +40,17 @@ function App() {
   const version2Query = query(collectionGroup(db, "leaderboard-version2"));
   const version3Query = query(collectionGroup(db, "leaderboard-version3"));
 
-  const [gameVersion, setGameVersion] = useState("version1");
-  const [validationData, setValidationData] = useState(null);
-  const [leaderboardData, setLeaderboardData] = useState(null);
+  const [gameVersion, setGameVersion] = useState<GameVersion>("version1");
+  const [validationData, setValidationData] =
+    useState<TotalValidationData | null>(null);
+  const [leaderboardData, setLeaderboardData] =
+    useState<LeaderboardTotal | null>(null);
 
   useEffect(() => {
     const getValidationData = async () => {
       const docSnap = await getDoc(locationsRef);
       if (docSnap.exists()) {
-        setValidationData(docSnap.data());
+        setValidationData(docSnap.data() as TotalValidationData);
       } else {
         console.error(
           "There was an error loading the game. Try refreshing the page!"
@@ -48,15 +58,15 @@ function App() {
       }
     };
     getValidationData();
-  }, []);
+  }, [locationsRef]);
 
   useEffect(() => {
     const getLeaderboardData = () => {
       const leaderboardQuery = [version1Query, version2Query, version3Query];
-      const leaderboardScoresData = {};
+      const leaderboardScoresData = {} as LeaderboardTotal;
       leaderboardQuery.forEach((versionQuery, index) => {
         onSnapshot(versionQuery, (snapshot) => {
-          const versionData = [];
+          const versionData: DocumentData[] = [];
           snapshot.docs.forEach((doc) => {
             const leaderboardEntry = doc.data();
             leaderboardEntry.timeStamp = leaderboardEntry.timeStamp
@@ -64,15 +74,16 @@ function App() {
               .toDateString();
             versionData.push(leaderboardEntry);
           });
-          leaderboardScoresData[`version${index + 1}`] = versionData;
+          leaderboardScoresData[`version${index + 1}`] =
+            versionData as Array<LeaderboardEntry>;
         });
       });
-      setLeaderboardData(leaderboardScoresData);
+      setLeaderboardData(leaderboardScoresData as LeaderboardTotal);
     };
     getLeaderboardData();
   }, []);
 
-  const formatTime = (timeInMilliseconds) => {
+  const formatTime = (timeInMilliseconds: number) => {
     const timeInSeconds = Math.round(timeInMilliseconds / 1000);
     if (timeInSeconds < 60) {
       if (timeInSeconds < 10) {
@@ -96,14 +107,14 @@ function App() {
     }
   };
 
-  const checkForEmptyName = (name) => {
+  const checkForEmptyName = (name: string) => {
     if (name === "") {
       return "Anonymous Trainer";
     }
     return name;
   };
 
-  const checkForEmptyFavoritePokemon = (favoritePokemon) => {
+  const checkForEmptyFavoritePokemon = (favoritePokemon: string) => {
     if (favoritePokemon === "") {
       return "Missingno";
     }
@@ -111,9 +122,9 @@ function App() {
   };
 
   const submitScore = async (
-    timeInMilliseconds,
-    playerName,
-    playerFavoritePokemon
+    timeInMilliseconds: number,
+    playerName: string,
+    playerFavoritePokemon: string
   ) => {
     try {
       await addDoc(collection(db, `leaderboard-${gameVersion}`), {
