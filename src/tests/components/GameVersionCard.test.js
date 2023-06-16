@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { gameData as data } from "../../gameData";
+import data from "../../gameData.json";
 import GameVersionCard from "../../components/GameVersionCard/GameVersionCard";
 import userEvent from "@testing-library/user-event";
 
