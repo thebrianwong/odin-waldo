@@ -68,6 +68,7 @@ const validationData = {
   },
 };
 const mockFunction = jest.fn();
+global.scrollTo = jest.fn();
 global.visualViewport = { width: 900, height: 900 };
 
 test("The page renders", () => {

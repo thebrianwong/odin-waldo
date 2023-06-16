@@ -1,22 +1,10 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { initializeApp } from "firebase/app";
-import {
-  addDoc,
-  collection,
-  collectionGroup,
-  doc,
-  getDoc,
-  getFirestore,
-  onSnapshot,
-  query,
-  Timestamp,
-} from "firebase/firestore";
 import { act } from "react-dom/test-utils";
 import App from "../App";
 
-const spyScrollTo = jest.fn();
-Object.defineProperty(global.window, "scrollTo", { value: spyScrollTo });
+global.scrollTo = jest.fn();
 
 jest.mock("firebase/app", () => {
   const mInitializeApp = jest.fn(() => {

@@ -67,6 +67,7 @@ const leaderboardData = {
   ],
 };
 const mockFunction = jest.fn();
+global.scrollTo = jest.fn();
 
 beforeEach(() => {
   mockFunction.mockImplementation((input) => input);

@@ -4,6 +4,7 @@ import gameData from "../../gameData.json";
 import Homepage from "../../pages/Homepage/Homepage";
 
 const mockFunction = jest.fn();
+global.scrollTo = jest.fn();
 
 test("The page renders", () => {
   render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
