@@ -5,8 +5,6 @@ type VersionData = {
 
 type GameData = {
   [version: string]: VersionData;
-  // version2: VersionData;
-  // version3: VersionData;
 };
 
 export { VersionData, GameData };
