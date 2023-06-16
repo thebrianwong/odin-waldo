@@ -140,7 +140,7 @@ test("The modal is closed when the the score is successfully submitted", async (
   //   Promise.resolve(true);
   // });
   const submitMock = jest.fn().mockResolvedValue(true);
-  const closeMock = jest.fn(() => console.log("guy"));
+  const closeMock = jest.fn();
   render(
     <SubmitScoreModal
       timeScore={123}
