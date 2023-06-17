@@ -2,16 +2,15 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import PokemonNameList from "../../components/PokemonNameList/PokemonNameList";
 
-const gameData = { pokemonNames: ["Pichu", "Graveler", "Slaking"] };
+const gameData = {
+  pokemonNames: ["Pichu", "Graveler", "Slaking"],
+  imageDimensions: { width: 0, height: 0 },
+};
 const mockFunction = jest.fn();
 
 test("The component gets rendered", () => {
   render(
-    <PokemonNameList
-      gameData={gameData}
-      gameVersion="version2"
-      handlePickedOption={mockFunction}
-    />
+    <PokemonNameList gameData={gameData} handlePickedOption={mockFunction} />
   );
   const element = screen.getByRole("list");
   expect(element).toBeInTheDocument();
@@ -19,11 +18,7 @@ test("The component gets rendered", () => {
 
 test("There are 3 list items for the 3 Pokemon names", () => {
   render(
-    <PokemonNameList
-      gameData={gameData}
-      gameVersion="version2"
-      handlePickedOption={mockFunction}
-    />
+    <PokemonNameList gameData={gameData} handlePickedOption={mockFunction} />
   );
   const listItems = screen.getAllByRole("listitem");
   expect(listItems.length).toBe(3);
@@ -31,11 +26,7 @@ test("There are 3 list items for the 3 Pokemon names", () => {
 
 test("Each list item has an image and a Pokemon name", () => {
   render(
-    <PokemonNameList
-      gameData={gameData}
-      gameVersion="version2"
-      handlePickedOption={mockFunction}
-    />
+    <PokemonNameList gameData={gameData} handlePickedOption={mockFunction} />
   );
   const listItems = screen.getAllByRole("listitem");
   const pichuItem = listItems[0];
@@ -63,11 +54,7 @@ test("Each list item has an image and a Pokemon name", () => {
 
 test("The list items can handle clicks", () => {
   render(
-    <PokemonNameList
-      gameData={gameData}
-      gameVersion="version2"
-      handlePickedOption={mockFunction}
-    />
+    <PokemonNameList gameData={gameData} handlePickedOption={mockFunction} />
   );
   const listItems = screen.getAllByRole("listitem");
   const pichuItem = listItems[0];
