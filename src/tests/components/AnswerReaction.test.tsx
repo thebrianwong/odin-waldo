@@ -1,14 +1,32 @@
 import { render, screen } from "@testing-library/react";
 import AnswerReaction from "../../components/AnswerReaction/AnswerReaction";
 
+const defaultVisualViewport = {
+  width: 900,
+  height: 900,
+  offsetLeft: 0,
+  offsetTop: 0,
+  pageLeft: 0,
+  pageTop: 0,
+  onresize: jest.fn(),
+  onscroll: jest.fn(),
+  scale: 1,
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  dispatchEvent: jest.fn(),
+};
+global.visualViewport = defaultVisualViewport;
+
 test("The component can be queried via test id", () => {
-  global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 100 }}
       clickPosition={{ x: 100, y: 100 }}
-      gameData={{ imageDimensions: { width: 200, height: 200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 200, height: 200 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -16,13 +34,15 @@ test("The component can be queried via test id", () => {
 });
 
 test("The appropriate image is shown when the answer is correct", () => {
-  global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
       isCorrect={true}
       imagePosition={{ x: 100, y: 100 }}
       clickPosition={{ x: 100, y: 100 }}
-      gameData={{ imageDimensions: { width: 200, height: 200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 200, height: 200 },
+      }}
     />
   );
   const correctImageAltText = screen.getByAltText(
@@ -32,13 +52,15 @@ test("The appropriate image is shown when the answer is correct", () => {
 });
 
 test("The appropriate image is shown when the answer is incorrect", () => {
-  global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 100 }}
       clickPosition={{ x: 100, y: 100 }}
-      gameData={{ imageDimensions: { width: 200, height: 200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 200, height: 200 },
+      }}
     />
   );
   const incorrectImageAltText = screen.getByAltText(
@@ -48,13 +70,15 @@ test("The appropriate image is shown when the answer is incorrect", () => {
 });
 
 test("The component is green when the answer is correct", () => {
-  global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
       isCorrect={true}
       imagePosition={{ x: 100, y: 100 }}
       clickPosition={{ x: 100, y: 100 }}
-      gameData={{ imageDimensions: { width: 200, height: 200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 200, height: 200 },
+      }}
     />
   );
   const correctElement = screen.getByTestId("answer-reaction");
@@ -66,13 +90,15 @@ test("The component is green when the answer is correct", () => {
 });
 
 test("The component is red when the answer is incorrect", () => {
-  global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 100 }}
       clickPosition={{ x: 100, y: 100 }}
-      gameData={{ imageDimensions: { width: 200, height: 200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 200, height: 200 },
+      }}
     />
   );
   const incorrectElement = screen.getByTestId("answer-reaction");
@@ -84,13 +110,15 @@ test("The component is red when the answer is incorrect", () => {
 });
 
 test("The component has the appropriate top styling when not clicking near the image or viewport bottom edge", () => {
-  global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 100 }}
       clickPosition={{ x: 100, y: 100 }}
-      gameData={{ imageDimensions: { width: 1200, height: 1200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1200, height: 1200 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -101,13 +129,20 @@ test("The component has the appropriate top styling when not clicking near the i
 });
 
 test("The component has the appropriate top styling when clicking near the image bottom edge", () => {
-  global.visualViewport = { width: 1900, height: 1900 };
+  global.visualViewport = {
+    ...defaultVisualViewport,
+    width: 1900,
+    height: 1900,
+  };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 1100 }}
       clickPosition={{ x: 100, y: 1100 }}
-      gameData={{ imageDimensions: { width: 1200, height: 1200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1200, height: 1200 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -118,13 +153,21 @@ test("The component has the appropriate top styling when clicking near the image
 });
 
 test("The component has the appropriate top styling when clicking near the viewport bottom edge", () => {
-  global.visualViewport = { width: 900, height: 900, offsetTop: 0 };
+  global.visualViewport = {
+    ...defaultVisualViewport,
+    width: 900,
+    height: 900,
+    offsetTop: 0,
+  };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 850 }}
       clickPosition={{ x: 100, y: 850 }}
-      gameData={{ imageDimensions: { width: 1600, height: 1600 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1600, height: 1600 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -135,13 +178,21 @@ test("The component has the appropriate top styling when clicking near the viewp
 });
 
 test("Scrolling down the page does not affect top styling when clicking near the viewport bottom edge", () => {
-  global.visualViewport = { width: 900, height: 900, offsetTop: 150 };
+  global.visualViewport = {
+    ...defaultVisualViewport,
+    width: 900,
+    height: 900,
+    offsetTop: 150,
+  };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 850 }}
       clickPosition={{ x: 100, y: 1000 }}
-      gameData={{ imageDimensions: { width: 1600, height: 1600 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1600, height: 1600 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -152,13 +203,15 @@ test("Scrolling down the page does not affect top styling when clicking near the
 });
 
 test("The component has the appropriate left styling when not clicking near the image or viewport right edge", () => {
-  global.visualViewport = { width: 900, height: 900 };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 100, y: 100 }}
       clickPosition={{ x: 100, y: 100 }}
-      gameData={{ imageDimensions: { width: 1200, height: 1200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1200, height: 1200 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -169,13 +222,20 @@ test("The component has the appropriate left styling when not clicking near the 
 });
 
 test("The component has the appropriate left styling when clicking near the image right edge", () => {
-  global.visualViewport = { width: 1900, height: 1900 };
+  global.visualViewport = {
+    ...defaultVisualViewport,
+    width: 1900,
+    height: 1900,
+  };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 1100, y: 100 }}
       clickPosition={{ x: 1100, y: 100 }}
-      gameData={{ imageDimensions: { width: 1200, height: 1200 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1200, height: 1200 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -186,13 +246,21 @@ test("The component has the appropriate left styling when clicking near the imag
 });
 
 test("The component has the appropriate left styling when clicking near the viewport right edge", () => {
-  global.visualViewport = { width: 900, height: 900, pageLeft: 0 };
+  global.visualViewport = {
+    ...defaultVisualViewport,
+    width: 900,
+    height: 900,
+    pageLeft: 0,
+  };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 850, y: 100 }}
       clickPosition={{ x: 850, y: 100 }}
-      gameData={{ imageDimensions: { width: 1600, height: 1600 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1600, height: 1600 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
@@ -203,13 +271,21 @@ test("The component has the appropriate left styling when clicking near the view
 });
 
 test("Scrolling down the page does not affect left styling when clicking near the viewport right edge", () => {
-  global.visualViewport = { width: 900, height: 900, pageLeft: 150 };
+  global.visualViewport = {
+    ...defaultVisualViewport,
+    width: 900,
+    height: 900,
+    pageLeft: 150,
+  };
   render(
     <AnswerReaction
       isCorrect={false}
       imagePosition={{ x: 850, y: 100 }}
       clickPosition={{ x: 1000, y: 100 }}
-      gameData={{ imageDimensions: { width: 1600, height: 1600 } }}
+      gameData={{
+        pokemonNames: ["Pikachu"],
+        imageDimensions: { width: 1600, height: 1600 },
+      }}
     />
   );
   const element = screen.getByTestId("answer-reaction");
