@@ -149,7 +149,7 @@ test("The select menu defaults to the initialGameVersion prop value", () => {
     />,
     { wrapper: BrowserRouter }
   );
-  const selectMenu = screen.getByTestId("select-menu");
+  const selectMenu: HTMLSelectElement = screen.getByTestId("select-menu");
   const selectOption = screen.getByRole("option", { name: "Hard" });
   expect(selectMenu.value).toBe("version2");
   expect(selectOption).toBeInTheDocument();
@@ -203,7 +203,7 @@ test("The table is populated with corresponding difficulty entries sorted from l
     { wrapper: BrowserRouter }
   );
   const tableBody = screen.queryByTestId("table-body");
-  const scoreEntries = within(tableBody).getAllByRole("row");
+  const scoreEntries = within(tableBody!).getAllByRole("row");
   const firstRowCells = within(scoreEntries[0]).getAllByRole("cell");
   const secondRowCells = within(scoreEntries[1]).getAllByRole("cell");
   const thirdRowCells = within(scoreEntries[2]).getAllByRole("cell");
@@ -248,7 +248,7 @@ test("The table entries change when a new difficulty is chosen", () => {
     { wrapper: BrowserRouter }
   );
   const tableBody = screen.queryByTestId("table-body");
-  const scoreEntries = within(tableBody).getAllByRole("row");
+  const scoreEntries = within(tableBody!).getAllByRole("row");
   const firstRowCells = within(scoreEntries[0]).getAllByRole("cell");
   const secondRowCells = within(scoreEntries[1]).getAllByRole("cell");
   const thirdRowCells = within(scoreEntries[2]).getAllByRole("cell");
