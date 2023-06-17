@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 
-const gameData = { pokemonNames: ["Pichu", "Graveler", "Slaking"] };
+const gameData = {
+  pokemonNames: ["Pichu", "Graveler", "Slaking"],
+  imageDimensions: { width: 0, height: 0 },
+};
 
 test("The component is rendered", () => {
   render(
