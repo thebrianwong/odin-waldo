@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
-import gameData from "../../gameData";
+import gameData from "../../gameData.json";
 import Game from "../../pages/Game/Game";
 
 const validationData = {
@@ -69,7 +69,21 @@ const validationData = {
 };
 const mockFunction = jest.fn();
 global.scrollTo = jest.fn();
-global.visualViewport = { width: 900, height: 900 };
+const defaultVisualViewport = {
+  width: 900,
+  height: 900,
+  offsetLeft: 0,
+  offsetTop: 0,
+  pageLeft: 0,
+  pageTop: 0,
+  onresize: jest.fn(),
+  onscroll: jest.fn(),
+  scale: 1,
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  dispatchEvent: jest.fn(),
+};
+global.visualViewport = defaultVisualViewport;
 
 test("The page renders", () => {
   render(
