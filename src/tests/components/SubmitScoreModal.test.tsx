@@ -135,10 +135,6 @@ test("The score can be submitted in 3 ways", () => {
 });
 
 test("The modal is closed when the the score is successfully submitted", async () => {
-  // const submitMock = jest.fn(() => {
-  //   // return true;
-  //   Promise.resolve(true);
-  // });
   const submitMock = jest.fn().mockResolvedValue(true);
   const closeMock = jest.fn();
   render(
@@ -158,10 +154,8 @@ test("The modal is closed when the the score is successfully submitted", async (
   expect(closeMock).toBeCalledTimes(1);
 });
 
-test("The modal is not closed if the score is not submitted successfully", () => {
-  const submitMock = jest.fn(() => {
-    return false;
-  });
+test("The modal is not closed if the score is not submitted successfully", async () => {
+  const submitMock = jest.fn().mockResolvedValue(false);
   const closeMock = jest.fn();
   render(
     <SubmitScoreModal
@@ -176,5 +170,6 @@ test("The modal is not closed if the score is not submitted successfully", () =>
     userEvent.click(submitButton);
   });
   expect(submitMock).toBeCalledTimes(1);
+  await new Promise(process.nextTick);
   expect(closeMock).not.toBeCalled();
 });
