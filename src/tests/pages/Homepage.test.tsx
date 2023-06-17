@@ -37,14 +37,13 @@ test("The footer contains all expected elements", () => {
   );
   const link1 = screen.getByRole("link", {
     name: "Burn The Internet",
-    link: "http://www.burntheinternet.com/p/the-impostor-minineko-pokedex.html",
   });
   const link2 = screen.getByRole("link", {
     name: "Davi Andrade",
-    link: "https://www.deviantart.com/davi-1",
   });
   expect(credits).toBeInTheDocument();
   expect(link1).toBeInTheDocument();
+  expect(link2).toBeInTheDocument();
 });
 
 test("There are 3 buttons for each game version", () => {
