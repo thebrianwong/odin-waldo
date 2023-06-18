@@ -1,0 +1,64 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.homepage {
+  @include flex(normal, center, 0, column);
+  padding: 10px;
+
+  .slogan {
+    font-family: $pokemon-font;
+    font-size: xx-large;
+    color: $pokemon-logo-yellow;
+    text-shadow: 0 -1px $pokemon-logo-blue, 1px 0 $pokemon-logo-blue,
+      0 1px $pokemon-logo-blue, -1px 0 $pokemon-logo-blue;
+    line-height: 60px;
+    margin: 0 0 20px;
+  }
+
+  .homepage-instructions {
+    @include flex(normal, center, 0, column);
+    margin: 0 10px 20px;
+    padding: 10px;
+  }
+
+  .homepage-game-options-container {
+    @include flex(center, normal, 30px, wrap);
+    margin-bottom: 30px;
+
+    .homepage-game-option-button {
+      background-color: $pokemon-logo-yellow;
+      border: solid 4px $pokemon-logo-blue;
+      border-radius: 8px;
+      padding: 0 0 15px;
+      width: 90vw;
+      max-width: 500px;
+
+      .homepage-preview-image {
+        width: 100%;
+      }
+
+      .homepage-game-option-difficulty {
+        font-size: larger;
+        font-weight: 600;
+      }
+
+      .name-list {
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+
+        .homepage-game-option-button .name-list-entry {
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+        }
+      }
+    }
+  }
+
+  .credits {
+    margin: 0 10px 30px;
+    padding: 0 10px;
+  }
+}
