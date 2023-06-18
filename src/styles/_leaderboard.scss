@@ -1,0 +1,51 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.leaderboard-page {
+  @include flex(normal, center, 0, column);
+  min-height: 100vh;
+  padding: 10px 10px 30px;
+
+  .leaderboard-contents {
+    border-radius: 8px;
+    width: 85vw;
+    max-width: 600px;
+    padding: 10px;
+
+    .leaderboard-difficulty-container {
+      @include flex(space-around, center, 0, row);
+
+      .leaderboard-difficulty-select-label {
+        text-align: end;
+
+        .leaderboard-difficulty-select {
+          background-color: $pokemon-logo-yellow;
+          color: $pokemon-logo-blue;
+          border-color: $pokemon-logo-blue;
+
+          &:focus-visible {
+            outline-color: darkgray;
+          }
+        }
+      }
+    }
+
+    .leaderboard-score-table-container {
+      overflow-x: auto;
+
+      .leaderboard-score-table {
+        width: 100%;
+
+        th {
+          border-bottom: solid 2px black;
+          padding-right: 5px;
+          padding-bottom: 15px;
+        }
+
+        td {
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+}
