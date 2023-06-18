@@ -56,7 +56,7 @@ button:hover,
 }
 
 .name-list-entry {
-  @include flex(center, center, 5, row);
+  @include flex(center, center, 5px, row);
   flex: 1;
   height: 35px;
 }
