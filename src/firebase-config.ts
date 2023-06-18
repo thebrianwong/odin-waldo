@@ -5,6 +5,7 @@ const firebaseConfig = {
   storageBucket: "odin-waldo-4b76b.appspot.com",
   messagingSenderId: "758633860201",
   appId: "1:758633860201:web:4e03d8d7abcf41383726f8",
+  measurementId: "G-YCZK5NH5HX",
 };
 
 export function getFirebaseConfig() {

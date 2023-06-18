@@ -5,6 +5,7 @@ import Game from "./pages/Game/Game";
 import Leaderboard from "./pages/Leaderboard/Leaderboard";
 import data from "./gameData.json";
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import {
   addDoc,
   collection,
@@ -34,6 +35,7 @@ function App() {
 
   const firebaseConfig = getFirebaseConfig();
   const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
   const db = getFirestore(app);
   const locationsRef = doc(db, "pokemon-locations", "c7mMQDMECrbbBIQ7HxlC");
   const version1Query = query(collectionGroup(db, "leaderboard-version1"));
