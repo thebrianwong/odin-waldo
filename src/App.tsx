@@ -20,8 +20,7 @@ import {
 } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball/LoadingPokeball";
-import "./styles/normalize.css";
-import "./styles/styles.css";
+import "./styles/styles.scss";
 import { TotalValidationData } from "./types/validationData.type";
 import {
   LeaderboardEntry,

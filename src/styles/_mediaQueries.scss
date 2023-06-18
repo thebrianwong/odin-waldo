@@ -1,0 +1,36 @@
+@use "./mixins" as *;
+
+@media (max-width: 450px) {
+  .game-navbar {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 580px) {
+  .modal-background .modal .modal-form {
+    flex-direction: column;
+  }
+  .modal-background .modal .modal-form .modal-label:first-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .game-page-version2,
+  .game-page-version3 {
+    @include flex(normal, center, 0, column);
+  }
+  .game-page-version2 .game-image,
+  .game-page-version3 .game-image {
+    box-shadow: 1px 0 4px lightgray, -1px 0 4px lightgray;
+  }
+}
+
+@media (min-width: 2560px) {
+  .game-page-version1 {
+    @include flex(normal, center, 0, column);
+  }
+  .game-page-version1 .game-image {
+    box-shadow: 1px 0 4px lightgray, -1px 0 4px lightgray;
+  }
+}
