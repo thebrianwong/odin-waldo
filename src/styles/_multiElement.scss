@@ -1,0 +1,85 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.pokemon-logo {
+  width: 30vw;
+  min-width: 300px;
+}
+
+button:hover,
+.pokemon-logo:hover {
+  transform: scale(1.05);
+}
+
+.slogan,
+.homepage-instructions,
+.credits,
+.leaderboard-contents {
+  background-color: $background-gray;
+  border: solid 4px darkgray;
+  border-radius: 8px;
+}
+
+.nav-button-container {
+  align-self: flex-end;
+}
+
+.homepage .nav-button,
+.leaderboard-page .nav-button {
+  height: 50px;
+  margin: 10px;
+}
+
+.nav-button,
+.modal-submit-button {
+  background: linear-gradient(to bottom, red, black, white);
+  color: white;
+  border: solid 2px black;
+  border-radius: 20px;
+}
+.nav-button:hover,
+.modal-submit-button:hover {
+  filter: grayscale(30%);
+}
+
+.nav-button:active,
+.modal-submit-button:active {
+  filter: grayscale(60%);
+}
+
+.name-list {
+  @include flex(normal, normal, 5px, column wrap);
+  padding: 0;
+  margin: 0;
+  height: 150px;
+  width: 125px;
+}
+
+.name-list-entry {
+  @include flex(center, center, 5, row);
+  flex: 1;
+  height: 35px;
+}
+
+.loading-pokeball-container {
+  @include flex(flex-start, center, 0, column);
+  margin-top: 15vh;
+}
+
+@keyframes pokeball-rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-pokeball {
+  animation-name: pokeball-rotate;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  width: 40vw;
+}
