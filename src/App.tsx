@@ -58,7 +58,7 @@ function App() {
       }
     };
     getValidationData();
-  }, [locationsRef]);
+  }, []);
 
   useEffect(() => {
     const getLeaderboardData = () => {
