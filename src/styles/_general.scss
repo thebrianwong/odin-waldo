@@ -1,0 +1,14 @@
+:root {
+  font-family: "Roboto Slab", serif;
+  text-align: center;
+}
+
+#root {
+  background-image: url("../assets/images/misc/kanto_map.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+button:hover {
+  cursor: pointer;
+}

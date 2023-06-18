@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Pokemon";
+  src: local("Pokemon_Solid"),
+    url("../assets/fonts/Pokemon_Solid.ttf") format("truetype");
+}
+
+$pokemon-logo-blue: rgb(42, 117, 187);
+$pokemon-logo-yellow: rgb(255, 203, 5);
+$background-gray: rgba(211, 211, 211, 0.75);
+$pokemon-font: Pokemon;

@@ -1,0 +1,23 @@
+.dropdown-menu {
+  position: absolute;
+  background-color: rgba(211, 211, 211, 0.78);
+  border: solid 2px darkgray;
+
+  .name-list-entry {
+    justify-content: flex-start;
+
+    &:hover {
+      background-color: rgba(150, 150, 150, 0.78);
+      cursor: pointer;
+
+      .name-list-sprite,
+      .name-list-name {
+        transform: scale((1.05));
+      }
+    }
+  }
+
+  .name-list-sprite {
+    margin-left: 10px;
+  }
+}

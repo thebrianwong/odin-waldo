@@ -13,6 +13,13 @@ jest.mock("firebase/app", () => {
   return { initializeApp: mInitializeApp };
 });
 
+jest.mock("firebase/analytics", () => {
+  const mGetAnalytics = () => true;
+  return {
+    getAnalytics: mGetAnalytics,
+  };
+});
+
 jest.mock("firebase/firestore", () => {
   const mDocSnap = {
     exists: () => {

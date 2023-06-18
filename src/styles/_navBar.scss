@@ -1,0 +1,32 @@
+@use "./mixins" as *;
+
+.game-navbar {
+  @include flex(space-evenly, center, 0, row);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: whitesmoke;
+  overflow-x: auto;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px darkgray;
+  height: 10vh;
+  width: 100vw;
+  z-index: 2;
+
+  .nav-home {
+    margin-left: 15px;
+  }
+
+  .game-navbar-sprite {
+    height: 9vh;
+  }
+
+  .nav-timer {
+    margin-right: 15px;
+    width: 90px;
+  }
+
+  .nav-leaderboard {
+    margin-right: 15px;
+  }
+}

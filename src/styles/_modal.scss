@@ -1,0 +1,53 @@
+@use "./mixins" as *;
+
+.modal-background {
+  @include flex(center, center, 0, row);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modal {
+    @include flex(normal, center, 0, column);
+    background-color: white;
+    border: solid 6px lightgray;
+    border-radius: 8px;
+    width: 85vw;
+    max-width: 500px;
+    padding: 10px;
+
+    .modal-close-button {
+      align-self: end;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .modal-score {
+      margin-top: 0;
+    }
+
+    .modal-form {
+      @include flex(normal, normal, 15px, row);
+
+      .modal-label {
+        @include flex(normal, normal, 5px, column);
+        margin-bottom: 20px;
+
+        p {
+          margin: 0;
+        }
+
+        .modal-label-optional {
+          font-size: small;
+        }
+      }
+
+      .modal-input::placeholder {
+        font-style: italic;
+      }
+    }
+  }
+}
