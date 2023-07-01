@@ -48,6 +48,23 @@ function App() {
     useState<LeaderboardTotal | null>(null);
 
   useEffect(() => {
+    try {
+      const leaderboardWebsocket = new WebSocket("ws://localhost:3000/");
+      leaderboardWebsocket.addEventListener(
+        "message",
+        async (newLeaderboardData) => {
+          const parsedLeaderboardData = await JSON.parse(
+            newLeaderboardData.data
+          );
+          setLeaderboardData(parsedLeaderboardData);
+        }
+      );
+    } catch (err) {
+      console.error(`There was an error. Try refreshing the page. ${err}`);
+    }
+  }, []);
+
+  useEffect(() => {
     const getValidationData = async () => {
       const docSnap = await getDoc(locationsRef);
       if (docSnap.exists()) {
