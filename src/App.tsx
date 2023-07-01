@@ -90,11 +90,17 @@ function App() {
 
   useEffect(() => {
     const getLeaderboardData = async () => {
-      const rawLeaderboardData = await fetch(
-        "http://localhost:3000/api/leaderboard"
-      );
-      const parsedLeaderboardData = await rawLeaderboardData.json();
-      setLeaderboardData(parsedLeaderboardData);
+      try {
+        const rawLeaderboardData = await fetch(
+          "http://localhost:3000/api/leaderboard"
+        );
+        const parsedLeaderboardData = await rawLeaderboardData.json();
+        setLeaderboardData(parsedLeaderboardData);
+      } catch (err) {
+        console.error(
+          "There was an error loading the game. Try refreshing the page!"
+        );
+      }
     };
     getLeaderboardData();
   }, []);
