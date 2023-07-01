@@ -2,6 +2,7 @@
 
 .modal-background {
   @include flex(center, center, 0, row);
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
