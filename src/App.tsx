@@ -89,24 +89,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const getLeaderboardData = () => {
-      const leaderboardQuery = [version1Query, version2Query, version3Query];
-      const leaderboardScoresData = {} as LeaderboardTotal;
-      leaderboardQuery.forEach((versionQuery, index) => {
-        onSnapshot(versionQuery, (snapshot) => {
-          const versionData: DocumentData[] = [];
-          snapshot.docs.forEach((doc) => {
-            const leaderboardEntry = doc.data();
-            leaderboardEntry.timeStamp = leaderboardEntry.timeStamp
-              .toDate()
-              .toDateString();
-            versionData.push(leaderboardEntry);
-          });
-          leaderboardScoresData[`version${index + 1}`] =
-            versionData as Array<LeaderboardEntry>;
-        });
-      });
-      setLeaderboardData(leaderboardScoresData as LeaderboardTotal);
+    const getLeaderboardData = async () => {
+      const rawLeaderboardData = await fetch(
+        "http://localhost:3000/api/leaderboard"
+      );
+      const parsedLeaderboardData = await rawLeaderboardData.json();
+      setLeaderboardData(parsedLeaderboardData);
     };
     getLeaderboardData();
   }, []);
