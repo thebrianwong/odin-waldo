@@ -46,19 +46,23 @@ function App() {
     useState<TotalValidationData | null>(null);
   const [leaderboardData, setLeaderboardData] =
     useState<LeaderboardTotal | null>(null);
+  const [websocket, setWebsocket] = useState<WebSocket | null>(null);
 
   useEffect(() => {
     try {
-      const leaderboardWebsocket = new WebSocket("ws://localhost:3000/");
-      leaderboardWebsocket.addEventListener(
-        "message",
-        async (newLeaderboardData) => {
-          const parsedLeaderboardData = await JSON.parse(
-            newLeaderboardData.data
-          );
-          setLeaderboardData(parsedLeaderboardData);
-        }
-      );
+      if (!websocket) {
+        const leaderboardWebsocket = new WebSocket("ws://localhost:3000/");
+        setWebsocket(leaderboardWebsocket);
+        leaderboardWebsocket.addEventListener(
+          "message",
+          async (newLeaderboardData) => {
+            const parsedLeaderboardData: LeaderboardTotal = await JSON.parse(
+              newLeaderboardData.data
+            );
+            setLeaderboardData(parsedLeaderboardData);
+          }
+        );
+      }
     } catch (err) {
       console.error(
         "There was an error loading the game. Try refreshing the page!"
