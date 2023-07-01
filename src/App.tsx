@@ -60,16 +60,22 @@ function App() {
         }
       );
     } catch (err) {
-      console.error(`There was an error. Try refreshing the page. ${err}`);
+      console.error(
+        "There was an error loading the game. Try refreshing the page!"
+      );
     }
   }, []);
 
   useEffect(() => {
     const getValidationData = async () => {
-      const docSnap = await getDoc(locationsRef);
-      if (docSnap.exists()) {
-        setValidationData(docSnap.data() as TotalValidationData);
-      } else {
+      try {
+        const rawValidationData = await fetch(
+          "http://localhost:3000/api/pokemonLocation"
+        );
+        const parsedValidationData: TotalValidationData =
+          await rawValidationData.json();
+        setValidationData(parsedValidationData);
+      } catch (err) {
         console.error(
           "There was an error loading the game. Try refreshing the page!"
         );
