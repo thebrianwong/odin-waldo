@@ -4,6 +4,7 @@ import SubmitScoreModalProps from "./type";
 const SubmitScoreModal = ({
   timeScore,
   displayTime,
+  gameVersion,
   submitScore,
   closeModal,
 }: SubmitScoreModalProps) => {
@@ -20,7 +21,8 @@ const SubmitScoreModal = ({
     const successfulSubmit = await submitScore(
       timeScore,
       name,
-      favoritePokemon
+      favoritePokemon,
+      gameVersion
     );
     if (successfulSubmit) {
       closeModal();

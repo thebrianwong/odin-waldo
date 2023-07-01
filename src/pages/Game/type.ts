@@ -11,7 +11,8 @@ type GameProps = {
   submitScore: (
     timeInMilliseconds: number,
     playerName: string,
-    playerFavoritePokemon: string
+    playerFavoritePokemon: string,
+    gameVersion: GameVersion
   ) => Promise<boolean>;
 };
 

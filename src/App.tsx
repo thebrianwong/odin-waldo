@@ -140,7 +140,8 @@ function App() {
   const submitScore = async (
     timeInMilliseconds: number,
     playerName: string,
-    playerFavoritePokemon: string
+    playerFavoritePokemon: string,
+    gameVersion: GameVersion
   ) => {
     try {
       await addDoc(collection(db, `leaderboard-${gameVersion}`), {
@@ -148,6 +149,7 @@ function App() {
         score: timeInMilliseconds,
         favoritePokemon: checkForEmptyFavoritePokemon(playerFavoritePokemon),
         timeStamp: Timestamp.now(),
+        gameVersion,
       });
       return true;
     } catch (e) {
