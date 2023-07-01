@@ -198,7 +198,7 @@ function App() {
             }
           />
           <Route
-            path="leaderboard"
+            path="/leaderboard"
             element={
               leaderboardData && Object.keys(leaderboardData).length > 0 ? (
                 <Leaderboard
