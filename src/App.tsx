@@ -10,10 +10,7 @@ import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball/LoadingPokeball";
 import "./styles/styles.scss";
 import { TotalValidationData } from "./types/validationData.type";
-import {
-  LeaderboardEntry,
-  LeaderboardTotal,
-} from "./types/leaderboardData.type";
+import { LeaderboardTotal } from "./types/leaderboardData.type";
 import { GameData } from "./types/pokemonData.type";
 import GameVersion from "./types/gameVersion.type";
 import SubmissionResponse from "./types/submissionResponse.type";
