@@ -6,18 +6,6 @@ import Leaderboard from "./pages/Leaderboard/Leaderboard";
 import data from "./gameData.json";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {
-  addDoc,
-  collection,
-  collectionGroup,
-  doc,
-  DocumentData,
-  getDoc,
-  getFirestore,
-  onSnapshot,
-  query,
-  Timestamp,
-} from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config";
 import LoadingPokeball from "./components/LoadingPokeball/LoadingPokeball";
 import "./styles/styles.scss";
@@ -28,6 +16,7 @@ import {
 } from "./types/leaderboardData.type";
 import { GameData } from "./types/pokemonData.type";
 import GameVersion from "./types/gameVersion.type";
+import SubmissionResponse from "./types/submissionResponse.type";
 
 function App() {
   const gameData = data as GameData;
@@ -35,11 +24,6 @@ function App() {
   const firebaseConfig = getFirebaseConfig();
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-  const db = getFirestore(app);
-  const locationsRef = doc(db, "pokemon-locations", "c7mMQDMECrbbBIQ7HxlC");
-  const version1Query = query(collectionGroup(db, "leaderboard-version1"));
-  const version2Query = query(collectionGroup(db, "leaderboard-version2"));
-  const version3Query = query(collectionGroup(db, "leaderboard-version3"));
 
   const [gameVersion, setGameVersion] = useState<GameVersion>("version1");
   const [validationData, setValidationData] =
@@ -148,19 +132,34 @@ function App() {
     playerName: string,
     playerFavoritePokemon: string,
     gameVersion: GameVersion
-  ) => {
+  ): Promise<SubmissionResponse> => {
     try {
-      await addDoc(collection(db, `leaderboard-${gameVersion}`), {
+      const data = {
         name: checkForEmptyName(playerName),
-        score: timeInMilliseconds,
+        score: timeInMilliseconds.toString(),
         favoritePokemon: checkForEmptyFavoritePokemon(playerFavoritePokemon),
-        timeStamp: Timestamp.now(),
+        timeStamp: new Date().toISOString().toString(),
         gameVersion,
-      });
-      return true;
+      };
+      const bodyString = new URLSearchParams(data).toString();
+      const scoreSubmission = await fetch(
+        "http://localhost:3000/api/leaderboard/new",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: bodyString,
+        }
+      );
+      const parsedResponse: SubmissionResponse = await scoreSubmission.json();
+      return parsedResponse;
     } catch (e) {
       console.error("There was an error submitting your score. Try again!");
-      return false;
+      return {
+        success: false,
+        message: ["There is an error with the server. Please try again!"],
+      };
     }
   };
 
