@@ -1,4 +1,5 @@
 import GameVersion from "../../types/gameVersion.type";
+import SubmissionResponse from "../../types/submissionResponse.type";
 
 type SubmitScoreModalProps = {
   timeScore: number;
@@ -9,7 +10,7 @@ type SubmitScoreModalProps = {
     playerName: string,
     playerFavoritePokemon: string,
     gameVersion: GameVersion
-  ) => Promise<boolean>;
+  ) => Promise<SubmissionResponse>;
   closeModal: () => void;
 };
 
