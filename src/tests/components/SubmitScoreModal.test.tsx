@@ -116,7 +116,7 @@ test("The modal does not close when clicked due to propagation", () => {
 });
 
 test("The score can be submitted in 3 ways", () => {
-  const submitMock = jest.fn();
+  const submitMock = jest.fn().mockReturnValue({ success: true });
   render(
     <SubmitScoreModal
       timeScore={123}
@@ -142,7 +142,7 @@ test("The score can be submitted in 3 ways", () => {
 });
 
 test("The modal is closed when the the score is successfully submitted", async () => {
-  const submitMock = jest.fn().mockResolvedValue(true);
+  const submitMock = jest.fn().mockResolvedValue({ success: true });
   const closeMock = jest.fn();
   render(
     <SubmitScoreModal
@@ -163,7 +163,9 @@ test("The modal is closed when the the score is successfully submitted", async (
 });
 
 test("The modal is not closed if the score is not submitted successfully", async () => {
-  const submitMock = jest.fn().mockResolvedValue(false);
+  const submitMock = jest
+    .fn()
+    .mockResolvedValue({ success: false, message: "Error message" });
   const closeMock = jest.fn();
   render(
     <SubmitScoreModal
