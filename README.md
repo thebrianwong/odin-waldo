@@ -14,4 +14,5 @@ Try to get the quickest time in all 3 levels!
 
 This project was originally written with JavaScript and CSS, then converted to TypeScript and SASS/SCSS.
 
-This app was deployed using Firebase. It can be found and played with by navigating to [this link](https://odin-waldo-4b76b.web.app/).
+Additionally, it was originally deployed using Firebase, then converted to using an Express backend with MongoDB deployed on Render.
+It can be found and played [here](https://waldo-frontend.onrender.com/).
