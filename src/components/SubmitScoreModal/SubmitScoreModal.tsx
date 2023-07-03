@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import SubmitScoreModalProps from "./type";
+import SubmissionResponse from "../../types/submissionResponse.type";
 
 const SubmitScoreModal = ({
   timeScore,
   displayTime,
+  gameVersion,
   submitScore,
   closeModal,
 }: SubmitScoreModalProps) => {
@@ -11,19 +13,23 @@ const SubmitScoreModal = ({
 
   const [name, setName] = useState<string>("");
   const [favoritePokemon, setFavoritePokemon] = useState<string>("");
+  const [formErrors, setFormErrors] = useState<Array<string> | null>(null);
 
   useEffect(() => {
     nameInputRef.current!.focus();
   }, []);
 
   const attemptSubmit = async () => {
-    const successfulSubmit = await submitScore(
+    const submissionResponse: SubmissionResponse = await submitScore(
       timeScore,
       name,
-      favoritePokemon
+      favoritePokemon,
+      gameVersion
     );
-    if (successfulSubmit) {
+    if (submissionResponse.success) {
       closeModal();
+    } else {
+      setFormErrors(submissionResponse.message!);
     }
   };
 
@@ -48,6 +54,22 @@ const SubmitScoreModal = ({
         </button>
         <h1 className="modal-congrats">You Found All of the Pokemon!</h1>
         <p className="modal-score">Score: {displayTime}</p>
+        {formErrors && (
+          <div className="form-error">
+            <h2 className="form-error-title">
+              Something's wrong with your submission!
+            </h2>
+            <ul>
+              {formErrors.map((error) => {
+                return (
+                  <li key={error} className="form-error-specific">
+                    {error}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
         <form className="modal-form">
           <label className="modal-label" htmlFor="name">
             <p>

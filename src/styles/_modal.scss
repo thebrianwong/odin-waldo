@@ -30,6 +30,23 @@
       margin-top: 0;
     }
 
+    .form-error {
+      margin-top: -16px;
+
+      .form-error-title {
+        font-style: italic;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        .form-error-specific {
+          color: #ff0033;
+        }
+      }
+    }
+
     .modal-form {
       @include flex(normal, normal, 15px, row);
 

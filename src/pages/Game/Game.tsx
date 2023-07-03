@@ -249,6 +249,7 @@ const Game = ({
         <SubmitScoreModal
           timeScore={currentTime! - startTime!}
           displayTime={formatTime(currentTime! - startTime!)}
+          gameVersion={gameVersion}
           submitScore={submitScore}
           closeModal={() => setDisplayModal(false)}
         />
