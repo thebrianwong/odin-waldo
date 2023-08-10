@@ -32,7 +32,9 @@ function App() {
   useEffect(() => {
     try {
       if (!websocket) {
-        const leaderboardWebsocket = new WebSocket("ws://localhost:3000/");
+        const leaderboardWebsocket = new WebSocket(
+          `wss://${process.env.REACT_APP_BACKEND_API_DOMAIN}/`
+        );
         setWebsocket(leaderboardWebsocket);
         leaderboardWebsocket.addEventListener(
           "message",
@@ -55,7 +57,7 @@ function App() {
     const getValidationData = async () => {
       try {
         const rawValidationData = await fetch(
-          `${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/pokemonLocation`
+          `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/pokemonLocation`
         );
         const parsedValidationData: TotalValidationData =
           await rawValidationData.json();
@@ -73,7 +75,7 @@ function App() {
     const getLeaderboardData = async () => {
       try {
         const rawLeaderboardData = await fetch(
-          `${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard`
+          `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard`
         );
         const parsedLeaderboardData = await rawLeaderboardData.json();
         setLeaderboardData(parsedLeaderboardData);
@@ -140,7 +142,7 @@ function App() {
       };
       const bodyString = new URLSearchParams(data).toString();
       const scoreSubmission = await fetch(
-        `${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard/new`,
+        `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard/new`,
         {
           method: "POST",
           headers: {
