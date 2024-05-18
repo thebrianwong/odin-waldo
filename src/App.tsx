@@ -33,7 +33,7 @@ function App() {
     try {
       if (!websocket) {
         const leaderboardWebsocket = new WebSocket(
-          `wss://${process.env.REACT_APP_BACKEND_API_DOMAIN}/`
+          process.env.REACT_APP_API_GATEWAY_WSS_ENDPOINT!
         );
         setWebsocket(leaderboardWebsocket);
         leaderboardWebsocket.addEventListener(
@@ -57,12 +57,18 @@ function App() {
     const getValidationData = async () => {
       try {
         const rawValidationData = await fetch(
-          `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/pokemonLocation`
+          `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/location`,
+          {
+            headers: {
+              "x-api-key": process.env.REACT_APP_X_API_KEY!,
+            },
+          }
         );
         const parsedValidationData: TotalValidationData =
           await rawValidationData.json();
         setValidationData(parsedValidationData);
       } catch (err) {
+        console.log(err);
         console.error(
           "There was an error loading the game. Try refreshing the page!"
         );
