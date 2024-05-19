@@ -2,7 +2,7 @@ type LeaderboardEntry = {
   favoritePokemon: string;
   name: string;
   score: number;
-  timeStamp: string;
+  timeStamp: string | number;
 };
 
 type LeaderboardTotal = {

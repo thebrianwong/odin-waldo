@@ -33,7 +33,7 @@ function App() {
     try {
       if (!websocket) {
         const leaderboardWebsocket = new WebSocket(
-          `wss://${process.env.REACT_APP_BACKEND_API_DOMAIN}/`
+          process.env.REACT_APP_API_GATEWAY_WSS_ENDPOINT!
         );
         setWebsocket(leaderboardWebsocket);
         leaderboardWebsocket.addEventListener(
@@ -42,7 +42,10 @@ function App() {
             const parsedLeaderboardData: LeaderboardTotal = await JSON.parse(
               newLeaderboardData.data
             );
-            setLeaderboardData(parsedLeaderboardData);
+            const formattedLeaderboardData = formatLeaderboardDates(
+              parsedLeaderboardData
+            );
+            setLeaderboardData(formattedLeaderboardData);
           }
         );
       }
@@ -57,12 +60,18 @@ function App() {
     const getValidationData = async () => {
       try {
         const rawValidationData = await fetch(
-          `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/pokemonLocation`
+          `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/location`,
+          {
+            headers: {
+              "x-api-key": process.env.REACT_APP_X_API_KEY!,
+            },
+          }
         );
         const parsedValidationData: TotalValidationData =
           await rawValidationData.json();
         setValidationData(parsedValidationData);
       } catch (err) {
+        console.log(err);
         console.error(
           "There was an error loading the game. Try refreshing the page!"
         );
@@ -75,10 +84,19 @@ function App() {
     const getLeaderboardData = async () => {
       try {
         const rawLeaderboardData = await fetch(
-          `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard`
+          `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
+          {
+            headers: {
+              "x-api-key": process.env.REACT_APP_X_API_KEY!,
+            },
+          }
         );
-        const parsedLeaderboardData = await rawLeaderboardData.json();
-        setLeaderboardData(parsedLeaderboardData);
+        const parsedLeaderboardData: LeaderboardTotal =
+          await rawLeaderboardData.json();
+        const formattedLeaderboardData = formatLeaderboardDates(
+          parsedLeaderboardData
+        );
+        setLeaderboardData(formattedLeaderboardData);
       } catch (err) {
         console.error(
           "There was an error loading the game. Try refreshing the page!"
@@ -87,6 +105,20 @@ function App() {
     };
     getLeaderboardData();
   }, []);
+
+  const formatLeaderboardDates = (data: LeaderboardTotal) => {
+    const formattedData = { ...data };
+    const versions = Object.keys(formattedData);
+    versions.forEach((version) => {
+      const versionEntries = formattedData[version];
+      versionEntries.forEach((entry) => {
+        const utcTime = new Date(entry.timeStamp).toUTCString();
+        const timeWithoutTimezone = utcTime.substring(0, 16);
+        entry.timeStamp = timeWithoutTimezone;
+      });
+    });
+    return formattedData;
+  };
 
   const formatTime = (timeInMilliseconds: number) => {
     const timeInSeconds = Math.round(timeInMilliseconds / 1000);
@@ -135,20 +167,19 @@ function App() {
     try {
       const data = {
         name: checkForEmptyName(playerName),
-        score: timeInMilliseconds.toString(),
+        score: timeInMilliseconds,
         favoritePokemon: checkForEmptyFavoritePokemon(playerFavoritePokemon),
-        timeStamp: new Date().toISOString().toString(),
         gameVersion,
       };
-      const bodyString = new URLSearchParams(data).toString();
       const scoreSubmission = await fetch(
-        `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard/new`,
+        `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
+            "x-api-key": process.env.REACT_APP_X_API_KEY!,
           },
-          body: bodyString,
+          body: JSON.stringify(data),
         }
       );
       const parsedResponse: SubmissionResponse = await scoreSubmission.json();
