@@ -39,7 +39,6 @@ function App() {
         leaderboardWebsocket.addEventListener(
           "message",
           async (newLeaderboardData) => {
-            console.log(newLeaderboardData);
             const parsedLeaderboardData: LeaderboardTotal = await JSON.parse(
               newLeaderboardData.data
             );
