@@ -79,6 +79,19 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const formatLeaderboardDates = (data: LeaderboardTotal) => {
+      const formattedData = { ...data };
+      const versions = Object.keys(formattedData);
+      versions.forEach((version) => {
+        const versionEntries = formattedData[version];
+        versionEntries.forEach((entry) => {
+          const utcTime = new Date(entry.timeStamp).toUTCString();
+          const timeWithoutTimezone = utcTime.substring(0, 16);
+          entry.timeStamp = timeWithoutTimezone;
+        });
+      });
+      return formattedData;
+    };
     const getLeaderboardData = async () => {
       try {
         const rawLeaderboardData = await fetch(
@@ -89,8 +102,12 @@ function App() {
             },
           }
         );
-        const parsedLeaderboardData = await rawLeaderboardData.json();
-        setLeaderboardData(parsedLeaderboardData);
+        const parsedLeaderboardData: LeaderboardTotal =
+          await rawLeaderboardData.json();
+        const formattedLeaderboardData = formatLeaderboardDates(
+          parsedLeaderboardData
+        );
+        setLeaderboardData(formattedLeaderboardData);
       } catch (err) {
         console.error(
           "There was an error loading the game. Try refreshing the page!"
