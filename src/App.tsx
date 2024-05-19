@@ -43,7 +43,10 @@ function App() {
             const parsedLeaderboardData: LeaderboardTotal = await JSON.parse(
               newLeaderboardData.data
             );
-            setLeaderboardData(parsedLeaderboardData);
+            const formattedLeaderboardData = formatLeaderboardDates(
+              parsedLeaderboardData
+            );
+            setLeaderboardData(formattedLeaderboardData);
           }
         );
       }
@@ -79,19 +82,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const formatLeaderboardDates = (data: LeaderboardTotal) => {
-      const formattedData = { ...data };
-      const versions = Object.keys(formattedData);
-      versions.forEach((version) => {
-        const versionEntries = formattedData[version];
-        versionEntries.forEach((entry) => {
-          const utcTime = new Date(entry.timeStamp).toUTCString();
-          const timeWithoutTimezone = utcTime.substring(0, 16);
-          entry.timeStamp = timeWithoutTimezone;
-        });
-      });
-      return formattedData;
-    };
     const getLeaderboardData = async () => {
       try {
         const rawLeaderboardData = await fetch(
@@ -116,6 +106,20 @@ function App() {
     };
     getLeaderboardData();
   }, []);
+
+  const formatLeaderboardDates = (data: LeaderboardTotal) => {
+    const formattedData = { ...data };
+    const versions = Object.keys(formattedData);
+    versions.forEach((version) => {
+      const versionEntries = formattedData[version];
+      versionEntries.forEach((entry) => {
+        const utcTime = new Date(entry.timeStamp).toUTCString();
+        const timeWithoutTimezone = utcTime.substring(0, 16);
+        entry.timeStamp = timeWithoutTimezone;
+      });
+    });
+    return formattedData;
+  };
 
   const formatTime = (timeInMilliseconds: number) => {
     const timeInSeconds = Math.round(timeInMilliseconds / 1000);
