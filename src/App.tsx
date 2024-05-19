@@ -164,20 +164,19 @@ function App() {
     try {
       const data = {
         name: checkForEmptyName(playerName),
-        score: timeInMilliseconds.toString(),
+        score: timeInMilliseconds,
         favoritePokemon: checkForEmptyFavoritePokemon(playerFavoritePokemon),
-        timeStamp: new Date().toISOString().toString(),
         gameVersion,
       };
-      const bodyString = new URLSearchParams(data).toString();
       const scoreSubmission = await fetch(
-        `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard/new`,
+        `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
+            "x-api-key": process.env.REACT_APP_X_API_KEY!,
           },
-          body: bodyString,
+          body: JSON.stringify(data),
         }
       );
       const parsedResponse: SubmissionResponse = await scoreSubmission.json();
