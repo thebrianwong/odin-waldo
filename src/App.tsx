@@ -39,6 +39,7 @@ function App() {
         leaderboardWebsocket.addEventListener(
           "message",
           async (newLeaderboardData) => {
+            console.log(newLeaderboardData);
             const parsedLeaderboardData: LeaderboardTotal = await JSON.parse(
               newLeaderboardData.data
             );
@@ -81,7 +82,12 @@ function App() {
     const getLeaderboardData = async () => {
       try {
         const rawLeaderboardData = await fetch(
-          `https://${process.env.REACT_APP_BACKEND_API_DOMAIN}/api/leaderboard`
+          `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
+          {
+            headers: {
+              "x-api-key": process.env.REACT_APP_X_API_KEY!,
+            },
+          }
         );
         const parsedLeaderboardData = await rawLeaderboardData.json();
         setLeaderboardData(parsedLeaderboardData);
