@@ -66,6 +66,12 @@ button:hover,
   height: 100vh;
 }
 
+.loading-pokeball-message {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
 @keyframes pokeball-rotate {
   from {
     transform: rotate(0);

@@ -7,7 +7,7 @@ const LoadingPokeball = () => {
         alt="A minimalist rendition of the classic Pokeball,
         with red and white semicircles separated by a line that meets in the middle to form another circle."
       />
-      <h1>Loading...</h1>
+      <h1 className="loading-pokeball-message">Loading...</h1>
     </div>
   );
 };
