@@ -62,8 +62,14 @@ button:hover,
 }
 
 .loading-pokeball-container {
-  @include flex(flex-start, center, 0, column);
-  margin-top: 15vh;
+  @include flex(center, center, 0, column);
+  height: 100vh;
+}
+
+.loading-pokeball-message {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 @keyframes pokeball-rotate {
@@ -81,5 +87,5 @@ button:hover,
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-  width: 40vw;
+  width: 35vw;
 }
