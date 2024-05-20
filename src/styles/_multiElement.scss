@@ -62,8 +62,8 @@ button:hover,
 }
 
 .loading-pokeball-container {
-  @include flex(flex-start, center, 0, column);
-  margin-top: 15vh;
+  @include flex(center, center, 0, column);
+  height: 100vh;
 }
 
 @keyframes pokeball-rotate {
