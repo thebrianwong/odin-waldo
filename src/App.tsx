@@ -33,7 +33,7 @@ function App() {
     try {
       if (!websocket) {
         const leaderboardWebsocket = new WebSocket(
-          process.env.REACT_APP_API_GATEWAY_WSS_ENDPOINT!
+          process.env.NEXT_PUBLIC_API_GATEWAY_WSS_ENDPOINT!
         );
         setWebsocket(leaderboardWebsocket);
         leaderboardWebsocket.addEventListener(
@@ -60,10 +60,10 @@ function App() {
     const getValidationData = async () => {
       try {
         const rawValidationData = await fetch(
-          `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/location`,
+          `${process.env.NEXT_PUBLIC_API_GATEWAY_HTTPS_ENDPOINT}/location`,
           {
             headers: {
-              "x-api-key": process.env.REACT_APP_X_API_KEY!,
+              "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY!,
             },
           }
         );
@@ -84,10 +84,10 @@ function App() {
     const getLeaderboardData = async () => {
       try {
         const rawLeaderboardData = await fetch(
-          `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
+          `${process.env.NEXT_PUBLIC_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
           {
             headers: {
-              "x-api-key": process.env.REACT_APP_X_API_KEY!,
+              "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY!,
             },
           }
         );
@@ -172,12 +172,12 @@ function App() {
         gameVersion,
       };
       const scoreSubmission = await fetch(
-        `${process.env.REACT_APP_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
+        `${process.env.NEXT_PUBLIC_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-api-key": process.env.REACT_APP_X_API_KEY!,
+            "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY!,
           },
           body: JSON.stringify(data),
         }
