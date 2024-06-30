@@ -1,9 +1,11 @@
+import pokeball from "../../../public/assets/images/misc/pokeball.png";
+
 const LoadingPokeball = () => {
   return (
     <div className="loading-pokeball-container">
       <img
         className="loading-pokeball"
-        src={require("../../assets/images/misc/pokeball.png")}
+        src={pokeball.src}
         alt="A minimalist rendition of the classic Pokeball,
         with red and white semicircles separated by a line that meets in the middle to form another circle."
       />

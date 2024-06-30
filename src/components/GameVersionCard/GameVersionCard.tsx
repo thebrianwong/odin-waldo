@@ -1,5 +1,6 @@
 import PokemonNameList from "../PokemonNameList/PokemonNameList";
 import GameVersionCardProps from "./type";
+import { gameVersionImages } from "src/app/assets";
 
 const GameVersionCard = ({
   difficulty,
@@ -15,7 +16,7 @@ const GameVersionCard = ({
       <img
         className="homepage-preview-image"
         data-testid="preview-image"
-        src={require(`../../assets/images/game_versions/${gameVersion}.png`)}
+        src={gameVersionImages[gameVersion]}
         alt={`A preview thumbnail of the ${difficulty} version of the game.`}
       />
       <p className="homepage-game-option-difficulty">{difficulty}</p>

@@ -1,4 +1,6 @@
 import AnswerReactionProps from "./type";
+import correct from "../../../public/assets/images/answers/correct.png";
+import incorrect from "../../../public/assets/images/answers/incorrect.png";
 
 const AnswerReaction = ({
   isCorrect,
@@ -68,13 +70,13 @@ const AnswerReaction = ({
       {isCorrect ? (
         <img
           className="answer-reaction-image"
-          src={require("../../assets/images/answers/correct.png")}
+          src={correct.src}
           alt="Winking Pikachu posing with the V sign, indicating a correct answer."
         />
       ) : (
         <img
           className="answer-reaction-image"
-          src={require("../../assets/images/answers/incorrect.png")}
+          src={incorrect.src}
           alt="Frowning Pikachu making an X sign with its arms with a blue X behind it,
           indicating an incorrect answer."
         />

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import GameVersionCard from "../../components/GameVersionCard/GameVersionCard";
 import HomepageProps from "./type";
+import logo from "../../../public/assets/images/misc/logo.png";
 
 const Homepage = ({ gameData, chooseGameVersion }: HomepageProps) => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const Homepage = ({ gameData, chooseGameVersion }: HomepageProps) => {
         <a href="https://www.youtube.com/watch?v=fCkeLBGSINs">
           <img
             className="pokemon-logo"
-            src={require("../../assets/images/misc/logo.png")}
+            src={logo.src}
             alt="The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
           />
         </a>

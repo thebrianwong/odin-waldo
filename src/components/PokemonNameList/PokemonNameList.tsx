@@ -1,5 +1,6 @@
 import { MouseEvent } from "react";
 import PokemonNameListProps from "./type";
+import { pokemonListSprites } from "src/app/assets";
 
 const PokemonNameList = ({
   gameData,
@@ -20,7 +21,7 @@ const PokemonNameList = ({
           >
             <img
               className="name-list-sprite"
-              src={require(`../../assets/images/list_sprites/${pokemon}_list_sprite.png`)}
+              src={pokemonListSprites[pokemon]}
               alt={`The menu sprite of ${pokemon} from the Generation 3 and 4 Pokemon games.`}
             />
             <p className="name-list-name">{pokemon}</p>

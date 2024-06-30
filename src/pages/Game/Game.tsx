@@ -8,6 +8,7 @@ import GameProps from "./type";
 import GameProgress from "../../types/gameProgress.type";
 import ImageBorder from "../../types/imageBorder.type";
 import Position from "../../types/position.type";
+import { gameVersionImages } from "src/app/assets";
 
 const Game = ({
   gameData,
@@ -211,7 +212,7 @@ const Game = ({
               handleImageClick(e);
             }
           }}
-          src={require(`../../assets/images/game_versions/${gameVersion}.png`)}
+          src={gameVersionImages[gameVersion]}
           alt={
             gameVersion === "version2"
               ? "A compilation of all Pokemon released up to Generation 5."
