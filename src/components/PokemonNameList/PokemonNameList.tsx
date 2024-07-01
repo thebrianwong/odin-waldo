@@ -1,3 +1,5 @@
+"use client";
+
 import { MouseEvent } from "react";
 import PokemonNameListProps from "./type";
 import { pokemonListSprites } from "src/app/assets";
