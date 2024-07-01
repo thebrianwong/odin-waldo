@@ -11,7 +11,7 @@ const GameVersionCard = ({
   return (
     <button
       className="homepage-game-option-button"
-      onClick={() => chooseGameVersion(gameVersion)}
+      // onClick={() => chooseGameVersion(gameVersion)}
     >
       <img
         className="homepage-preview-image"
