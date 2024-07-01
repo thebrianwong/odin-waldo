@@ -9,4 +9,4 @@ type LeaderboardTotal = {
   [version: string]: Array<LeaderboardEntry>;
 };
 
-export { LeaderboardEntry, LeaderboardTotal };
+export type { LeaderboardEntry, LeaderboardTotal };

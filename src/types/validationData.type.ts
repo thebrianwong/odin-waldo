@@ -13,4 +13,4 @@ type TotalValidationData = {
   version3: VersionValidationData;
 };
 
-export { VersionValidationData, TotalValidationData };
+export type { VersionValidationData, TotalValidationData };

@@ -7,4 +7,4 @@ type GameData = {
   [version: string]: VersionData;
 };
 
-export { VersionData, GameData };
+export type { VersionData, GameData };
