@@ -16,7 +16,10 @@ export function generateStaticParams() {
 export default function HomePage() {
   return (
     <div className="homepage" data-testid="homepage">
-      <Link className="nav-button-container" href="/leaderboard">
+      <Link
+        className="nav-button-container"
+        href="/leaderboard?gameVersion=normal"
+      >
         <button className="nav-button">Leaderboard</button>
       </Link>
       <header>
