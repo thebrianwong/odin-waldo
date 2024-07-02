@@ -1,6 +1,6 @@
 import Link from "next/link";
 import logo from "../../../public/assets/images/misc/logo.png";
-import LeaderboardHeader from "../components/LeaderboardHeader";
+import LeaderboardHeader from "../../components/LeaderboardHeader";
 
 export default function LeaderboardPage() {
   return (
