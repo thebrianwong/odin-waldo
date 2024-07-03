@@ -2,21 +2,14 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
+import { validateDifficulty } from "src/utils";
 
 export default function LeaderboardHeader() {
   const router = useRouter();
   const params = useSearchParams();
   const gameVersion = params?.get("gameVersion");
 
-  const difficultyLabel = () => {
-    if (gameVersion === "hard") {
-      return "Hard";
-    } else if (gameVersion === "weird") {
-      return "Weird";
-    } else {
-      return "Normal";
-    }
-  };
+  const difficultyLabel = validateDifficulty(gameVersion);
 
   const changeSearchParams = (newValue: string) => {
     const params = new URLSearchParams();
@@ -26,7 +19,7 @@ export default function LeaderboardHeader() {
 
   return (
     <div className="leaderboard-difficulty-container">
-      <h1>{difficultyLabel()}</h1>
+      <h1>{difficultyLabel}</h1>
       <label
         className="leaderboard-difficulty-select-label"
         htmlFor="difficulty"
