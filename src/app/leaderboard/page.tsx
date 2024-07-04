@@ -1,8 +1,17 @@
 import Link from "next/link";
 import logo from "../../../public/assets/images/misc/logo.png";
 import LeaderboardHeader from "../../components/LeaderboardHeader";
+import LeaderboardContents from "src/components/LeaderboardContents";
 
-export default function LeaderboardPage() {
+interface LeaderboardPageProps {
+  searchParams: {
+    gameVersion: string;
+  };
+}
+
+export default function LeaderboardPage({
+  searchParams,
+}: LeaderboardPageProps) {
   return (
     <div className="leaderboard-page" data-testid="leaderboard">
       <Link className="nav-button-container" href="/">
@@ -30,19 +39,8 @@ export default function LeaderboardPage() {
                 <th scope="col">Date</th>
               </tr>
             </thead>
-            <tbody data-testid="table-body">
-              {/* {sortedLeaderboardData().map((entry, index) => {
-                return (
-                  <tr key={index}>
-                    <td>#{index + 1}</td>
-                    <td>{entry.name}</td>
-                    <td>{formatTime(entry.score)}</td>
-                    <td>{entry.favoritePokemon}</td>
-                    <td>{entry.timeStamp}</td>
-                  </tr>
-                );
-              })} */}
-            </tbody>
+            {/* @ts-expect-error Server Component */}
+            <LeaderboardContents difficulty={searchParams.gameVersion} />
           </table>
         </div>
       </main>
