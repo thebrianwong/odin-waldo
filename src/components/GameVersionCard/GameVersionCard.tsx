@@ -6,13 +6,9 @@ const GameVersionCard = ({
   difficulty,
   gameData,
   gameVersion,
-  chooseGameVersion,
 }: GameVersionCardProps) => {
   return (
-    <button
-      className="homepage-game-option-button"
-      // onClick={() => chooseGameVersion(gameVersion)}
-    >
+    <button className="homepage-game-option-button">
       <img
         className="homepage-preview-image"
         data-testid="preview-image"
