@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "../styles/styles.scss";
 
 export const metadata: Metadata = {
   title: "Find That Pokemon!",
