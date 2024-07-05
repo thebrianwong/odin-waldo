@@ -1,3 +1,5 @@
+"use client";
+
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 import NavBar from "../../components/NavBar/NavBar";
@@ -9,21 +11,17 @@ import GameProgress from "../../types/gameProgress.type";
 import ImageBorder from "../../types/imageBorder.type";
 import Position from "../../types/position.type";
 import { gameVersionImages } from "src/app/assets";
+import gameData from "../../gameData.json";
+import { formatTime } from "src/utils";
 
-const Game = ({
-  gameData,
-  gameVersion,
-  validationData,
-  formatTime,
-  submitScore,
-}: GameProps) => {
+const Game = ({ validationData, gameVersion }: GameProps) => {
   const elapsedTimeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const answerReactionTimerIdRef = useRef<NodeJS.Timeout | null>(null);
 
   const [gameProgress, setGameProgress] = useState<GameProgress>({
-    [gameData.pokemonNames[0]]: false,
-    [gameData.pokemonNames[1]]: false,
-    [gameData.pokemonNames[2]]: false,
+    [gameData[gameVersion].pokemonNames[0]]: false,
+    [gameData[gameVersion].pokemonNames[1]]: false,
+    [gameData[gameVersion].pokemonNames[2]]: false,
   });
 
   const [startTime, setStartTime] = useState<number | null>(null);
@@ -80,10 +78,6 @@ const Game = ({
     }
     return false;
   }, [gameProgress]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     setStartTime(Date.now());
@@ -162,7 +156,7 @@ const Game = ({
   };
 
   const handlePickedOption = (e: MouseEvent, pickedPokemon: string) => {
-    const pokemonCoordinates = validationData[pickedPokemon];
+    const pokemonCoordinates = validationData[gameVersion][pickedPokemon];
     if (
       imageCoordinates.x >= pokemonCoordinates.minimumX &&
       imageCoordinates.x <= pokemonCoordinates.maximumX &&
@@ -200,7 +194,7 @@ const Game = ({
   return (
     <div className={`game-page game-page-${gameVersion}`} data-testid="game">
       <NavBar
-        gameData={gameData}
+        gameData={gameData[gameVersion]}
         gameProgress={gameProgress}
         elapsedTime={formatTime(currentTime! - startTime!)}
       />
@@ -226,14 +220,14 @@ const Game = ({
             imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
             imageBorder={imageBorder}
-            gameData={gameData}
+            gameData={gameData[gameVersion]}
           />
           <DropdownMenu
             imagePosition={imageCoordinates}
             clickPosition={clickCoordinates}
             clientPosition={clientCoordinates}
             imageBorder={imageBorder}
-            gameData={gameData}
+            gameData={gameData[gameVersion]}
             handlePickedOption={handlePickedOption}
           />
         </>
@@ -243,7 +237,7 @@ const Game = ({
           isCorrect={isCorrectAnswer}
           imagePosition={answerImageCoordinates}
           clickPosition={answerClickCoordinates}
-          gameData={gameData}
+          gameData={gameData[gameVersion]}
         />
       )}
       {displayModal && (
@@ -251,7 +245,6 @@ const Game = ({
           timeScore={currentTime! - startTime!}
           displayTime={formatTime(currentTime! - startTime!)}
           gameVersion={gameVersion}
-          submitScore={submitScore}
           closeModal={() => setDisplayModal(false)}
         />
       )}
