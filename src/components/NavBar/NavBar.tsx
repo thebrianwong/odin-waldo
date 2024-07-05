@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import NavBarProps from "./type";
 import { pokemonNavSprites } from "src/app/assets";
 
@@ -11,7 +11,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }: NavBarProps) => {
 
   return (
     <nav className="game-navbar">
-      <Link to="/">
+      <Link href="/">
         <button className="nav-button nav-home">Home</button>
       </Link>
       <div className="game-navbar-sprite-container">
@@ -32,7 +32,7 @@ const NavBar = ({ gameData, gameProgress, elapsedTime }: NavBarProps) => {
       <div className="nav-timer">
         <p>{`Time: ${elapsedTime}`}</p>
       </div>
-      <Link to="/leaderboard">
+      <Link href="/leaderboard">
         <button className="nav-button nav-leaderboard">Leaderboard</button>
       </Link>
     </nav>
