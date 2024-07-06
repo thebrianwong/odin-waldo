@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import AnswerReaction from "../../components/AnswerReaction/AnswerReaction";
+import "@testing-library/jest-dom";
 
 const defaultVisualViewport = {
   width: 900,
