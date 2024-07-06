@@ -10,7 +10,7 @@ import GameProps from "./type";
 import GameProgress from "../../types/gameProgress.type";
 import ImageBorder from "../../types/imageBorder.type";
 import Position from "../../types/position.type";
-import { gameVersionImages } from "src/app/assets";
+import { gameVersionImages } from "../../app/assets";
 import gameData from "../../gameData.json";
 import { formatTime } from "src/utils";
 

@@ -2,7 +2,7 @@
 
 import { MouseEvent } from "react";
 import PokemonNameListProps from "./type";
-import { pokemonListSprites } from "src/app/assets";
+import { pokemonListSprites } from "../../app/assets";
 
 const PokemonNameList = ({
   gameData,
