@@ -1,53 +1,57 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { LeaderboardTotal } from "src/types/leaderboardData.type";
-import { difficultyToVersion, formatTime } from "src/utils";
+import {
+  difficultyToVersion,
+  formatLeaderboardDates,
+  formatTime,
+} from "src/utils";
 
 interface LeaderboardContentsProps {
+  data: LeaderboardTotal;
   difficulty: string;
 }
 
-export default async function LeaderboardContents({
+export default function LeaderboardContents({
+  data,
   difficulty,
 }: LeaderboardContentsProps) {
-  const formatLeaderboardDates = (data: LeaderboardTotal) => {
-    const formattedData = { ...data };
-    const versions = Object.keys(formattedData);
-    versions.forEach((version) => {
-      const versionEntries = formattedData[version];
-      versionEntries.forEach((entry) => {
-        const utcTime = new Date(entry.timeStamp).toUTCString();
-        const timeWithoutTimezone = utcTime.substring(0, 16);
-        entry.timeStamp = timeWithoutTimezone;
-      });
-    });
-    return formattedData;
-  };
+  const [leaderboardData, setLeaderboardData] =
+    useState<LeaderboardTotal>(data);
+  const [websocket, setWebsocket] = useState<WebSocket | null>(null);
 
-  const leaderboardData = async () => {
+  useEffect(() => {
     try {
-      const rawLeaderboardData = (await fetch(
-        `${process.env.NEXT_PUBLIC_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
-        {
-          headers: {
-            "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY!,
-          },
-        }
-      ).then((data) => data.json())) as LeaderboardTotal;
-      const formattedLeaderboardData =
-        formatLeaderboardDates(rawLeaderboardData);
-      return formattedLeaderboardData;
+      if (!websocket) {
+        const leaderboardWebsocket = new WebSocket(
+          process.env.NEXT_PUBLIC_API_GATEWAY_WSS_ENDPOINT!
+        );
+        setWebsocket(leaderboardWebsocket);
+        leaderboardWebsocket.addEventListener(
+          "message",
+          async (newLeaderboardData) => {
+            const parsedLeaderboardData: LeaderboardTotal = await JSON.parse(
+              newLeaderboardData.data
+            );
+            const formattedLeaderboardData = formatLeaderboardDates(
+              parsedLeaderboardData
+            );
+            setLeaderboardData(formattedLeaderboardData);
+          }
+        );
+      }
     } catch (err) {
       console.error(
         "There was an error loading the game. Try refreshing the page!"
       );
     }
-  };
-
-  const data = await leaderboardData();
+  }, []);
 
   return (
     <tbody data-testid="table-body">
-      {data &&
-        data[difficultyToVersion(difficulty)].map((entry, index) => {
+      {leaderboardData &&
+        leaderboardData[difficultyToVersion(difficulty)].map((entry, index) => {
           return (
             <tr key={index}>
               <td>#{index + 1}</td>
