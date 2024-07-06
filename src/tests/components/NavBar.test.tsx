@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
+import "@testing-library/jest-dom";
 
 const gameData = {
   pokemonNames: ["Pichu", "Graveler", "Slaking"],
