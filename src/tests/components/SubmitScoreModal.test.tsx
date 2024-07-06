@@ -10,7 +10,6 @@ test("The component renders", () => {
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={mockFunction}
       closeModal={mockFunction}
     />
   );
@@ -26,7 +25,6 @@ test("The display time is displayed properly", () => {
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={mockFunction}
       closeModal={mockFunction}
     />
   );
@@ -40,7 +38,6 @@ test("The name input is auto-focused", () => {
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={mockFunction}
       closeModal={mockFunction}
     />
   );
@@ -57,7 +54,6 @@ test("Player name and favorite Pokemon can be typed in", () => {
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={mockFunction}
       closeModal={mockFunction}
     />
   );
@@ -80,7 +76,6 @@ test("The modal can be closed in 3 ways without submitting a score", () => {
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={mockFunction}
       closeModal={mockFunction}
     />
   );
@@ -104,7 +99,6 @@ test("The modal does not close when clicked due to propagation", () => {
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={mockFunction}
       closeModal={mockFunction}
     />
   );
@@ -122,7 +116,6 @@ test("The score can be submitted in 3 ways", () => {
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={submitMock}
       closeModal={mockFunction}
     />
   );
@@ -149,7 +142,6 @@ test("The modal is closed when the the score is successfully submitted", async (
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={submitMock}
       closeModal={closeMock}
     />
   );
@@ -172,7 +164,6 @@ test("The modal is not closed if the score is not submitted successfully", async
       timeScore={123}
       displayTime="00:00"
       gameVersion="version1"
-      submitScore={submitMock}
       closeModal={closeMock}
     />
   );

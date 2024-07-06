@@ -11,7 +11,6 @@ test("The component gets rendered correctly", () => {
       difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={mockFunction}
     />
   );
   const button = screen.getByRole("button");
@@ -24,7 +23,6 @@ test("The difficulty and alt text are rendered properly based on the difficulty 
       difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={mockFunction}
     />
   );
   const difficulty = screen.getByText("Normal");
@@ -41,7 +39,6 @@ test("The image corresponds to the gameVersion prop", () => {
       difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={mockFunction}
     />
   );
   const image = screen.getByTestId("preview-image");
@@ -54,7 +51,6 @@ test("The component handles clicks", () => {
       difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={mockFunction}
     />
   );
   const button = screen.getByRole("button");
