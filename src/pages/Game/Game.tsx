@@ -13,6 +13,8 @@ import Position from "../../types/position.type";
 import { gameVersionImages } from "../../app/assets";
 import gameData from "../../gameData.json";
 import { formatTime } from "src/utils";
+import GameVersion from "src/types/gameVersion.type";
+import SubmissionResponse from "src/types/submissionResponse.type";
 
 const Game = ({ validationData, gameVersion }: GameProps) => {
   const elapsedTimeIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -191,6 +193,54 @@ const Game = ({ validationData, gameVersion }: GameProps) => {
     answerReactionTimerIdRef.current = timerId;
   };
 
+  const checkForEmptyName = (name: string) => {
+    if (name === "") {
+      return "Anonymous Trainer";
+    }
+    return name;
+  };
+
+  const checkForEmptyFavoritePokemon = (favoritePokemon: string) => {
+    if (favoritePokemon === "") {
+      return "Missingno";
+    }
+    return favoritePokemon;
+  };
+
+  const submitScore = async (
+    timeInMilliseconds: number,
+    playerName: string,
+    playerFavoritePokemon: string,
+    gameVersion: GameVersion
+  ): Promise<SubmissionResponse> => {
+    try {
+      const data = {
+        name: checkForEmptyName(playerName),
+        score: timeInMilliseconds,
+        favoritePokemon: checkForEmptyFavoritePokemon(playerFavoritePokemon),
+        gameVersion,
+      };
+      const submissionResponse = (await fetch(
+        `${process.env.NEXT_PUBLIC_API_GATEWAY_HTTPS_ENDPOINT}/leaderboard`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY!,
+          },
+          body: JSON.stringify(data),
+        }
+      ).then((data) => data.json())) as SubmissionResponse;
+      return submissionResponse;
+    } catch (e) {
+      console.error("There was an error submitting your score. Try again!");
+      return {
+        success: false,
+        message: ["There is an error with the server. Please try again!"],
+      };
+    }
+  };
+
   return (
     <div className={`game-page game-page-${gameVersion}`} data-testid="game">
       <NavBar
@@ -245,6 +295,7 @@ const Game = ({ validationData, gameVersion }: GameProps) => {
           timeScore={currentTime! - startTime!}
           displayTime={formatTime(currentTime! - startTime!)}
           gameVersion={gameVersion}
+          submitScore={submitScore}
           closeModal={() => setDisplayModal(false)}
         />
       )}
