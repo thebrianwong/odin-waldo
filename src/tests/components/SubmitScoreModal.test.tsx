@@ -166,7 +166,7 @@ test("The modal is closed when the the score is successfully submitted", async (
 test("The modal is not closed if the score is not submitted successfully", async () => {
   const submitMock = jest
     .fn()
-    .mockResolvedValue({ success: false, message: "Error message" });
+    .mockResolvedValue({ success: false, message: ["Error message"] });
   const closeMock = jest.fn();
   render(
     <SubmitScoreModal
