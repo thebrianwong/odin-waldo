@@ -1,13 +1,13 @@
 import { render, screen, within } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import gameData from "../../gameData.json";
 import Homepage from "../../pages/Homepage/Homepage";
+import "@testing-library/jest-dom";
 
 const mockFunction = jest.fn();
 global.scrollTo = jest.fn();
 
 test("The page renders", () => {
-  render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
+  render(<Homepage />, {
     wrapper: BrowserRouter,
   });
   const homepage = screen.getByTestId("homepage");
@@ -15,7 +15,7 @@ test("The page renders", () => {
 });
 
 test("The header contains all expected elements", () => {
-  render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
+  render(<Homepage />, {
     wrapper: BrowserRouter,
   });
   const leaderboardButton = screen.getByRole("button", { name: "Leaderboard" });
@@ -29,7 +29,7 @@ test("The header contains all expected elements", () => {
 });
 
 test("The footer contains all expected elements", () => {
-  render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
+  render(<Homepage />, {
     wrapper: BrowserRouter,
   });
   const credits = screen.getByText(
@@ -47,7 +47,7 @@ test("The footer contains all expected elements", () => {
 });
 
 test("There are 3 buttons for each game version", () => {
-  render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
+  render(<Homepage />, {
     wrapper: BrowserRouter,
   });
   const main = screen.getByRole("main");
@@ -57,7 +57,7 @@ test("There are 3 buttons for each game version", () => {
 
 describe("Each game version buttons has the correct corresponding elements", () => {
   test("Version1", () => {
-    render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
+    render(<Homepage />, {
       wrapper: BrowserRouter,
     });
     const main = screen.getByRole("main");
@@ -92,7 +92,7 @@ describe("Each game version buttons has the correct corresponding elements", () 
   });
 
   test("Version2", () => {
-    render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
+    render(<Homepage />, {
       wrapper: BrowserRouter,
     });
     const main = screen.getByRole("main");
@@ -127,7 +127,7 @@ describe("Each game version buttons has the correct corresponding elements", () 
   });
 
   test("Version3", () => {
-    render(<Homepage gameData={gameData} chooseGameVersion={mockFunction} />, {
+    render(<Homepage />, {
       wrapper: BrowserRouter,
     });
     const main = screen.getByRole("main");
