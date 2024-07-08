@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "../styles/styles.scss";
 import { Suspense } from "react";
 import LoadingPokeball from "src/components/LoadingPokeball/LoadingPokeball";
+import { getFirebaseConfig } from "src/firebase-config";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 export const metadata: Metadata = {
   title: "Find That Pokemon!",
@@ -14,6 +17,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const firebaseConfig = getFirebaseConfig();
+  const app = initializeApp(firebaseConfig);
+  if (typeof window !== "undefined") {
+    getAnalytics(app);
+  }
+
   return (
     <html lang="en">
       <head>
