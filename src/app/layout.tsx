@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/styles.scss";
+import { Suspense } from "react";
+import LoadingPokeball from "src/components/LoadingPokeball/LoadingPokeball";
 
 export const metadata: Metadata = {
   title: "Find That Pokemon!",
@@ -32,7 +34,9 @@ export default function RootLayout({
       </head>
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
-        <div id="root">{children}</div>
+        <div id="root">
+          <Suspense fallback={<LoadingPokeball />}>{children}</Suspense>
+        </div>
       </body>
     </html>
   );

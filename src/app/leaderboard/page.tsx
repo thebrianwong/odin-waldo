@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-import LoadingPokeball from "src/components/LoadingPokeball/LoadingPokeball";
 import { LeaderboardTotal } from "src/types/leaderboardData.type";
 import { formatLeaderboardDates } from "src/utils";
 import Leaderboard from "src/pages/Leaderboard/Leaderboard";
@@ -37,11 +35,9 @@ export default async function LeaderboardPage({
   const data = await getLeaderboardData();
 
   return (
-    <Suspense fallback={<LoadingPokeball />}>
-      <Leaderboard
-        leaderboardData={data as LeaderboardTotal}
-        difficulty={searchParams.gameVersion}
-      />
-    </Suspense>
+    <Leaderboard
+      leaderboardData={data as LeaderboardTotal}
+      difficulty={searchParams.gameVersion}
+    />
   );
 }

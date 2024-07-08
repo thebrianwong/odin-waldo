@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-import LoadingPokeball from "src/components/LoadingPokeball/LoadingPokeball";
 import Game from "src/pages/Game/Game";
 import { TotalValidationData } from "src/types/validationData.type";
 import { difficultyToVersion } from "src/utils";
@@ -36,11 +34,9 @@ export default async function GamePage({ searchParams }: GamePageProps) {
   const validationData = await getValidationData();
 
   return (
-    <Suspense fallback={<LoadingPokeball />}>
-      <Game
-        validationData={validationData as TotalValidationData}
-        gameVersion={formattedGameVersion}
-      />
-    </Suspense>
+    <Game
+      validationData={validationData as TotalValidationData}
+      gameVersion={formattedGameVersion}
+    />
   );
 }
