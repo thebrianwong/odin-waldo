@@ -1,17 +1,15 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import GameVersionCard from "../../components/GameVersionCard/GameVersionCard";
-import HomepageProps from "./type";
 import logo from "../../../public/assets/images/misc/logo.png";
+import gameData from "../../gameData.json";
 
-const Homepage = ({ gameData, chooseGameVersion }: HomepageProps) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+const Homepage = () => {
   return (
     <div className="homepage" data-testid="homepage">
-      <Link className="nav-button-container" to="/leaderboard">
+      <Link
+        className="nav-button-container"
+        href="/leaderboard?gameVersion=normal"
+      >
         <button className="nav-button">Leaderboard</button>
       </Link>
       <header>
@@ -34,28 +32,25 @@ const Homepage = ({ gameData, chooseGameVersion }: HomepageProps) => {
         <p>3) Optionally submit your score to the leaderboard.</p>
       </div>
       <main className="homepage-game-options-container">
-        <Link to="/game">
+        <Link href="/game?gameVersion=normal">
           <GameVersionCard
             difficulty="Normal"
             gameData={gameData.version1}
             gameVersion="version1"
-            chooseGameVersion={chooseGameVersion}
           />
         </Link>
-        <Link to="/game">
+        <Link href="/game?gameVersion=hard">
           <GameVersionCard
             difficulty="Hard"
             gameData={gameData.version2}
             gameVersion="version2"
-            chooseGameVersion={chooseGameVersion}
           />
         </Link>
-        <Link to="/game">
+        <Link href="/game?gameVersion=weird">
           <GameVersionCard
             difficulty="Weird"
             gameData={gameData.version3}
             gameVersion="version3"
-            chooseGameVersion={chooseGameVersion}
           />
         </Link>
       </main>
