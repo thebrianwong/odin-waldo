@@ -1,40 +1,13 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import LeaderboardProps from "./type";
-import GameVersion from "../../types/gameVersion.type";
 import logo from "../../../public/assets/images/misc/logo.png";
+import LeaderboardHeader from "src/components/LeaderboardHeader";
+import LeaderboardContents from "src/components/LeaderboardContents";
 
-const Leaderboard = ({
-  leaderboardData,
-  initialGameVersion,
-  formatTime,
-}: LeaderboardProps) => {
-  const [gameVersion, setGameVersion] =
-    useState<GameVersion>(initialGameVersion);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const difficultyLabel = () => {
-    if (gameVersion === "version1") {
-      return "Normal";
-    } else if (gameVersion === "version2") {
-      return "Hard";
-    } else {
-      return "Weird";
-    }
-  };
-
-  const sortedLeaderboardData = () => {
-    return leaderboardData[gameVersion].sort((a, b) => {
-      return a.score - b.score;
-    });
-  };
-
+const Leaderboard = ({ leaderboardData, difficulty }: LeaderboardProps) => {
   return (
     <div className="leaderboard-page" data-testid="leaderboard">
-      <Link className="nav-button-container" to="/">
+      <Link className="nav-button-container" href="/">
         <button className="nav-button">Home</button>
       </Link>
       <header>
@@ -47,31 +20,7 @@ const Leaderboard = ({
         </a>
       </header>
       <main className="leaderboard-contents">
-        <div className="leaderboard-difficulty-container">
-          <h1>{difficultyLabel()}</h1>
-          <label
-            className="leaderboard-difficulty-select-label"
-            htmlFor="difficulty"
-          >
-            Change difficulty: {""}
-            <select
-              className="leaderboard-difficulty-select"
-              data-testid="select-menu"
-              onChange={(e: ChangeEvent) =>
-                setGameVersion(
-                  (e.target as HTMLOptionElement).value as GameVersion
-                )
-              }
-              name="difficulty"
-              id="difficulty"
-              value={gameVersion}
-            >
-              <option value="version1">Normal</option>
-              <option value="version2">Hard</option>
-              <option value="version3">Weird</option>
-            </select>
-          </label>
-        </div>
+        <LeaderboardHeader />
         <div className="leaderboard-score-table-container">
           <table className="leaderboard-score-table">
             <thead>
@@ -83,19 +32,10 @@ const Leaderboard = ({
                 <th scope="col">Date</th>
               </tr>
             </thead>
-            <tbody data-testid="table-body">
-              {sortedLeaderboardData().map((entry, index) => {
-                return (
-                  <tr key={index}>
-                    <td>#{index + 1}</td>
-                    <td>{entry.name}</td>
-                    <td>{formatTime(entry.score)}</td>
-                    <td>{entry.favoritePokemon}</td>
-                    <td>{entry.timeStamp}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            <LeaderboardContents
+              data={leaderboardData}
+              difficulty={difficulty}
+            />
           </table>
         </div>
       </main>
