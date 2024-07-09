@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
-import { validateDifficulty } from "src/utils";
+import { validateDifficulty } from "../utils";
 
 export default function LeaderboardHeader() {
   const router = useRouter();

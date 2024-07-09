@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LeaderboardTotal } from "src/types/leaderboardData.type";
+import { LeaderboardTotal } from "../types/leaderboardData.type";
 import {
   difficultyToVersion,
   formatLeaderboardDates,
   formatTime,
-} from "src/utils";
+} from "../utils";
 
 interface LeaderboardContentsProps {
   data: LeaderboardTotal;

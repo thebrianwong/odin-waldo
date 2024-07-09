@@ -1,8 +1,8 @@
 import Link from "next/link";
 import LeaderboardProps from "./type";
 import logo from "../../../public/assets/images/misc/logo.png";
-import LeaderboardHeader from "src/components/LeaderboardHeader";
-import LeaderboardContents from "src/components/LeaderboardContents";
+import LeaderboardHeader from "../../components/LeaderboardHeader";
+import LeaderboardContents from "../../components/LeaderboardContents";
 
 const Leaderboard = ({ leaderboardData, difficulty }: LeaderboardProps) => {
   return (
