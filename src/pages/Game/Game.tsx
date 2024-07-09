@@ -12,9 +12,9 @@ import ImageBorder from "../../types/imageBorder.type";
 import Position from "../../types/position.type";
 import { gameVersionImages } from "../../app/assets";
 import gameData from "../../gameData.json";
-import { formatTime } from "src/utils";
-import GameVersion from "src/types/gameVersion.type";
-import SubmissionResponse from "src/types/submissionResponse.type";
+import { formatTime } from "../../utils";
+import GameVersion from "../../types/gameVersion.type";
+import SubmissionResponse from "../../types/submissionResponse.type";
 
 const Game = ({ validationData, gameVersion }: GameProps) => {
   const elapsedTimeIntervalRef = useRef<NodeJS.Timeout | null>(null);
