@@ -3,9 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import Homepage from "../../pages/Homepage/Homepage";
 import "@testing-library/jest-dom";
 
-const mockFunction = jest.fn();
-global.scrollTo = jest.fn();
-
 test("The page renders", () => {
   render(<Homepage />, {
     wrapper: BrowserRouter,
