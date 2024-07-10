@@ -3,7 +3,7 @@ import GameVersionCard from "../components/GameVersionCard";
 import logo from "../../public/assets/images/misc/logo.png";
 import gameData from "../gameData.json";
 
-const Homepage = () => {
+const Home = () => {
   return (
     <div className="homepage" data-testid="homepage">
       <Link
@@ -68,4 +68,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Home;
