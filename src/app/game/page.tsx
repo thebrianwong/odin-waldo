@@ -1,4 +1,4 @@
-import Game from "src/pages/Game/Game";
+import Game from "src/pages/Game";
 import { TotalValidationData } from "src/types/validationData.type";
 import { difficultyToVersion } from "src/utils";
 

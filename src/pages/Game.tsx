@@ -1,20 +1,25 @@
 "use client";
 
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
-import DropdownMenu from "../../components/DropdownMenu";
-import NavBar from "../../components/NavBar";
-import TargetArea from "../../components/TargetArea";
-import AnswerReaction from "../../components/AnswerReaction";
-import SubmitScoreModal from "../../components/SubmitScoreModal";
-import GameProps from "./type";
-import GameProgress from "../../types/gameProgress.type";
-import ImageBorder from "../../types/imageBorder.type";
-import Position from "../../types/position.type";
-import { gameVersionImages } from "../../app/assets";
-import gameData from "../../gameData.json";
-import { formatTime } from "../../utils";
-import GameVersion from "../../types/gameVersion.type";
-import SubmissionResponse from "../../types/submissionResponse.type";
+import DropdownMenu from "../components/DropdownMenu";
+import NavBar from "../components/NavBar";
+import TargetArea from "../components/TargetArea";
+import AnswerReaction from "../components/AnswerReaction";
+import SubmitScoreModal from "../components/SubmitScoreModal";
+import GameProgress from "../types/gameProgress.type";
+import ImageBorder from "../types/imageBorder.type";
+import Position from "../types/position.type";
+import { gameVersionImages } from "../app/assets";
+import gameData from "../gameData.json";
+import { formatTime } from "../utils";
+import GameVersion from "../types/gameVersion.type";
+import SubmissionResponse from "../types/submissionResponse.type";
+import { TotalValidationData } from "../types/validationData.type";
+
+interface GameProps {
+  gameVersion: GameVersion;
+  validationData: TotalValidationData;
+}
 
 const Game = ({ validationData, gameVersion }: GameProps) => {
   const elapsedTimeIntervalRef = useRef<NodeJS.Timeout | null>(null);

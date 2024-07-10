@@ -1,7 +1,7 @@
 import Link from "next/link";
-import GameVersionCard from "../../components/GameVersionCard";
-import logo from "../../../public/assets/images/misc/logo.png";
-import gameData from "../../gameData.json";
+import GameVersionCard from "../components/GameVersionCard";
+import logo from "../../public/assets/images/misc/logo.png";
+import gameData from "../gameData.json";
 
 const Homepage = () => {
   return (

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-import Leaderboard from "../../pages/Leaderboard/Leaderboard";
+import Leaderboard from "../../pages/Leaderboard";
 import "@testing-library/jest-dom";
 import { AppRouterContextProviderMock } from "../utils";
 

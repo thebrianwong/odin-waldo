@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Homepage from "../../pages/Homepage/Homepage";
+import Homepage from "../../pages/Homepage";
 import "@testing-library/jest-dom";
 
 test("The page renders", () => {

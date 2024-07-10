@@ -1,6 +1,6 @@
 import { LeaderboardTotal } from "src/types/leaderboardData.type";
 import { formatLeaderboardDates } from "src/utils";
-import Leaderboard from "src/pages/Leaderboard/Leaderboard";
+import Leaderboard from "src/pages/Leaderboard";
 
 interface LeaderboardPageProps {
   searchParams: {

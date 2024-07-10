@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
-import Game from "../../pages/Game/Game";
+import Game from "../../pages/Game";
 import "@testing-library/jest-dom";
 
 const validationData = {
