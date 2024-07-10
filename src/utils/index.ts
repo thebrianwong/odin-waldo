@@ -10,16 +10,6 @@ export const validateDifficulty = (difficulty: string | undefined | null) => {
   }
 };
 
-export const validateVersion = (version: string | undefined | null) => {
-  if (version === "version2") {
-    return "version2";
-  } else if (version === "version3") {
-    return "version3";
-  } else {
-    return "version1";
-  }
-};
-
 export const difficultyToVersion = (difficulty: string | undefined | null) => {
   if (difficulty === "hard") {
     return "version2";
