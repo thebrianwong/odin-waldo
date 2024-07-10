@@ -1,4 +1,13 @@
-import TargetAreaProps from "./type";
+import Position from "../types/position.type";
+import ImageBorder from "../types/imageBorder.type";
+import { VersionData } from "../types/pokemonData.type";
+
+interface TargetAreaProps {
+  imagePosition: Position;
+  clickPosition: Position;
+  imageBorder: ImageBorder;
+  gameData: VersionData;
+}
 
 const TargetArea = ({
   imagePosition,

@@ -1,5 +1,19 @@
-import DropdownMenuProps from "./type";
-import PokemonNameList from "../PokemonNameList/PokemonNameList";
+import PokemonNameList from "./PokemonNameList";
+import Position from "../types/position.type";
+import ImageBorder from "../types/imageBorder.type";
+import { VersionData } from "../types/pokemonData.type";
+
+interface DropdownMenuProps {
+  imagePosition: Position;
+  clickPosition: Position;
+  clientPosition: Position;
+  imageBorder: ImageBorder;
+  gameData: VersionData;
+  handlePickedOption: (
+    e: React.MouseEvent<Element, MouseEvent>,
+    pickedPokemon: string
+  ) => void;
+}
 
 const DropdownMenu = ({
   imagePosition,

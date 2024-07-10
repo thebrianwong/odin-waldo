@@ -1,11 +1,11 @@
 "use client";
 
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
-import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
-import NavBar from "../../components/NavBar/NavBar";
-import TargetArea from "../../components/TargetArea/TargetArea";
-import AnswerReaction from "../../components/AnswerReaction/AnswerReaction";
-import SubmitScoreModal from "../../components/SubmitScoreModal/SubmitScoreModal";
+import DropdownMenu from "../../components/DropdownMenu";
+import NavBar from "../../components/NavBar";
+import TargetArea from "../../components/TargetArea";
+import AnswerReaction from "../../components/AnswerReaction";
+import SubmitScoreModal from "../../components/SubmitScoreModal";
 import GameProps from "./type";
 import GameProgress from "../../types/gameProgress.type";
 import ImageBorder from "../../types/imageBorder.type";

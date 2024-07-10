@@ -1,4 +1,4 @@
-import pokeball from "../../../public/assets/images/misc/pokeball.png";
+import pokeball from "../../public/assets/images/misc/pokeball.png";
 
 const LoadingPokeball = () => {
   return (

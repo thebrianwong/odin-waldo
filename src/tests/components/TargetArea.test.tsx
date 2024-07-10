@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import TargetArea from "../../components/TargetArea/TargetArea";
+import TargetArea from "../../components/TargetArea";
 
 const gameData = {
   pokemonNames: ["Pikachu"],

@@ -1,8 +1,13 @@
 "use client";
 
 import { MouseEvent } from "react";
-import PokemonNameListProps from "./type";
-import { pokemonListSprites } from "../../app/assets";
+import { pokemonListSprites } from "../app/assets";
+import { VersionData } from "src/types/pokemonData.type";
+
+interface PokemonNameListProps {
+  gameData: VersionData;
+  handlePickedOption?: (e: MouseEvent, pickedPokemon: string) => void;
+}
 
 const PokemonNameList = ({
   gameData,

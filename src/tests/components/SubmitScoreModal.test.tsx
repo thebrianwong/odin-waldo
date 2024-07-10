@@ -1,6 +1,6 @@
 import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SubmitScoreModal from "../../components/SubmitScoreModal/SubmitScoreModal";
+import SubmitScoreModal from "../../components/SubmitScoreModal";
 import "@testing-library/jest-dom";
 
 const mockFunction = jest.fn();

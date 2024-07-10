@@ -1,6 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-import SubmitScoreModalProps from "./type";
-import SubmissionResponse from "../../types/submissionResponse.type";
+import SubmissionResponse from "../types/submissionResponse.type";
+import GameVersion from "../types/gameVersion.type";
+
+interface SubmitScoreModalProps {
+  timeScore: number;
+  displayTime: string;
+  gameVersion: GameVersion;
+  submitScore: (
+    timeInMilliseconds: number,
+    playerName: string,
+    playerFavoritePokemon: string,
+    gameVersion: GameVersion
+  ) => Promise<SubmissionResponse>;
+  closeModal: () => void;
+}
 
 const SubmitScoreModal = ({
   timeScore,

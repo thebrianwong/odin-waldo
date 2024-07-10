@@ -1,6 +1,14 @@
-import AnswerReactionProps from "./type";
-import correct from "../../../public/assets/images/answers/correct.png";
-import incorrect from "../../../public/assets/images/answers/incorrect.png";
+import correct from "../../public/assets/images/answers/correct.png";
+import incorrect from "../../public/assets/images/answers/incorrect.png";
+import Position from "../types/position.type";
+import { VersionData } from "../types/pokemonData.type";
+
+interface AnswerReactionProps {
+  isCorrect: boolean;
+  imagePosition: Position;
+  clickPosition: Position;
+  gameData: VersionData;
+}
 
 const AnswerReaction = ({
   isCorrect,

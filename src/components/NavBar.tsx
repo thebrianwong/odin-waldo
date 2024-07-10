@@ -1,6 +1,13 @@
 import Link from "next/link";
-import NavBarProps from "./type";
-import { pokemonNavSprites } from "../../app/assets";
+import { pokemonNavSprites } from "../app/assets";
+import { VersionData } from "../types/pokemonData.type";
+import GameProgress from "../types/gameProgress.type";
+
+interface NavBarProps {
+  gameData: VersionData;
+  gameProgress: GameProgress;
+  elapsedTime: string;
+}
 
 const NavBar = ({ gameData, gameProgress, elapsedTime }: NavBarProps) => {
   const indicateIfFound = (pokemon: string) => {

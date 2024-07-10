@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import PokemonNameList from "../../components/PokemonNameList/PokemonNameList";
+import PokemonNameList from "../../components/PokemonNameList";
 import "@testing-library/jest-dom";
 
 const gameData = {

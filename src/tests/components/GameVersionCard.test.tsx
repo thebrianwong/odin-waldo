@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import data from "../../gameData.json";
-import GameVersionCard from "../../components/GameVersionCard/GameVersionCard";
+import GameVersionCard from "../../components/GameVersionCard";
 import "@testing-library/jest-dom";
 
 test("The component gets rendered correctly", () => {

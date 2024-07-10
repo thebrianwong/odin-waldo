@@ -1,6 +1,14 @@
-import PokemonNameList from "../PokemonNameList/PokemonNameList";
-import GameVersionCardProps from "./type";
-import { gameVersionImages } from "../../app/assets";
+import PokemonNameList from "./PokemonNameList";
+import { gameVersionImages } from "../app/assets";
+import Difficulty from "../types/difficulty.type";
+import { VersionData } from "../types/pokemonData.type";
+import GameVersion from "../types/gameVersion.type";
+
+interface GameVersionCardProps {
+  difficulty: Difficulty;
+  gameData: VersionData;
+  gameVersion: GameVersion;
+}
 
 const GameVersionCard = ({
   difficulty,

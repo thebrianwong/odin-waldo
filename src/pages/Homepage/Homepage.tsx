@@ -1,5 +1,5 @@
 import Link from "next/link";
-import GameVersionCard from "../../components/GameVersionCard/GameVersionCard";
+import GameVersionCard from "../../components/GameVersionCard";
 import logo from "../../../public/assets/images/misc/logo.png";
 import gameData from "../../gameData.json";
 

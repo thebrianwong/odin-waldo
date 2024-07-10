@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/styles.scss";
 import { Suspense } from "react";
-import LoadingPokeball from "src/components/LoadingPokeball/LoadingPokeball";
+import LoadingPokeball from "../components/LoadingPokeball";
 import { getFirebaseConfig } from "src/firebase-config";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
