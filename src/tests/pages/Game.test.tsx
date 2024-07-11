@@ -1,7 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-import { BrowserRouter } from "react-router-dom";
 import Game from "../../pages/Game";
 import "@testing-library/jest-dom";
 
@@ -86,9 +85,7 @@ const defaultVisualViewport = {
 global.visualViewport = defaultVisualViewport;
 
 test("The page renders", () => {
-  render(<Game gameVersion="version1" validationData={validationData} />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Game gameVersion="version1" validationData={validationData} />);
   const game = screen.getByTestId("game");
   const image = screen.getByAltText(
     "A compilation of all Pokemon released up to Generation 4."
@@ -98,9 +95,7 @@ test("The page renders", () => {
 });
 
 test("The image can be clicked to display the target area and dropdown menu", () => {
-  render(<Game gameVersion="version1" validationData={validationData} />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Game gameVersion="version1" validationData={validationData} />);
   const image = screen.getByAltText(
     "A compilation of all Pokemon released up to Generation 4."
   );
@@ -114,9 +109,7 @@ test("The image can be clicked to display the target area and dropdown menu", ()
 });
 
 test("The target area and dropdown menu disappear when choosing an option", () => {
-  render(<Game gameVersion="version1" validationData={validationData} />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Game gameVersion="version1" validationData={validationData} />);
   const image = screen.getByAltText(
     "A compilation of all Pokemon released up to Generation 4."
   );
@@ -133,9 +126,7 @@ test("The target area and dropdown menu disappear when choosing an option", () =
 });
 
 test("The dropdown menu options can be picked, causing the target area and dropdown menu to disappear", () => {
-  render(<Game gameVersion="version1" validationData={validationData} />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Game gameVersion="version1" validationData={validationData} />);
   const image = screen.getByAltText(
     "A compilation of all Pokemon released up to Generation 4."
   );
@@ -158,9 +149,7 @@ test("The dropdown menu options can be picked, causing the target area and dropd
 });
 
 test("The answer reaction appears when a dropdown menu option is picked", () => {
-  render(<Game gameVersion="version1" validationData={validationData} />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Game gameVersion="version1" validationData={validationData} />);
   const image = screen.getByAltText(
     "A compilation of all Pokemon released up to Generation 4."
   );

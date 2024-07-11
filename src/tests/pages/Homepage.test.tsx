@@ -1,20 +1,15 @@
 import { render, screen, within } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
 import Home from "../../pages/Homepage";
 import "@testing-library/jest-dom";
 
 test("The page renders", () => {
-  render(<Home />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Home />);
   const homepage = screen.getByTestId("homepage");
   expect(homepage).toBeInTheDocument();
 });
 
 test("The header contains all expected elements", () => {
-  render(<Home />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Home />);
   const leaderboardButton = screen.getByRole("button", { name: "Leaderboard" });
   const pokemonLogo = screen.getByAltText(
     "The original Pokemon logo with a styled font, dark blue outline, and yellow fill."
@@ -26,9 +21,7 @@ test("The header contains all expected elements", () => {
 });
 
 test("The footer contains all expected elements", () => {
-  render(<Home />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Home />);
   const credits = screen.getByText(
     "All assets belong to Nintendo and Game Freak. Weird level image by . Favicon by ."
   );
@@ -44,9 +37,7 @@ test("The footer contains all expected elements", () => {
 });
 
 test("There are 3 buttons for each game version", () => {
-  render(<Home />, {
-    wrapper: BrowserRouter,
-  });
+  render(<Home />);
   const main = screen.getByRole("main");
   const gameVersionButtons = within(main).getAllByRole("button");
   expect(gameVersionButtons.length).toBe(3);
@@ -54,9 +45,7 @@ test("There are 3 buttons for each game version", () => {
 
 describe("Each game version buttons has the correct corresponding elements", () => {
   test("Version1", () => {
-    render(<Home />, {
-      wrapper: BrowserRouter,
-    });
+    render(<Home />);
     const main = screen.getByRole("main");
     const gameVersionButtons = within(main).getAllByRole("button");
 
@@ -89,9 +78,7 @@ describe("Each game version buttons has the correct corresponding elements", () 
   });
 
   test("Version2", () => {
-    render(<Home />, {
-      wrapper: BrowserRouter,
-    });
+    render(<Home />);
     const main = screen.getByRole("main");
     const gameVersionButtons = within(main).getAllByRole("button");
 
@@ -124,9 +111,7 @@ describe("Each game version buttons has the correct corresponding elements", () 
   });
 
   test("Version3", () => {
-    render(<Home />, {
-      wrapper: BrowserRouter,
-    });
+    render(<Home />);
     const main = screen.getByRole("main");
     const gameVersionButtons = within(main).getAllByRole("button");
 

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import "@testing-library/jest-dom";
 
@@ -14,8 +13,7 @@ test("The component is rendered", () => {
       gameData={gameData}
       gameProgress={{ Pichu: false, Graveler: false, Slaking: false }}
       elapsedTime="00:00"
-    />,
-    { wrapper: BrowserRouter }
+    />
   );
   const navElement = screen.getByRole("navigation");
   expect(navElement).toBeInTheDocument();
@@ -27,8 +25,7 @@ test("2 buttons to navigate exist", () => {
       gameData={gameData}
       gameProgress={{ Pichu: false, Graveler: false, Slaking: false }}
       elapsedTime="00:00"
-    />,
-    { wrapper: BrowserRouter }
+    />
   );
   const buttons = screen.getAllByRole("button");
   const homeButton = buttons[0];
@@ -43,8 +40,7 @@ test("The timer is displayed properly", () => {
       gameData={gameData}
       gameProgress={{ Pichu: false, Graveler: false, Slaking: false }}
       elapsedTime="00:00"
-    />,
-    { wrapper: BrowserRouter }
+    />
   );
   const timerDisplay = screen.getByText("Time: 00:00");
   expect(timerDisplay).toBeInTheDocument();
@@ -56,8 +52,7 @@ test("The 3 Pokemon sprites are displayed", () => {
       gameData={gameData}
       gameProgress={{ Pichu: false, Graveler: false, Slaking: false }}
       elapsedTime="00:00"
-    />,
-    { wrapper: BrowserRouter }
+    />
   );
   const pichuSprite = screen.getByAltText(
     "The sprite of Pichu as it appears as an opposing Pokemon in Pokemon HeartGold and SoulSilver."
@@ -79,8 +74,7 @@ test("The sprites have default opacity when not found", () => {
       gameData={gameData}
       gameProgress={{ Pichu: false, Graveler: false, Slaking: false }}
       elapsedTime="00:00"
-    />,
-    { wrapper: BrowserRouter }
+    />
   );
   const pichuSprite = screen.getByAltText(
     "The sprite of Pichu as it appears as an opposing Pokemon in Pokemon HeartGold and SoulSilver."
@@ -105,8 +99,7 @@ test("The sprites have translucent opacity when found", () => {
       gameData={gameData}
       gameProgress={{ Pichu: true, Graveler: true, Slaking: true }}
       elapsedTime="00:00"
-    />,
-    { wrapper: BrowserRouter }
+    />
   );
   const pichuSprite = screen.getByAltText(
     "The sprite of Pichu as it appears as an opposing Pokemon in Pokemon HeartGold and SoulSilver."
