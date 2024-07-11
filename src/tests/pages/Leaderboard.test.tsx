@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
 import Leaderboard from "../../pages/Leaderboard";
 import "@testing-library/jest-dom";
 import { AppRouterContextProviderMock } from "../utils";
@@ -169,9 +168,7 @@ test("The difficulty can be changed by choosing a different option in the select
   const selectMenu = screen.getByTestId("select-menu");
   const difficultyLabel = screen.getByRole("heading");
   expect(difficultyLabel).toHaveTextContent("Normal");
-  act(() => {
-    userEvent.selectOptions(selectMenu, ["weird"]);
-  });
+  userEvent.selectOptions(selectMenu, ["weird"]);
   expect(mockPush).toHaveBeenCalled();
 });
 
