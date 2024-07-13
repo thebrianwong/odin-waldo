@@ -2,6 +2,8 @@ import { LeaderboardTotal } from "src/types/leaderboardData.type";
 import { formatLeaderboardDates } from "src/utils";
 import Leaderboard from "src/pages/Leaderboard";
 
+export const dynamic = "force-dynamic";
+
 interface LeaderboardPageProps {
   searchParams: {
     gameVersion: string;
