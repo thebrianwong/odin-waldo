@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Game from "../../pages/Game";
+import Game from "../../views/Game";
 import "@testing-library/jest-dom";
 
 const validationData = {

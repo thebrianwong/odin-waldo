@@ -1,5 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
-import Home from "../../pages/Homepage";
+import Home from "../../views/Homepage";
 import "@testing-library/jest-dom";
 
 test("The page renders", () => {

@@ -1,6 +1,6 @@
 import { LeaderboardTotal } from "src/types/leaderboardData.type";
 import { formatLeaderboardDates } from "src/utils";
-import Leaderboard from "src/pages/Leaderboard";
+import Leaderboard from "src/views/Leaderboard";
 
 export const dynamic = "force-dynamic";
 

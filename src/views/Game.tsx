@@ -24,7 +24,6 @@ interface GameProps {
 const Game = ({ validationData, gameVersion }: GameProps) => {
   const elapsedTimeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const answerReactionTimerIdRef = useRef<NodeJS.Timeout | null>(null);
-
   const [gameProgress, setGameProgress] = useState<GameProgress>({
     [gameData[gameVersion].pokemonNames[0]]: false,
     [gameData[gameVersion].pokemonNames[1]]: false,
