@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+import DropdownMenu from "../../components/DropdownMenu";
 
 const defaultVisualViewport = {
   width: 900,

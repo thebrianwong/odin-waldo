@@ -1,9 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import data from "../../gameData.json";
-import GameVersionCard from "../../components/GameVersionCard/GameVersionCard";
-import userEvent from "@testing-library/user-event";
-
-const mockFunction = jest.fn();
+import GameVersionCard from "../../components/GameVersionCard";
+import "@testing-library/jest-dom";
 
 test("The component gets rendered correctly", () => {
   render(
@@ -11,7 +9,6 @@ test("The component gets rendered correctly", () => {
       difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={mockFunction}
     />
   );
   const button = screen.getByRole("button");
@@ -24,7 +21,6 @@ test("The difficulty and alt text are rendered properly based on the difficulty 
       difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={mockFunction}
     />
   );
   const difficulty = screen.getByText("Normal");
@@ -41,23 +37,8 @@ test("The image corresponds to the gameVersion prop", () => {
       difficulty="Normal"
       gameData={data.version1}
       gameVersion="version1"
-      chooseGameVersion={mockFunction}
     />
   );
   const image = screen.getByTestId("preview-image");
   expect(image).toBeInTheDocument();
-});
-
-test("The component handles clicks", () => {
-  render(
-    <GameVersionCard
-      difficulty="Normal"
-      gameData={data.version1}
-      gameVersion="version1"
-      chooseGameVersion={mockFunction}
-    />
-  );
-  const button = screen.getByRole("button");
-  userEvent.click(button);
-  expect(mockFunction).toHaveBeenCalled();
 });

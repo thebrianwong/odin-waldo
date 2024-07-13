@@ -12,7 +12,7 @@ Try to get the quickest time in all 3 levels!
 
 ---
 
-This project was originally written with JavaScript and CSS, then converted to TypeScript and SASS/SCSS.
+This project was originally written with JavaScript and CSS, then converted to TypeScript and SASS/SCSS. It was then converted to Next.js.
 
 Additionally, it was originally deployed using Firebase, then converted to using an Express backend with MongoDB deployed on Render.
 
